@@ -14,11 +14,7 @@ interface Props {
     image?: string
 }
 
-const {
-    title = 'Space Travel',
-    description = 'This is about going to space',
-    image = '/logo.svg',
-} = Astro.props
+const { title = 'Space Travel', description = 'This is about going to space', image } = Astro.props
 ---
 
 <!doctype html>
@@ -32,7 +28,7 @@ const {
         <title>{title}</title>
         <ViewTransitions />
     </head>
-    <body class="bg-dark text-white" style=`--bg: url(${image})`>
+    <body style=`--bg: url(${image})`>
         <Header />
         <slot />
     </body>

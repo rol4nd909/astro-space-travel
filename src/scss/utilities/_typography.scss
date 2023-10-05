@@ -11,6 +11,10 @@
     font-family: var(--ff-sans-normal);
   }
 
+  .letter-spacing-fluid {
+    letter-spacing: var(--ls-900);
+  }
+
   .letter-spacing-1 {
     letter-spacing: 4.75px;
   }
@@ -27,20 +31,24 @@
     text-transform: uppercase;
   }
 
-  .fs-900 {
-    font-size: var(--fs-900);
+  .fs-fluid-900 {
+    font-size: var(--fs-fluid-900);
   }
 
-  .fs-800 {
-    font-size: var(--fs-800);
+  .fs-fluid-800 {
+    font-size: var(--fs-fluid-800);
   }
 
-  .fs-700 {
-    font-size: var(--fs-700);
+  .fs-fluid-700 {
+    font-size: var(--fs-fluid-700);
   }
 
-  .fs-600 {
-    font-size: var(--fs-600);
+  .fs-fluid-600 {
+    font-size: var(--fs-fluid-600);
+  }
+
+  .fs-fluid-500 {
+    font-size: var(--fs-fluid-500);
   }
 
   .fs-500 {
@@ -59,11 +67,12 @@
     font-size: var(--fs-200);
   }
 
-  .fs-900,
-  .fs-800,
-  .fs-700,
-  .fs-600 {
-    line-height: 1.1;
+  .fs-fluid-900,
+  .fs-fluid-800,
+  .fs-fluid-700,
+  .fs-fluid-600,
+  .fs-fluid-500 {
+    line-height: 1;
   }
 
   .fw-regular {
@@ -72,5 +81,18 @@
 
   .fw-bold {
     font-weight: 700;
+  }
+
+  .numbered-title {
+    font-family: var(--ff-sans-cond);
+    font-size: var(--fs-fluid-500);
+    letter-spacing: var(--ls-900);
+    text-transform: uppercase;
+
+    > span {
+      margin-inline-end: 0.5em;
+      color: hsl(var(--clr-white) / 25%);
+      font-weight: var(--fw-bold);
+    }
   }
 }

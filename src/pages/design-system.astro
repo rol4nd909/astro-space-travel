@@ -3,56 +3,59 @@ import Main from '@components/Main.astro'
 import Layout from '@layouts/Layout.astro'
 ---
 
-<Layout title="Design system">
+<Layout
+    title="Design system"
+    description="This is an overview of the design system"
+    image="background-home-desktop.jpg"
+>
     <Main>
         <h1 class="fs-500 uppercase letter-spacing-1">Design system</h1>
 
         <div class="flow" id="colors" style="--flow-space: 4rem">
-            <h2 class="d-flex fs-500 uppercase" style="--gap: 1.5rem">
-                <span class="fw-bold opacity-25">01</span>
-                <span class="letter-spacing-1">colors</span>
+            <h2 class="numbered-title">
+                <span>01</span> colors
             </h2>
 
-            <div class="d-flex even-columns" style="--gap: 2rem; --flow-space: 1em">
-                <div class="flow">
+            <div class="flex even-columns" style="--gap: 2rem; --flow-space: 1.5rem">
+                <div class="flow" style="--flow-space: 0">
                     <div
                         class="bg-dark text-white ff-serif fs-450"
                         style="padding: 3rem 1rem 1rem; border: 1px solid white"
                     >
                         #0B0D17
                     </div>
-                    <p class="ff-sans-normal d-flex" style="--gap:4rem">
+                    <p class="ff-sans-normal flex" style="--gap:4rem;--flow-space: 0.5rem">
                         <span class="text-accent">RGB</span> 11, 13, 23
                     </p>
-                    <p class="ff-sans-normal d-flex" style="--flow-space: 0.25em;--gap:4rem">
+                    <p class="ff-sans-normal flex" style="--gap:4rem">
                         <span class="text-accent">HSL</span> 230°, 35%, 7%
                     </p>
                 </div>
-                <div class="flow">
+                <div class="flow" style="--flow-space: 0">
                     <div
                         class="bg-accent text-dark ff-serif fs-450"
                         style="padding: 3rem 1rem 1rem; border: 1px solid white"
                     >
                         #D0D6F9
                     </div>
-                    <p class="ff-sans-normal d-flex" style="--gap:4rem">
+                    <p class="ff-sans-normal flex" style="--gap:4rem;--flow-space: 0.5rem">
                         <span class="text-accent">RGB</span> 208, 214, 249
                     </p>
-                    <p class="ff-sans-normal d-flex" style="--flow-space: 0.25em;--gap:4rem">
+                    <p class="ff-sans-normal flex" style="--gap:4rem">
                         <span class="text-accent">HSL</span> 231°, 77%, 90%
                     </p>
                 </div>
-                <div class="flow">
+                <div class="flow" style="--flow-space: 0">
                     <div
                         class="bg-white text-dark ff-serif fs-450"
                         style="padding: 3rem 1rem 1rem; border: 1px solid white"
                     >
                         #FFFFFF
                     </div>
-                    <p class="ff-sans-normal d-flex" style="--gap:4rem">
+                    <p class="ff-sans-normal flex" style="--gap:4rem;--flow-space: 0.5rem">
                         <span class="text-accent">RGB</span> 255, 255, 255
                     </p>
-                    <p class="ff-sans-normal d-flex" style="--flow-space: 0.25em;--gap:4rem">
+                    <p class="ff-sans-normal flex" style="--gap:4rem">
                         <span class="text-accent">HSL</span> 0°, 0%, 100%
                     </p>
                 </div>
@@ -60,23 +63,75 @@ import Layout from '@layouts/Layout.astro'
         </div>
 
         <div class="flow" id="typography" style="--flow-space: 4rem">
-            <h2 class="d-flex fs-500 uppercase" style="--gap: 1.5rem">
-                <span class="fw-bold opacity-25">02</span>
-                <span class="letter-spacing-1">typography</span>
+            <h2 class="numbered-title">
+                <span>02</span> typography
             </h2>
 
-            <div class="d-flex even-columns">
-                <div>
-                    <p class="text-accent">Heading 1 - Bellefair Regular - 150px</p>
-                    <h1 class="ff-serif fs-900 uppercase">Earth</h1>
-
-                    <p class="text-accent">Heading 2 - Bellefair Regular - 100px</p>
-                    <h2 class="ff-serif fs-800 uppercase">Venus</h2>
+            <div class="flex even-columns" style="--flow-space: 1.5rem">
+                <div class="flow">
+                    <div>
+                        <p class="text-accent">Heading 1 - Bellefair Regular - 80/150px</p>
+                        <p class="fs-fluid-900 ff-serif uppercase">Earth</p>
+                    </div>
+                    <div>
+                        <p class="text-accent">Heading 2 - Bellefair Regular - 56/100px</p>
+                        <p class="fs-fluid-800 ff-serif uppercase">Venus</p>
+                    </div>
+                    <div>
+                        <p class="text-accent">Heading 3 - Bellefair Regular - 24/56px</p>
+                        <p class="fs-fluid-700 ff-serif uppercase">Jupiter & Saturn</p>
+                    </div>
+                    <div>
+                        <p class="text-accent">Heading 4 - Bellefair Regular - 16/32px</p>
+                        <p class="fs-fluid-600 ff-serif uppercase">Uranus, Neptune, & Pluto</p>
+                    </div>
+                    <div>
+                        <p class="text-accent">
+                            Heading 5 - Barlow Condensed Regular - 16/28px - 2.7/4.75 Character
+                            Space
+                        </p>
+                        <p
+                            class="fs-fluid-500 ff-sans-cond uppercase letter-spacing-fluid text-accent"
+                        >
+                            So, you want to travel to space
+                        </p>
+                    </div>
                 </div>
 
-                <div>
-                    <p class="text-accent">Subheading 1 - Bellefair Regular - 28px</p>
-                    <p class="ff-serif fs-500">384,400 km</p>
+                <div class="flow">
+                    <div>
+                        <p class="text-accent">Subheading 1 - Bellefair Regular - 28px</p>
+                        <p class="fs-500 ff-serif uppercase">384,400 km</p>
+                    </div>
+                    <div>
+                        <p class="text-accent">
+                            Subheading 2 - Barlow Condensed Regular - 14px - 2.35 Character Space
+                        </p>
+                        <p class="fs-200 ff-sans-cond letter-spacing-3">Avg. Distance</p>
+                    </div>
+                    <div>
+                        <p class="text-accent">
+                            Nav Text - Barlow Condensed Regular - 16px - 2.7 Character Space
+                        </p>
+                        <p class="fs-300 ff-sans-cond letter-spacing-2">Europa</p>
+                    </div>
+                    <div>
+                        <p class="text-accent">Body Text</p>
+                        <p class="ff-sans-normal">
+                            Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Phasellus
+                            hendrerit. Pellentesque aliquet nibh nec urna. In nisi neque, aliquet
+                            vel, dapibus id, mattis vel, nisi. Sed pretium, ligula sollicitudin
+                            laoreet viverra, tortor libero sodales leo, eget blandit nunc tortor eu
+                            nibh. Nullam mollis. Ut justo. Suspendisse potenti.Lorem ipsum dolor sit
+                            amet, consectetuer adipiscing elit. Phasellus hendrerit. Pellentesque
+                            aliquet nibh nec urna. In nisi neque, aliquet vel, dapibus id, mattis
+                            vel, nisi. Sed pretium, ligula sollicitudin laoreet viverra, tortor
+                            libero sodales leo, eget blandit nunc tortor eu nibh. Nullam mollis. Ut
+                            justo. Suspendisse potenti.Lorem ipsum dolor sit amet, consectetuer
+                            adipiscing elit. Phasellus hendrerit. Pellentesque aliquet nibh nec
+                            urna. In nisi neque, aliquet vel, dapibus id, mattis vel, nisi.
+                        </p>
+                    </div>
                 </div>
             </div>
         </div>
@@ -84,15 +139,13 @@ import Layout from '@layouts/Layout.astro'
 </Layout>
 
 <style>
-    .example-block {
-        background-color: hsl(var(--clr-ligth) / 0.2);
-    }
+    @layer design-system {
+        body {
+            padding-block: 3rem;
+        }
 
-    .fs-450 {
-        font-size: 1.5rem;
-    }
-
-    .opacity-25 {
-        opacity: 25%;
+        .fs-450 {
+            font-size: 1.5rem;
+        }
     }
 </style>
