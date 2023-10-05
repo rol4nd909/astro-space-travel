@@ -17,7 +17,6 @@
   },
   "devDependencies": {
     "@csstools/postcss-global-data": "^2.1.0",
-    "astro": "^3.2.2",
     "autoprefixer": "^10.4.16",
     "postcss": "^8.4.31",
     "postcss-custom-media": "^10.0.1",
