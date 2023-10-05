@@ -1,0 +1,5 @@
+@layer utilities {
+  .flow > *:where(:not(:first-child)) {
+    margin-block-start: var(--flow-space, 1em);
+  }
+}

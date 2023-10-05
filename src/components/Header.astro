@@ -1,0 +1,20 @@
+---
+import { Image } from 'astro:assets'
+---
+
+<header class="lane">
+    <a href="/">
+        <Image src="/logo.svg" width={48} height={48} alt="" />
+    </a>
+</header>
+
+<style lang="scss">
+    a {
+        justify-self: self-start;
+
+        @media (width >= 81.375em) {
+            grid-column: 1;
+            justify-self: center;
+        }
+    }
+</style>

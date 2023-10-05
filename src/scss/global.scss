@@ -1,0 +1,34 @@
+// Using sass together with css cascade layers as read in
+// https://www.smashingmagazine.com/2022/01/introduction-css-cascade-layers/
+
+// @use 'sass:meta';
+// @use 'sass:list';
+
+// $layers: 'props', 'base', 'utilities' !default;
+
+// // Outputs the list of layers
+// @layer #{$layers};
+
+// // Outputs each layer's styles via their include
+// @each $layer in $layers {
+//   @layer #{$layer} {
+//     @include meta.load-css($layer);
+//   }
+// }
+
+// Props
+@forward './props/custom-media';
+@forward './props/custom-props';
+
+// Base
+@forward './base/reset';
+@forward './base/page';
+@forward './base/layout';
+
+// Utilities
+@forward './utilities/flow';
+@forward './utilities/sr-only';
+
+@forward './utilities/colors';
+@forward './utilities/typography';
+@forward './utilities/display';

@@ -1,0 +1,37 @@
+@use '../functions/fluid' as *;
+
+@layer props {
+  :where(html) {
+    // colors
+    --clr-dark: 230 35% 7%;
+    --clr-ligth: 231 77% 90%;
+    --clr-white: 0 0% 100%;
+
+    // font-sizes
+    --fs-900: 9.375rem;
+    --fs-800: 6.25rem;
+    --fs-700: 3.5rem;
+    --fs-600: 2rem;
+    --fs-500: 1.75rem;
+    --fs-400: 1.125rem;
+    --fs-300: 1rem;
+    --fs-200: 0.875rem;
+
+    // fluid sizes
+    --fs-fluid-base: #{fluid(16px, 18px)};
+    --fs-fluid-h5: #{fluid(20px, 24px)};
+    --fs-fluid-h4: #{fluid(24px, 32px)};
+    --fs-fluid-h3: #{fluid(28px, 42px)};
+    --fs-fluid-h2: #{fluid(32px, 56px)};
+    --fs-fluid-h1: #{fluid(40px, 76px)};
+
+    // font-families
+    --ff-serif: 'Bellefair', serif;
+    --ff-sans-cond: 'Barlow Condensed', sans-serif;
+    --ff-sans-normal: 'Barlow', sans-serif;
+
+    // font-weights
+    --fw-regular: 400;
+    --fw-bold: 700;
+  }
+}

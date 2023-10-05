@@ -1,0 +1,39 @@
+---
+import '@styles/global.scss'
+import '@fontsource/barlow'
+import '@fontsource/barlow-condensed/400.css'
+import '@fontsource/barlow-condensed/700.css'
+import '@fontsource/bellefair'
+
+import Header from '@components/Header.astro'
+import { ViewTransitions } from 'astro:transitions'
+
+interface Props {
+    title?: string
+    description?: string
+    image?: string
+}
+
+const {
+    title = 'Space Travel',
+    description = 'This is about going to space',
+    image = '/logo.svg',
+} = Astro.props
+---
+
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="description" content={description} />
+        <meta name="viewport" content="width=device-width" />
+        <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+        <meta name="generator" content={Astro.generator} />
+        <title>{title}</title>
+        <ViewTransitions />
+    </head>
+    <body class="bg-dark text-white" style=`--bg: url(${image})`>
+        <Header />
+        <slot />
+    </body>
+</html>

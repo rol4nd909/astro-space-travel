@@ -1,0 +1,98 @@
+---
+import Main from '@components/Main.astro'
+import Layout from '@layouts/Layout.astro'
+---
+
+<Layout title="Design system">
+    <Main>
+        <h1 class="fs-500 uppercase letter-spacing-1">Design system</h1>
+
+        <div class="flow" id="colors" style="--flow-space: 4rem">
+            <h2 class="d-flex fs-500 uppercase" style="--gap: 1.5rem">
+                <span class="fw-bold opacity-25">01</span>
+                <span class="letter-spacing-1">colors</span>
+            </h2>
+
+            <div class="d-flex even-columns" style="--gap: 2rem; --flow-space: 1em">
+                <div class="flow">
+                    <div
+                        class="bg-dark text-white ff-serif fs-450"
+                        style="padding: 3rem 1rem 1rem; border: 1px solid white"
+                    >
+                        #0B0D17
+                    </div>
+                    <p class="ff-sans-normal d-flex" style="--gap:4rem">
+                        <span class="text-accent">RGB</span> 11, 13, 23
+                    </p>
+                    <p class="ff-sans-normal d-flex" style="--flow-space: 0.25em;--gap:4rem">
+                        <span class="text-accent">HSL</span> 230°, 35%, 7%
+                    </p>
+                </div>
+                <div class="flow">
+                    <div
+                        class="bg-accent text-dark ff-serif fs-450"
+                        style="padding: 3rem 1rem 1rem; border: 1px solid white"
+                    >
+                        #D0D6F9
+                    </div>
+                    <p class="ff-sans-normal d-flex" style="--gap:4rem">
+                        <span class="text-accent">RGB</span> 208, 214, 249
+                    </p>
+                    <p class="ff-sans-normal d-flex" style="--flow-space: 0.25em;--gap:4rem">
+                        <span class="text-accent">HSL</span> 231°, 77%, 90%
+                    </p>
+                </div>
+                <div class="flow">
+                    <div
+                        class="bg-white text-dark ff-serif fs-450"
+                        style="padding: 3rem 1rem 1rem; border: 1px solid white"
+                    >
+                        #FFFFFF
+                    </div>
+                    <p class="ff-sans-normal d-flex" style="--gap:4rem">
+                        <span class="text-accent">RGB</span> 255, 255, 255
+                    </p>
+                    <p class="ff-sans-normal d-flex" style="--flow-space: 0.25em;--gap:4rem">
+                        <span class="text-accent">HSL</span> 0°, 0%, 100%
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <div class="flow" id="typography" style="--flow-space: 4rem">
+            <h2 class="d-flex fs-500 uppercase" style="--gap: 1.5rem">
+                <span class="fw-bold opacity-25">02</span>
+                <span class="letter-spacing-1">typography</span>
+            </h2>
+
+            <div class="d-flex even-columns">
+                <div>
+                    <p class="text-accent">Heading 1 - Bellefair Regular - 150px</p>
+                    <h1 class="ff-serif fs-900 uppercase">Earth</h1>
+
+                    <p class="text-accent">Heading 2 - Bellefair Regular - 100px</p>
+                    <h2 class="ff-serif fs-800 uppercase">Venus</h2>
+                </div>
+
+                <div>
+                    <p class="text-accent">Subheading 1 - Bellefair Regular - 28px</p>
+                    <p class="ff-serif fs-500">384,400 km</p>
+                </div>
+            </div>
+        </div>
+    </Main>
+</Layout>
+
+<style>
+    .example-block {
+        background-color: hsl(var(--clr-ligth) / 0.2);
+    }
+
+    .fs-450 {
+        font-size: 1.5rem;
+    }
+
+    .opacity-25 {
+        opacity: 25%;
+    }
+</style>
