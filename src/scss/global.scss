@@ -1,3 +1,20 @@
+// Props
+@forward './props/custom-media';
+@forward './props/custom-props';
+
+// Base
+@forward './base/reset';
+@forward './base/page';
+@forward './base/layout';
+
+// Utilities
+@forward './utilities/flow';
+@forward './utilities/sr-only';
+
+@forward './utilities/colors';
+@forward './utilities/typography';
+@forward './utilities/display';
+
 // Using sass together with css cascade layers as read in
 // https://www.smashingmagazine.com/2022/01/introduction-css-cascade-layers/
 
@@ -15,20 +32,3 @@
 //     @include meta.load-css($layer);
 //   }
 // }
-
-// Props
-@forward './props/custom-media';
-@forward './props/custom-props';
-
-// Base
-@forward './base/reset';
-@forward './base/page';
-@forward './base/layout';
-
-// Utilities
-@forward './utilities/flow';
-@forward './utilities/sr-only';
-
-@forward './utilities/colors';
-@forward './utilities/typography';
-@forward './utilities/display';
