@@ -1,3 +1,7 @@
+# Space tourism multi-page website
+
+This project is based on [this frontendmentor.io challange](https://www.frontendmentor.io/challenges/space-tourism-multipage-website-gRWj1URZ3fun)If you like, you can follow along and watch Kevin complete the project on [Scrimba](https://scrimba.com/learn/spacetravel). Lots to learn!
+
 ## 🧞 Commands
 
 All commands are run from the root of the project, from a terminal:
