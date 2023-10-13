@@ -61,10 +61,14 @@
 
   .fs-400 {
     font-size: var(--fs-400);
+
+    /* stylelint-disable-next-line number-max-precision */
+    line-height: 1.77778;
   }
 
   .fs-300 {
     font-size: var(--fs-300);
+    line-height: 1.5;
   }
 
   .fs-200 {
@@ -97,6 +101,47 @@
       margin-inline-end: 0.5em;
       color: hsl(var(--clr-white) / 25%);
       font-weight: var(--fw-bold);
+    }
+  }
+
+  .nav-title {
+    font-family: var(--ff-sans-cond);
+
+    > span {
+      margin-inline-end: 0.75em;
+      font-weight: var(--fw-bold);
+    }
+  }
+
+  .line-indicators {
+    --underline-gap: 1rem;
+    --line-thikness: 3px;
+    --_indicator-opacity: 0;
+
+    :is(a, button) {
+      display: inline-flex;
+      border: none;
+      background-color: transparent;
+      cursor: pointer;
+      padding-block-end: calc(var(--underline-gap) - var(--line-thikness));
+      padding-inline: 0;
+      border-block-end: var(--line-thikness) solid hsl(var(--clr-white) / var(--_indicator-opacity));
+      transition: border-color 0.25s ease-in-out;
+
+      &:is(:hover, :focus-visible) {
+        --_indicator-opacity: 50%;
+      }
+
+      &:is(.is-active, [aria-selected='true']) {
+        --_indicator-opacity: 100%;
+
+        color: hsl(var(--clr-white));
+      }
+
+      &:is(:focus-visible) {
+        box-shadow: none;
+        color: hsl(var(--clr-outline));
+      }
     }
   }
 }

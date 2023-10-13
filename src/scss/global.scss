@@ -9,11 +9,12 @@
 
 // Components
 @forward './components/cta';
+@forward './components/nav-list';
+@forward './components/indicators';
 
 // Utilities
 @forward './utilities/flow';
 @forward './utilities/sr-only';
-
 @forward './utilities/colors';
 @forward './utilities/typography';
 @forward './utilities/display';

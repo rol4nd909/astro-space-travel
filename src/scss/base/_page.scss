@@ -13,7 +13,7 @@
   }
 
   // custom outline
-  :is(:focus, :focus-visible) {
+  :is(:focus-visible) {
     outline: none;
     box-shadow: var(--outline);
   }
