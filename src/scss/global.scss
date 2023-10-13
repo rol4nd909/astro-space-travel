@@ -7,6 +7,9 @@
 @forward './base/page';
 @forward './base/layout';
 
+// Components
+@forward './components/cta';
+
 // Utilities
 @forward './utilities/flow';
 @forward './utilities/sr-only';

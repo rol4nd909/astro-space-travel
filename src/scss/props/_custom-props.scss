@@ -4,13 +4,15 @@
   :where(html) {
     // colors
     --clr-dark: 230 35% 7%;
-    --clr-ligth: 231 77% 90%;
+    --clr-light: 231 77% 90%;
     --clr-white: 0 0% 100%;
+    --clr-outline: 330 100% 71%;
 
     // font-sizes
     --fs-fluid-900: #{fluid(80px, 150px, 600px)};
     --fs-fluid-800: #{fluid(56px, 100px, 600px)};
     --fs-fluid-700: #{fluid(24px, 56px, 600px)};
+    --fs-fluid-650: #{fluid(20px, 32px, 600px)};
     --fs-fluid-600: #{fluid(16px, 32px, 600px)};
     --fs-fluid-500: #{fluid(16px, 28px, 600px)};
     --fs-500: 1.75rem;
@@ -29,5 +31,13 @@
 
     // letter-spacing
     --ls-900: #{fluid(2.7px, 4.75px, 600px)};
+    --ls-400: #{fluid(1.25px, 2px, 600px)};
+
+    // outline
+    --outline: 0 0 0 2px hsl(var(--clr-outline));
+
+    // radius
+    --radius-pill: 100vb;
+    --radius-round: 50%;
   }
 }

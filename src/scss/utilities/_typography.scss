@@ -31,6 +31,10 @@
     text-transform: uppercase;
   }
 
+  .text-center {
+    text-align: center;
+  }
+
   .fs-fluid-900 {
     font-size: var(--fs-fluid-900);
   }
@@ -81,5 +85,18 @@
 
   .fw-bold {
     font-weight: 700;
+  }
+
+  .numbered-title {
+    font-family: var(--ff-sans-cond);
+    font-size: var(--fs-fluid-500);
+    letter-spacing: var(--ls-900);
+    text-transform: uppercase;
+
+    > span {
+      margin-inline-end: 0.5em;
+      color: hsl(var(--clr-white) / 25%);
+      font-weight: var(--fw-bold);
+    }
   }
 }

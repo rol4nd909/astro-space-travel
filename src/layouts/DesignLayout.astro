@@ -10,10 +10,14 @@ import SimpleHeader from '@components/SimpleHeader.astro'
 interface Props {
     title?: string
     description?: string
+    image?: string
 }
 
-const { title = 'Design System', description = 'This is an overview of the design system' } =
-    Astro.props
+const {
+    title = 'Space Travel',
+    description = 'This is about going to space',
+    image = 'background-home-desktop.jpg',
+} = Astro.props
 ---
 
 <!doctype html>
@@ -26,7 +30,7 @@ const { title = 'Design System', description = 'This is an overview of the desig
         <meta name="generator" content={Astro.generator} />
         <title>{title}</title>
     </head>
-    <body>
+    <body style=`--bg: url(${image})`>
         <SimpleHeader {title} />
         <slot />
     </body>

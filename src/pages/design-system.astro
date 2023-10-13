@@ -1,13 +1,12 @@
 ---
 import Main from '@components/Main.astro'
-import NumberedTitle from '@components/NumberedTitle.astro'
 import DesignLayout from '@layouts/DesignLayout.astro'
 ---
 
 <DesignLayout title="Design system" description="This is an overview of the design system">
     <Main>
         <div class="flow" id="colors">
-            <NumberedTitle number="01" title="colors" />
+            <h2 class="numbered-title"><span>01</span> colors</h2>
 
             <div class="flex even-columns" style="--gap: 2rem; --flow-space: 1.5rem">
                 <div class="flow" style="--flow-space: 0">
@@ -56,7 +55,7 @@ import DesignLayout from '@layouts/DesignLayout.astro'
         </div>
 
         <div class="flow" id="typography" style="--flow-space: 6rem">
-            <NumberedTitle number="02" title="typography" />
+            <h2 class="numbered-title"><span>02</span> typography</h2>
 
             <div class="flex even-columns" style="--flow-space: 1.5rem">
                 <div class="flow">
@@ -123,6 +122,37 @@ import DesignLayout from '@layouts/DesignLayout.astro'
                             urna. In nisi neque, aliquet vel, dapibus id, mattis vel, nisi.
                         </p>
                     </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="flow" id="interactive-elements" style="--flow-space: 6rem">
+            <h2 class="numbered-title"><span>03</span> Interactive elements</h2>
+
+            <!-- navigation -->
+            <div style="--flow-space: 1.5rem">nav</div>
+
+            <div class="flex" style="--flow-space: 1.5rem">
+                <div class="flow">
+                    <div>
+                        <a href="#" class="cta uppercase">Explore</a>
+                        <p class="text-accent text-center">Landing Page Main Button - Idle</p>
+                    </div>
+
+                    <div class="flow" style="--flow-space: 9rem">
+                        <a href="#" class="cta uppercase" style="--_hover-size: 1.6">Explore</a>
+                        <p class="text-accent text-center" style="--flow-space: 6rem">
+                            Landing Page Main Button - Hover
+                        </p>
+                    </div>
+                </div>
+
+                <div>
+                    Tabs <br />
+
+                     Dots <br />
+
+                     Numbers
                 </div>
             </div>
         </div>

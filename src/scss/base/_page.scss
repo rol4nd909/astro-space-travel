@@ -11,4 +11,10 @@
     /* stylelint-disable-next-line number-max-precision */
     line-height: 1.77778;
   }
+
+  // custom outline
+  :is(:focus, :focus-visible) {
+    outline: none;
+    box-shadow: var(--outline);
+  }
 }

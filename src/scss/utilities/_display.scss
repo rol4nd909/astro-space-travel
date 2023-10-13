@@ -8,4 +8,12 @@
     display: grid;
     gap: var(--gap, 1rem);
   }
+
+  .radius-pill {
+    border-radius: var(--radius-pill);
+  }
+
+  .radius-round {
+    border-radius: var(--radius-round);
+  }
 }
