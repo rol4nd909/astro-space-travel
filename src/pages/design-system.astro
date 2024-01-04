@@ -181,20 +181,20 @@ import DesignLayout from '@layouts/DesignLayout.astro'
                         <div class="line-indicators flex fs-300" style="--gap: 2rem">
                             <button
                                 class="uppercase text-accent letter-spacing-2"
-                                aria-selected="true"
+                                aria-expanded="true"
                             >
                                 Moon
                             </button>
                             <button
                                 class="uppercase text-accent letter-spacing-2"
-                                aria-selected="false"
+                                aria-expanded="false"
                                 style="--_indicator-opacity: 50%"
                             >
                                 Mars
                             </button>
                             <button
                                 class="uppercase text-accent letter-spacing-2"
-                                aria-selected="false"
+                                aria-expanded="false"
                             >
                                 Europa
                             </button>
@@ -206,13 +206,13 @@ import DesignLayout from '@layouts/DesignLayout.astro'
 
                     <div class="flow">
                         <div class="dot-indicators flex demo">
-                            <button aria-selected="true">
+                            <button aria-expanded="true">
                                 <span class="sr-only">Slide title</span>
                             </button>
-                            <button aria-selected="false" style="--_indicator-opacity: 50%">
+                            <button aria-expanded="false" style="--_indicator-opacity: 50%">
                                 <span class="sr-only">Slide title</span>
                             </button>
-                            <button aria-selected="false">
+                            <button aria-expanded="false">
                                 <span class="sr-only">Slide title</span>
                             </button>
                         </div>
@@ -223,18 +223,18 @@ import DesignLayout from '@layouts/DesignLayout.astro'
 
                     <div class="flow">
                         <div class="number-indicators grid demo">
-                            <button class="fs-fluid-600 ff-serif radius-round" aria-selected="true">
+                            <button class="fs-fluid-600 ff-serif radius-round" aria-expanded="true">
                                 1</button
                             >
                             <button
                                 class="fs-fluid-600 ff-serif radius-round"
-                                aria-selected="false"
+                                aria-expanded="false"
                             >
                                 2</button
                             >
                             <button
                                 class="fs-fluid-600 ff-serif radius-round"
-                                aria-selected="false"
+                                aria-expanded="false"
                             >
                                 3</button
                             >

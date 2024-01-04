@@ -132,7 +132,7 @@
         --_indicator-opacity: 50%;
       }
 
-      &:is(.is-active, [aria-selected='true']) {
+      &:is(.is-active, [aria-expanded='true']) {
         --_indicator-opacity: 100%;
 
         color: hsl(var(--clr-white));

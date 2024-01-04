@@ -13,7 +13,7 @@
       --_indicator-opacity: 50%;
     }
 
-    &:is(.is-active, [aria-selected='true']) {
+    &:is(.is-active, [aria-expanded='true']) {
       --_indicator-opacity: 100%;
     }
   }
@@ -33,11 +33,13 @@
     color: hsl(var(--_clr));
     transition: border-color 0.25s ease-in-out;
 
+    // @media (--is-mouse) {
     &:is(:hover, :focus-visible) {
       --_indicator-opacity: 100%;
     }
+    // }
 
-    &:is(.is-active, [aria-selected='true']) {
+    &:is(.is-active, [aria-expanded='true']) {
       --_indicator-opacity: 100%;
       --_clr: var(--clr-dark);
       --_clr-bg: hsl(var(--clr-white));

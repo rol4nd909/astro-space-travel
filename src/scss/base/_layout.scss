@@ -1,6 +1,6 @@
 @layer base.layout {
   .lane {
-    --contain-size: 69.375rem;
+    --contain-size: 69.375rem; // 1110px
     --site-space: minmax(1.5rem, 1fr);
 
     display: grid;
