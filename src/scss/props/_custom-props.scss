@@ -39,5 +39,10 @@
     // radius
     --radius-pill: 100vb;
     --radius-round: 50%;
+
+    // Main site constrian
+    --site-constrain: 69.375rem; // 1110px
+    --site-spacing: #{fluid(24px, 40px, 600px, 900px)};
+    --logo-size: calc(#{fluid(40px, 48px, 600px, 900px)});
   }
 }

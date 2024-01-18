@@ -1,3 +1,5 @@
+@use '../functions/fluid' as *;
+
 @layer base.layout {
   .lane {
     --contain-size: 69.375rem; // 1110px
@@ -17,6 +19,39 @@
 
     > * {
       flex: 1 1 16rem;
+    }
+  }
+
+  .grid-layout {
+    display: grid;
+    place-items: center;
+    text-align: center;
+    gap: 1.5rem;
+
+    > * {
+      max-inline-size: 62ch;
+    }
+
+    .home & {
+      padding-block: #{fluid(32px, 56px, 600px, 900px)};
+
+      @media (--for-tablet-l-up) {
+        align-items: end;
+        padding-block-end: max(6rem, 18vh);
+
+        > :first-child {
+          justify-self: flex-start;
+        }
+
+        > :last-child {
+          justify-self: flex-end;
+        }
+      }
+    }
+
+    @media (--for-tablet-l-up) {
+      grid-template-columns: repeat(2, 1fr);
+      text-align: start;
     }
   }
 }

@@ -1,8 +1,18 @@
+@use '../functions/fluid' as *;
+
 @layer base {
   body {
     display: grid;
+    grid-template-columns:
+      [fullbleed-start] minmax(var(--site-spacing), 1fr)
+      [main-start] min(100% - var(--site-spacing) * 2, var(--site-constrain)) [main-end]
+      minmax(var(--site-spacing), 1fr) [fullbleed-end];
     grid-template-rows: auto 1fr;
     background-color: hsl(var(--clr-dark));
+    background-image: var(--_bg);
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
     color: hsl(var(--clr-white));
     font-family: var(--ff-sans-cond);
     font-size: var(--fs-400);
@@ -16,5 +26,61 @@
   :is(:focus-visible) {
     outline: none;
     box-shadow: var(--outline);
+  }
+}
+
+@layer base.home {
+  .home {
+    --_bg: url('/home/background-home-mobile.jpg');
+
+    @media (--for-tablet-p-up) {
+      --_bg: url('/home/background-home-tablet.jpg');
+    }
+
+    @media (--for-tablet-l-up) {
+      --_bg: url('/home/background-home-desktop.jpg');
+    }
+  }
+}
+
+@layer base.destination {
+  .destination {
+    --_bg: url('/destination/background-destination-mobile.jpg');
+
+    @media (--for-tablet-p-up) {
+      --_bg: url('/destination/background-destination-tablet.jpg');
+    }
+
+    @media (--for-tablet-l-up) {
+      --_bg: url('/destination/background-destination-desktop.jpg');
+    }
+  }
+}
+
+@layer base.crew {
+  .crew {
+    --_bg: url('/crew/background-crew-mobile.jpg');
+
+    @media (--for-tablet-p-up) {
+      --_bg: url('/crew/background-crew-tablet.jpg');
+    }
+
+    @media (--for-tablet-l-up) {
+      --_bg: url('/crew/background-crew-desktop.jpg');
+    }
+  }
+}
+
+@layer base.technology {
+  .technology {
+    --_bg: url('/technology/background-technology-mobile.jpg');
+
+    @media (--for-tablet-p-up) {
+      --_bg: url('/technology/background-technology-tablet.jpg');
+    }
+
+    @media (--for-tablet-l-up) {
+      --_bg: url('/technology/background-technology-desktop.jpg');
+    }
   }
 }

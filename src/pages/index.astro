@@ -1,28 +1,27 @@
 ---
+import Cta from '@components/Cta.astro'
 import Main from '@components/Main.astro'
 import Layout from '@layouts/Layout.astro'
 ---
 
-<Layout title="Welcome to Astro." image="/logo.svg">
-    <Main class="lane">
-        <div class="flex even-columns">
-            <div>
-                <p class="fs-fluid-500 ff-sans-cond uppercase letter-spacing-fluid text-accent">
-                    So, you want to travel to space
-                </p>
+<Layout title="Space Tourism" className="home">
+    <Main>
+        <div class="flow" style="--flow-space: 1.5rem">
+            <p class="fs-fluid-500 ff-sans-cond uppercase letter-spacing-fluid text-accent">
+                So, you want to travel to space
+            </p>
 
-                <h1 class="fs-fluid-900 ff-serif uppercase">Space</h1>
+            <h1 class="fs-fluid-900 ff-serif uppercase">Space</h1>
 
-                <p class="ff-sans-normal">
-                    Let’s face it; if you want to go to space, you might as well genuinely go to
-                    outer space and not hover kind of on the edge of it. Well sit back, and relax
-                    because we’ll give you a truly out of this world experience!
-                </p>
-            </div>
+            <p class="ff-sans-normal">
+                Let’s face it; if you want to go to space, you might as well genuinely go to outer
+                space and not hover kind of on the edge of it. Well sit back, and relax because
+                we’ll give you a truly out of this world experience!
+            </p>
+        </div>
 
-            <div>
-                <a href="/" class="cta uppercase">Explore</a>
-            </div>
+        <div>
+            <Cta url="/destination" label="explore" />
         </div>
     </Main>
 </Layout>

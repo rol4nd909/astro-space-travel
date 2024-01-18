@@ -11,10 +11,14 @@ import { ViewTransitions } from 'astro:transitions'
 interface Props {
     title?: string
     description?: string
-    image?: string
+    className?: string
 }
 
-const { title = 'Space Travel', description = 'This is about going to space', image } = Astro.props
+const {
+    title = 'Space Travel',
+    description = 'This is about going to space',
+    className,
+} = Astro.props
 ---
 
 <!doctype html>
@@ -28,7 +32,7 @@ const { title = 'Space Travel', description = 'This is about going to space', im
         <title>{title}</title>
         <ViewTransitions />
     </head>
-    <body style=`--bg: url(${image})`>
+    <body class=`${className}`>
         <Header />
         <slot />
     </body>

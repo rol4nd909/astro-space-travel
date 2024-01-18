@@ -1,4 +1,5 @@
 ---
+import Cta from '@components/Cta.astro'
 import Main from '@components/Main.astro'
 import DesignLayout from '@layouts/DesignLayout.astro'
 ---
@@ -137,21 +138,18 @@ import DesignLayout from '@layouts/DesignLayout.astro'
                         style="--underline-gap: 2.5rem"
                     >
                         <li>
-                            <a
-                                class="nav-title uppercase text-white letter-spacing-2 is-active"
-                                href="/"
-                            >
-                                <span>00</span>Active
+                            <a class="uppercase text-white letter-spacing-2 is-active" href="/">
+                                <span class="fw-bold" aria-hidden="true">00</span>Active
                             </a>
                         </li>
                         <li style="--_indicator-opacity: 50%">
-                            <a class="nav-title uppercase text-white letter-spacing-2" href="/">
-                                <span>01</span>Hovered
+                            <a class="uppercase text-white letter-spacing-2" href="/">
+                                <span class="fw-bold" aria-hidden="true">01</span>Hovered
                             </a>
                         </li>
                         <li>
-                            <a class="nav-title uppercase text-white letter-spacing-2" href="/">
-                                <span>02</span>Idle
+                            <a class="uppercase text-white letter-spacing-2" href="/">
+                                <span class="fw-bold" aria-hidden="true">02</span>Idle
                             </a>
                         </li>
                     </ul>
@@ -164,14 +162,14 @@ import DesignLayout from '@layouts/DesignLayout.astro'
             <div class="flex even-columns" style="align-items: flex-start; --gap: 4rem">
                 <div class="grid flow demo" style=" --gap: 1rem">
                     <div class="flow">
-                        <a href="/" class="cta uppercase">Explore</a>
+                        <Cta url="/" label="explore" />
                         <p class="text-accent text-center" style="--flow-space: 0.75rem">
                             Landing Page Main Button - Idle
                         </p>
                     </div>
 
                     <div class="flow" style="--flow-space: 4rem">
-                        <a href="/" class="cta uppercase" style="--_hover-size: 1.5">Explore</a>
+                        <Cta url="/" label="explore" style="--_hover-size: 1.5" />
                         <p class="text-accent text-center">Landing Page Main Button - Hover</p>
                     </div>
                 </div>
@@ -262,6 +260,24 @@ import DesignLayout from '@layouts/DesignLayout.astro'
         .demo-nav {
             padding-block-start: 2.5rem;
             background-color: hsl(var(--clr-white) / 4%);
+
+            .nav-list {
+                padding: 0;
+                margin: 0;
+                list-style: none;
+
+                a {
+                    text-decoration: none;
+                }
+
+                [aria-hidden='true'] {
+                    margin-inline-end: 0.75em;
+
+                    @media (--until-tablet-l) {
+                        display: none;
+                    }
+                }
+            }
 
             > ul {
                 --gap: clamp(1rem, -4.6rem + 22.4vw, 8rem);
