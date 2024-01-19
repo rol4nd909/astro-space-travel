@@ -13,7 +13,7 @@
     "@fontsource/barlow": "^5.0.8",
     "@fontsource/barlow-condensed": "^5.0.8",
     "@fontsource/bellefair": "^5.0.8",
-    "astro": "^4.1.0"
+    "astro": "^4.2.1"
   },
   "devDependencies": {
     "@csstools/postcss-global-data": "^2.1.0",

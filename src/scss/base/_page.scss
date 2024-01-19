@@ -3,10 +3,6 @@
 @layer base {
   body {
     display: grid;
-    grid-template-columns:
-      [fullbleed-start] minmax(var(--site-spacing), 1fr)
-      [main-start] min(100% - var(--site-spacing) * 2, var(--site-constrain)) [main-end]
-      minmax(var(--site-spacing), 1fr) [fullbleed-end];
     grid-template-rows: auto 1fr;
     background-color: hsl(var(--clr-dark));
     background-image: var(--_bg);

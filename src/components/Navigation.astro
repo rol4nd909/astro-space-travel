@@ -5,97 +5,320 @@ const inActveClass = 'uppercase text-white letter-spacing-2'
 const activeClass = 'uppercase text-white letter-spacing-2 is-active'
 ---
 
-<nav>
-    <ul class="nav-list line-indicators flex fs-300" style="--underline-gap: 2.5rem">
-        <li>
-            <a class={currentPath === '' ? activeClass : inActveClass} href="/">
-                <span class="fw-bold" aria-hidden="true">00</span>Home
-            </a>
-        </li>
-        <li>
-            <a
-                class={currentPath === 'destination' ? activeClass : inActveClass}
-                href="/destination"
-            >
-                <span class="fw-bold" aria-hidden="true">01</span>Destination
-            </a>
-        </li>
-        <li>
-            <a class={currentPath === 'crew' ? activeClass : inActveClass} href="/crew">
-                <span class="fw-bold" aria-hidden="true">02</span>Crew
-            </a>
-        </li>
-        <li>
-            <a class={currentPath === 'technology' ? activeClass : inActveClass} href="/technology">
-                <span class="fw-bold" aria-hidden="true">03</span>Technology
-            </a>
-        </li>
-    </ul>
+<nav role="navigation" aria-label="Site Navigation" data-menu>
+    <button
+        aria-expanded="false"
+        aria-controls="main-nav"
+        aria-label="Open site navigation"
+        data-menu-toggle
+    >
+        <svg aria-hidden="true" viewBox="-8 -8 16 16">
+            <path d="M-6 0h12" style="--s: -1"></path>
+            <path d="M-6 0h12" style="--s: 0"></path>
+            <path d="M-6 0h12" style="--s: 1"></path>
+        </svg>
+    </button>
+    <div data-menu-list hidden>
+        <ul class="nav-list line-indicators flex fs-300" style="--underline-gap: 2.5rem">
+            <li>
+                <a class={currentPath === '' ? activeClass : inActveClass} href="/">
+                    <span class="fw-bold" aria-hidden="true">00</span>Home
+                </a>
+            </li>
+            <li>
+                <a
+                    class={currentPath === 'destination' ? activeClass : inActveClass}
+                    href="/destination"
+                >
+                    <span class="fw-bold" aria-hidden="true">01</span>Destination
+                </a>
+            </li>
+            <li>
+                <a class={currentPath === 'crew' ? activeClass : inActveClass} href="/crew">
+                    <span class="fw-bold" aria-hidden="true">02</span>Crew
+                </a>
+            </li>
+            <li>
+                <a
+                    class={currentPath === 'technology' ? activeClass : inActveClass}
+                    href="/technology"
+                >
+                    <span class="fw-bold" aria-hidden="true">03</span>Technology
+                </a>
+            </li>
+        </ul>
+    </div>
 </nav>
+
+<script>
+    document.addEventListener('astro:page-load', () => {
+        const menu = document.querySelector('[data-menu]')
+
+        if (!menu) return
+
+        const toggle = menu.querySelector('[data-menu-toggle]') as HTMLButtonElement
+        const navList = menu.querySelector('[data-menu-list]') as HTMLElement
+
+        if (!toggle || !navList) return
+
+        const openMenu = () => {
+            toggle.setAttribute('aria-expanded', 'true')
+            navList.hidden = false
+
+            // Focus on the first focusable element inside the menu
+            const firstFocusableElement = navList.querySelector(
+                'a, button, input, select, textarea'
+            ) as HTMLElement
+            if (firstFocusableElement) {
+                firstFocusableElement.focus()
+            }
+        }
+
+        const closeMenu = () => {
+            toggle.setAttribute('aria-expanded', 'false')
+            navList.setAttribute('closing', '')
+            navList.addEventListener(
+                'animationend',
+                () => {
+                    navList.removeAttribute('closing')
+                    navList.hidden = true
+                },
+                { once: true }
+            )
+        }
+
+        toggle.addEventListener('click', () => {
+            const open = JSON.parse(toggle.getAttribute('aria-expanded') as string)
+            open ? closeMenu() : openMenu()
+        })
+
+        document.addEventListener('keydown', (event) => {
+            if (event.key === 'Escape' && toggle.getAttribute('aria-expanded') === 'true') {
+                closeMenu()
+                toggle.focus()
+            }
+        })
+    })
+</script>
 
 <style lang="scss">
     @use 'src/scss/functions/fluid' as *;
 
     nav {
-        grid-column: main;
         display: grid;
-        position: relative;
+
+        @media (--for-phone-only) {
+        }
+
+        @media (--for-tablet-p-up) {
+            grid-column: main / fullbleed;
+            grid-template-columns: 1fr auto var(--site-spacing);
+            position: relative;
+
+            &::before,
+            &::after {
+                content: '';
+            }
+
+            &::after {
+                position: absolute;
+                inset: 0;
+                content: '';
+                background-color: hsl(var(--clr-white) / 4%);
+                backdrop-filter: blur(1rem);
+                z-index: -1;
+                grid-column: 2 / -1;
+            }
+        }
 
         @media (--for-tablet-l-up) {
-            grid-template-columns: 1fr #{fluid(16px, 40px, 900px, 1400px)} auto;
+            grid-template-columns:
+                minmax(0, calc(500px - var(--site-spacing)))
+                #{fluid(16px, 40px, 900px, 1400px)}
+                min(1110px - var(--site-spacing), 610px)
+                minmax(var(--site-spacing), 1fr);
 
             &::before {
-                grid-row: 1;
+                position: absolute;
+                inset-block-start: calc(50% - 0.5px);
+                inset-inline: 0;
                 grid-column: 1 / 3;
-                z-index: 1;
-                content: '';
-                align-self: center;
                 height: 1px;
                 background-color: hsl(var(--clr-white) / 25%);
-
-                @media (width < 81.25em) {
-                    margin-inline-start: calc(var(--site-spacing) * 2);
-                }
             }
         }
     }
 
-    ul {
-        grid-row: 1;
-        grid-column: 2 / -1;
-        justify-self: flex-end;
-        margin: 0;
-        padding-inline-start: var(--site-spacing);
-        gap: var(--site-spacing);
-        position: relative;
-        list-style: none;
+    div {
+        position: fixed;
+        inset: 0;
+        inset-inline-start: 30%;
+        z-index: 99;
+        background-color: hsl(var(--clr-white) / 4%);
+        backdrop-filter: blur(1rem);
+        transform: translateX(100%);
 
-        &::after {
-            position: absolute;
-            inset: 0;
-            content: '';
-            inline-size: 100vw;
-            background-color: hsl(var(--clr-white) / 4%);
-            backdrop-filter: blur(1rem);
-            z-index: -1;
+        &:not([hidden]) {
+            animation:
+                var(--animation-fade-in) forwards,
+                var(--animation-slide-out-left) forwards;
+            animation-timing-function: var(--ease-elastic-3);
+            animation-duration: 0.65s;
         }
 
+        &[closing] {
+            animation:
+                var(--animation-fade-out) forwards,
+                var(--animation-slide-out-right);
+            animation-timing-function: var(--ease-squish-5);
+            animation-duration: 1s;
+        }
+
+        @media (--for-tablet-p-up) {
+            display: contents;
+        }
+    }
+
+    button {
+        --p: 0; // is OFF (0)
+        --q: calc(1 - var(--p)); // negation (1 in Not pressed case)
+
+        display: grid;
+        inline-size: 3rem;
+        aspect-ratio: 1;
+        place-self: center end;
+        place-items: center;
+        padding: 0;
+        background: transparent;
+        border: 0;
+        border-radius: 50%;
+        transition: background-color 0.2s;
+        cursor: pointer;
+        z-index: 100;
+
+        &:is(:hover, :focus-visible) {
+            background-color: hsl(var(--clr-white) / 4%);
+        }
+
+        svg:first-of-type {
+            width: 80%;
+            rotate: calc(var(--p) * 90deg); // rotate IFF pressed
+            transition: rotate calc(var(--p) * 1s) calc(var(--p) * 0.4s);
+            stroke: hsl(var(--clr-white));
+            stroke-width: 1.5;
+        }
+
+        path {
+            translate: 0 /* x */ calc(var(--s) * var(--q) * 25%) /* y */;
+            rotate: calc(var(--s) * var(--p) * 45deg);
+            opacity: calc(var(--q) + abs(var(--s)));
+            transition: 0.2s;
+            transition-property: rotate, translate, opacity;
+            transition-delay: calc(var(--p) * 0.3s), calc(var(--q) * 0.2s);
+        }
+
+        &[aria-expanded='true'] {
+            --p: 1;
+
+            svg > :nth-child(2) {
+                opacity: 0;
+                transition: opacity 0.2s ease;
+            }
+        } /* is ON (1) */
+
+        @media (--for-tablet-p-up) {
+            display: none;
+        }
+    }
+
+    ul {
+        margin: 0;
+        padding: 0;
+        list-style: none;
+
         a {
-            padding-block-start: var(--underline-gap);
             text-decoration: none;
         }
 
         [aria-hidden='true'] {
             margin-inline-end: 0.75em;
 
-            @media (--until-tablet-l) {
+            @media (--for-tablet-p-up) and (--until-tablet-l) {
                 display: none;
+            }
+        }
+
+        @media (--for-phone-only) {
+            --line-thikness: 0.25rem;
+
+            display: grid;
+            align-content: flex-start;
+            padding-block-start: min(7rem, 18vh);
+
+            &.line-indicators {
+                :is(a, button) {
+                    display: flex;
+                    padding-block-end: 0;
+                    padding-block: 0.25rem;
+                    padding-inline-start: 2rem;
+                    border-block-end: 0;
+                    border-inline-end: var(--line-thikness) solid
+                        hsl(var(--clr-white) / var(--_indicator-opacity));
+                }
+            }
+        }
+
+        @media (--for-tablet-p-up) {
+            grid-column: 2 / -2;
+            justify-self: flex-end;
+            padding-inline-start: var(--site-spacing);
+            gap: var(--site-spacing);
+
+            a {
+                padding-block-start: var(--underline-gap);
             }
         }
 
         @media (--for-tablet-l-up) {
             gap: #{fluid(40px, 56px, 900px, 1400px)};
-            padding-inline-start: #{fluid(40px, 120px, 900px, 1400px)};
+            padding-inline-start: 0;
+        }
+    }
+
+    @supports (--custom: linear()) {
+        :root {
+            --elastic-out: linear(
+                0,
+                0.2178 2.1%,
+                1.1144 8.49%,
+                1.2959 10.7%,
+                1.3463 11.81%,
+                1.3705 12.94%,
+                1.3726,
+                1.3643 14.48%,
+                1.3151 16.2%,
+                1.0317 21.81%,
+                0.941 24.01%,
+                0.8912 25.91%,
+                0.8694 27.84%,
+                0.8698 29.21%,
+                0.8824 30.71%,
+                1.0122 38.33%,
+                1.0357,
+                1.046 42.71%,
+                1.0416 45.7%,
+                0.9961 53.26%,
+                0.9839 57.54%,
+                0.9853 60.71%,
+                1.0012 68.14%,
+                1.0056 72.24%,
+                0.9981 86.66%,
+                1
+            );
+        }
+
+        button svg:first-of-type {
+            transition-timing-function: var(--elastic-out);
         }
     }
 </style>

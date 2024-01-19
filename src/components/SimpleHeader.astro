@@ -8,7 +8,7 @@ interface Props {
 const { title } = Astro.props
 ---
 
-<header>
+<header class="lane">
     <div class="flex">
         <a href="/" class="radius-round">
             <Image src="/logo.svg" width={48} height={48} alt="" />
@@ -20,7 +20,6 @@ const { title } = Astro.props
 
 <style lang="scss">
     header {
-        grid-column: main;
         padding-block-start: 4rem;
         padding-block-end: 6rem;
     }

@@ -14,14 +14,26 @@ import Navigation from './Navigation.astro'
 
 <style lang="scss">
     header {
+        --_logo-space: calc(var(--site-spacing) * 2 + var(--logo-size));
+
         display: grid;
-        grid-template-columns: subgrid;
-        grid-column: fullbleed;
+        grid-template-columns:
+            [fullbleed-start] minmax(var(--_logo-space), 1fr)
+            [main-start] min(
+                100% - (var(--_logo-space) + var(--site-spacing)),
+                var(--site-constrain)
+            )
+            [main-end]
+            minmax(var(--site-spacing), 1fr) [fullbleed-end];
         align-items: center;
-        overflow: hidden;
+        margin-block-start: var(--site-spacing);
+
+        @media (--for-tablet-p-up) {
+            margin-block-start: 0;
+        }
 
         @media (--for-tablet-l-up) {
-            margin-block-start: 2.5rem;
+            margin-block-start: var(--site-spacing);
         }
     }
 
@@ -29,7 +41,6 @@ import Navigation from './Navigation.astro'
         grid-column: 1;
         display: grid;
         place-items: center;
-        inline-size: calc(var(--logo-size) + (var(--site-spacing) * 2));
         margin-inline: auto;
 
         > img {
