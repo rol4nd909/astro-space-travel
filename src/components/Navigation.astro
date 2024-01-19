@@ -52,7 +52,7 @@ const activeClass = 'uppercase text-white letter-spacing-2 is-active'
 
 <script>
     document.addEventListener('astro:page-load', () => {
-        const menu = document.querySelector('[data-menu]')
+        const menu = document.querySelector('[data-menu]') as HTMLDivElement
 
         if (!menu) return
 
@@ -61,7 +61,12 @@ const activeClass = 'uppercase text-white letter-spacing-2 is-active'
 
         if (!toggle || !navList) return
 
+        let isAnimating = false // Flag to track animation state
+
         const openMenu = () => {
+            if (isAnimating) return // Don't open if already animating
+            isAnimating = true
+
             toggle.setAttribute('aria-expanded', 'true')
             navList.hidden = false
 
@@ -72,9 +77,22 @@ const activeClass = 'uppercase text-white letter-spacing-2 is-active'
             if (firstFocusableElement) {
                 firstFocusableElement.focus()
             }
+
+            // Listen for animation end and reset the flag
+            navList.addEventListener(
+                'animationend',
+                () => {
+                    navList.removeAttribute('closing')
+                    isAnimating = false
+                },
+                { once: true }
+            )
         }
 
         const closeMenu = () => {
+            if (isAnimating) return // Don't close if already animating
+            isAnimating = true
+
             toggle.setAttribute('aria-expanded', 'false')
             navList.setAttribute('closing', '')
             navList.addEventListener(
@@ -82,6 +100,7 @@ const activeClass = 'uppercase text-white letter-spacing-2 is-active'
                 () => {
                     navList.removeAttribute('closing')
                     navList.hidden = true
+                    isAnimating = false
                 },
                 { once: true }
             )

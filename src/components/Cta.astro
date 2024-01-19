@@ -40,14 +40,11 @@ const { url, label, style } = Astro.props
             scale: var(--_hover-size);
             transition: scale 0.25s ease;
             pointer-events: none;
+            animation: var(--animation-pulse);
         }
 
         &:is(:hover, :focus-visible) {
-            --_hover-size: 1.5;
-
-            &::after {
-                animation: var(--animation-pulse);
-            }
+            --_hover-size: 1.125;
         }
 
         &:is(:focus-visible) {
