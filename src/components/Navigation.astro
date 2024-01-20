@@ -50,122 +50,12 @@ const activeClass = 'uppercase text-white letter-spacing-2 is-active'
     </div>
 </nav>
 
-<script>
-    document.addEventListener('astro:page-load', () => {
-        const menu = document.querySelector('[data-menu]') as HTMLDivElement
-
-        if (!menu) return
-
-        const toggle = menu.querySelector('[data-menu-toggle]') as HTMLButtonElement
-        const navList = menu.querySelector('[data-menu-list]') as HTMLElement
-
-        if (!toggle || !navList) return
-
-        let isAnimating = false // Flag to track animation state
-
-        const openMenu = () => {
-            if (isAnimating) return // Don't open if already animating
-            isAnimating = true
-
-            toggle.setAttribute('aria-expanded', 'true')
-            navList.hidden = false
-
-            // Focus on the first focusable element inside the menu
-            const firstFocusableElement = navList.querySelector(
-                'a, button, input, select, textarea'
-            ) as HTMLElement
-            if (firstFocusableElement) {
-                firstFocusableElement.focus()
-            }
-
-            // Listen for animation end and reset the flag
-            navList.addEventListener(
-                'animationend',
-                () => {
-                    navList.removeAttribute('closing')
-                    isAnimating = false
-                },
-                { once: true }
-            )
-        }
-
-        const closeMenu = () => {
-            if (isAnimating) return // Don't close if already animating
-            isAnimating = true
-
-            toggle.setAttribute('aria-expanded', 'false')
-            navList.setAttribute('closing', '')
-            navList.addEventListener(
-                'animationend',
-                () => {
-                    navList.removeAttribute('closing')
-                    navList.hidden = true
-                    isAnimating = false
-                },
-                { once: true }
-            )
-        }
-
-        toggle.addEventListener('click', () => {
-            const open = JSON.parse(toggle.getAttribute('aria-expanded') as string)
-            open ? closeMenu() : openMenu()
-        })
-
-        document.addEventListener('keydown', (event) => {
-            if (event.key === 'Escape' && toggle.getAttribute('aria-expanded') === 'true') {
-                closeMenu()
-                toggle.focus()
-            }
-        })
-    })
-</script>
-
 <style lang="scss">
     @use 'src/scss/functions/fluid' as *;
 
     nav {
-        display: grid;
-
-        @media (--for-phone-only) {
-        }
-
-        @media (--for-tablet-p-up) {
-            grid-column: main / fullbleed;
-            grid-template-columns: 1fr auto var(--site-spacing);
-            position: relative;
-
-            &::before,
-            &::after {
-                content: '';
-            }
-
-            &::after {
-                position: absolute;
-                inset: 0;
-                content: '';
-                background-color: hsl(var(--clr-white) / 4%);
-                backdrop-filter: blur(1rem);
-                z-index: -1;
-                grid-column: 2 / -1;
-            }
-        }
-
-        @media (--for-tablet-l-up) {
-            grid-template-columns:
-                minmax(0, calc(500px - var(--site-spacing)))
-                #{fluid(16px, 40px, 900px, 1400px)}
-                min(1110px - var(--site-spacing), 610px)
-                minmax(var(--site-spacing), 1fr);
-
-            &::before {
-                position: absolute;
-                inset-block-start: calc(50% - 0.5px);
-                inset-inline: 0;
-                grid-column: 1 / 3;
-                height: 1px;
-                background-color: hsl(var(--clr-white) / 25%);
-            }
-        }
+        grid-row: 1;
+        grid-column: 3 / -2;
     }
 
     div {
@@ -214,8 +104,9 @@ const activeClass = 'uppercase text-white letter-spacing-2 is-active'
         transition: background-color 0.2s;
         cursor: pointer;
         z-index: 100;
+        position: relative;
 
-        &:is(:hover, :focus-visible) {
+        &:is(:focus-visible) {
             background-color: hsl(var(--clr-white) / 4%);
         }
 
@@ -300,7 +191,9 @@ const activeClass = 'uppercase text-white letter-spacing-2 is-active'
 
         @media (--for-tablet-l-up) {
             gap: #{fluid(40px, 56px, 900px, 1400px)};
-            padding-inline-start: 0;
+
+            padding-inline-start: calc(var(--site-spacing) + var(--_overlap-cols));
+            // padding-inline-start: 0;
         }
     }
 
@@ -341,3 +234,98 @@ const activeClass = 'uppercase text-white letter-spacing-2 is-active'
         }
     }
 </style>
+
+<script>
+    document.addEventListener('astro:page-load', () => {
+        const header = document.querySelector('header') as HTMLElement
+        const menu = header.querySelector('[data-menu]') as HTMLDivElement
+
+        if (!menu) return
+
+        const toggle = menu.querySelector('[data-menu-toggle]') as HTMLButtonElement
+        const navList = menu.querySelector('[data-menu-list]') as HTMLElement
+
+        if (!toggle || !navList) return
+
+        let isAnimating = false // Flag to track animation state
+
+        const openMenu = () => {
+            if (isAnimating) return // Don't open if already animating
+            isAnimating = true
+
+            toggle.setAttribute('aria-expanded', 'true')
+
+            // Make every other element inert
+            toggleInertOnOtherElements(header, true)
+
+            navList.hidden = false
+
+            // Listen for animation end and reset the flag
+            navList.addEventListener(
+                'animationend',
+                () => {
+                    isAnimating = false
+                },
+                { once: true }
+            )
+
+            // Focus on the first focusable element inside the menu
+            // const firstFocusableElement = navList.querySelector(
+            //     'a, button, input, select, textarea'
+            // ) as HTMLElement
+            // if (firstFocusableElement) {
+            //     firstFocusableElement.focus()
+            // }
+        }
+
+        const closeMenu = () => {
+            if (isAnimating) return // Don't close if already animating
+            isAnimating = true
+
+            toggle.setAttribute('aria-expanded', 'false')
+
+            // Remove inert attribute from other elements
+            toggleInertOnOtherElements(header, false)
+
+            navList.setAttribute('closing', '')
+            navList.addEventListener(
+                'animationend',
+                () => {
+                    navList.removeAttribute('closing')
+                    navList.hidden = true
+                    isAnimating = false
+                },
+                { once: true }
+            )
+        }
+
+        toggle.addEventListener('click', () => {
+            const open = JSON.parse(toggle.getAttribute('aria-expanded') as string)
+            open ? closeMenu() : openMenu()
+        })
+
+        document.addEventListener('keydown', (event) => {
+            if (event.key === 'Escape' && toggle.getAttribute('aria-expanded') === 'true') {
+                closeMenu()
+                toggle.focus()
+            }
+        })
+    })
+
+    // Function to set or remove the inert attribute on every other element except for the specified element and its descendants
+    function toggleInertOnOtherElements(element: HTMLElement, setInert: boolean) {
+        const otherElements = Array.from(document.body.children).filter(
+            (item) => item !== element && !element.contains(item)
+        ) as HTMLElement[]
+
+        console.log(otherElements)
+
+        otherElements.forEach((item) => {
+            if (setInert) {
+                item.setAttribute('inert', '')
+            } else {
+                item.removeAttribute('inert')
+            }
+        })
+    }
+</script>

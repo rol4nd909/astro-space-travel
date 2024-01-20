@@ -13,35 +13,60 @@ import Navigation from './Navigation.astro'
 </header>
 
 <style lang="scss">
+    @use 'src/scss/functions/fluid' as *;
+
     header {
-        --_logo-space: calc(var(--site-spacing) * 2 + var(--logo-size));
+        --_logo-space: calc(var(--site-spacing) + var(--logo-size));
+        --_overlap-cols: #{fluid(16px, 40px, 900px, 1400px)};
 
         display: grid;
         grid-template-columns:
-            [fullbleed-start] minmax(var(--_logo-space), 1fr)
-            [main-start] min(
-                100% - (var(--_logo-space) + var(--site-spacing)),
-                var(--site-constrain)
+            minmax(
+                var(--_logo-space),
+                calc(50vw - ((var(--site-constrain) / 2) + var(--site-spacing)))
             )
-            [main-end]
-            minmax(var(--site-spacing), 1fr) [fullbleed-end];
-        align-items: center;
+            minmax(0, 1fr)
+            var(--_overlap-cols)
+            auto
+            calc(50vw - ((var(--site-constrain) / 2) + var(--site-spacing)));
+        column-gap: var(--site-spacing);
         margin-block-start: var(--site-spacing);
 
-        @media (--for-tablet-p-up) {
+        @media (--for-tablet-p-up) and (--until-tablet-l) {
             margin-block-start: 0;
         }
 
+        @media (--for-tablet-p-up) {
+            &::before,
+            &::after {
+                content: '';
+                grid-row: 1;
+            }
+
+            &::after {
+                grid-column: 3 / -1;
+                background-color: hsl(var(--clr-white) / 4%);
+                backdrop-filter: blur(1rem);
+                z-index: -1;
+            }
+        }
+
         @media (--for-tablet-l-up) {
-            margin-block-start: var(--site-spacing);
+            &::before {
+                grid-column: 2 / 4;
+                block-size: 1px;
+                align-self: center;
+                background-color: hsl(var(--clr-white) / 25%);
+            }
         }
     }
 
     .logo {
+        grid-row: 1;
         grid-column: 1;
         display: grid;
         place-items: center;
-        margin-inline: auto;
+        margin-inline-end: calc(var(--site-spacing) * -1);
 
         > img {
             inline-size: var(--logo-size);

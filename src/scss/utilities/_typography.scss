@@ -121,8 +121,6 @@
 
       &:is(:hover, :focus-visible) {
         --_indicator-opacity: 50%;
-
-        // transition: border-color 0.25s ease-in-out;
       }
 
       &:is(.is-active, [aria-expanded='true']) {
