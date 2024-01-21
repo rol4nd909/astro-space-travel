@@ -1,6 +1,5 @@
 ---
 import Cta from '@components/Cta.astro'
-import Main from '@components/Main.astro'
 import DesignLayout from '@layouts/DesignLayout.astro'
 ---
 
@@ -251,6 +250,19 @@ import DesignLayout from '@layouts/DesignLayout.astro'
     @layer design-system {
         body {
             padding-block-end: 3rem;
+        }
+
+        .lane {
+            display: grid;
+            grid-template-columns:
+                minmax(var(--site-spacing), 1fr)
+                minmax(0, var(--site-constrain))
+                minmax(var(--site-spacing), 1fr);
+            place-content: center;
+
+            > * {
+                grid-column: 2;
+            }
         }
 
         .fs-450 {

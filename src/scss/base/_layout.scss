@@ -1,19 +1,6 @@
 @use '../functions/fluid' as *;
 
 @layer base.layout {
-  .lane {
-    display: grid;
-    grid-template-columns:
-      minmax(var(--site-spacing), 1fr)
-      minmax(0, var(--site-constrain))
-      minmax(var(--site-spacing), 1fr);
-    place-content: center;
-
-    > * {
-      grid-column: 2;
-    }
-  }
-
   .even-columns {
     flex-wrap: wrap;
 
@@ -24,38 +11,33 @@
 
   .grid-layout {
     display: grid;
-    grid-template-columns: minmax(0, 1fr) min(100% - var(--site-spacing) * 2) minmax(0, 1fr);
-    gap: var(--site-spacing);
+    column-gap: var(--site-spacing);
+    row-gap: calc(var(--site-spacing) * 1.5);
+    padding-block: #{fluid(24px, 72px, 600px, 1200px)};
+    padding-inline: var(--site-spacing);
 
     > * {
       max-inline-size: 62ch;
-      grid-column: 2;
     }
 
-    body:not(.home) & {
-      padding-block: #{fluid(24px, 72px, 600px, 1200px)};
+    @media (--until-tablet-l) {
+      place-items: center;
+      text-align: center;
+    }
 
-      @media (--for-phone-only) {
-        justify-items: center;
-        text-align: center;
-      }
-
-      > :first-child {
-        grid-column: 2 / -2;
-
-        @media (--for-phone-only) {
-          grid-column: 2;
-        }
-      }
+    @media (--for-tablet-l-up) {
+      grid-template-columns:
+        [fullbleed-start] minmax(0, 1fr)
+        [col1-start]
+        minmax(0, calc(var(--site-constrain) / 2 - var(--site-spacing) / 2))
+        [col1-end col2-start]
+        minmax(0, calc(var(--site-constrain) / 2 - var(--site-spacing) / 2)) [col2-end]
+        minmax(0, 1fr) [fullbleed-end];
+      padding-inline: 0;
     }
 
     body:is(.home) & {
       padding-block: #{fluid(32px, 56px, 600px, 900px)};
-
-      @media (--until-tablet-l) {
-        place-items: center;
-        text-align: center;
-      }
 
       @media (--for-tablet-l-up) {
         align-items: end;
@@ -73,11 +55,27 @@
       }
     }
 
-    @media (--for-tablet-l-up) {
-      grid-template-columns:
-        minmax(0, 1fr)
-        repeat(2, minmax(0, calc(var(--site-constrain) / 2 - var(--site-spacing) / 2)))
-        minmax(0, 1fr);
+    .numbered-title {
+      @media (--for-tablet-p-up) {
+        justify-self: flex-start;
+      }
+
+      @media (--for-tablet-l-up) {
+        grid-column: col1 / col2;
+      }
+    }
+  }
+
+  .meta {
+    --flow-space: #{fluid(32px, 56px, 600px, 1200px)};
+
+    display: grid;
+    row-gap: 2rem;
+    padding-block-start: 2rem;
+    border-block-start: 1px solid hsl(var(--clr-white) / 25%);
+
+    @media (--for-tablet-p-up) {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
     }
   }
 }

@@ -1,6 +1,8 @@
 ---
 import { Image } from 'astro:assets'
 
+import logo from '../assets/logo.svg'
+
 interface Props {
     title?: string
 }
@@ -11,7 +13,7 @@ const { title } = Astro.props
 <header class="lane">
     <div class="flex">
         <a href="/" class="radius-round">
-            <Image src="/logo.svg" width={48} height={48} alt="" />
+            <Image src={logo} width={48} height={48} alt="" />
             <span class="sr-only">Back to homepage</span>
         </a>
         <h1 class="fs-450 uppercase letter-spacing-1">{title}</h1>
@@ -22,6 +24,19 @@ const { title } = Astro.props
     header {
         padding-block-start: 4rem;
         padding-block-end: 6rem;
+
+        &.lane {
+            display: grid;
+            grid-template-columns:
+                minmax(var(--site-spacing), 1fr)
+                minmax(0, var(--site-constrain))
+                minmax(var(--site-spacing), 1fr);
+            place-content: center;
+
+            > * {
+                grid-column: 2;
+            }
+        }
     }
 
     .flex {

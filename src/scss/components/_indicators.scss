@@ -13,7 +13,7 @@
       --_indicator-opacity: 50%;
     }
 
-    &:is(.is-active, [aria-expanded='true']) {
+    &:is(.is-active, [aria-expanded='true'], [aria-selected='true']) {
       --_indicator-opacity: 100%;
     }
   }
@@ -39,7 +39,7 @@
     }
     // }
 
-    &:is(.is-active, [aria-expanded='true']) {
+    &:is(.is-active, [aria-expanded='true'], [aria-selected='true']) {
       --_indicator-opacity: 100%;
       --_clr: var(--clr-dark);
       --_clr-bg: hsl(var(--clr-white));

@@ -68,7 +68,16 @@
   }
 
   /* Make images easier to work with */
-  img,
+  img {
+    background-size: cover;
+    background-repeat: no-repeat;
+    font-style: italic;
+    max-inline-size: 100%;
+    block-size: auto;
+    vertical-align: middle;
+    shape-margin: 0.75rem;
+  }
+
   picture {
     max-inline-size: 100%;
     display: block;

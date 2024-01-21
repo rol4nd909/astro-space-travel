@@ -1,11 +1,12 @@
 ---
 import { Image } from 'astro:assets'
+import logo from '../assets/logo.svg'
 import Navigation from './Navigation.astro'
 ---
 
 <header>
     <a href="/" class="logo">
-        <Image src="/logo.svg" width={48} height={48} alt="" />
+        <Image src={logo} width={48} height={48} alt="" />
         <span class="sr-only">Back to homepage</span>
     </a>
 
