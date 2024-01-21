@@ -1,12 +1,22 @@
 ---
-import { Image } from 'astro:assets'
-import logo from '../assets/logo.svg'
 import Navigation from './Navigation.astro'
 ---
 
 <header>
     <a href="/" class="logo">
-        <Image src={logo} width={48} height={48} alt="" />
+        <svg
+            aria-hidden="true"
+            focusable="false"
+            xmlns="http://www.w3.org/2000/svg"
+            width="48"
+            height="48"
+            ><g fill="none" fill-rule="evenodd"
+                ><circle cx="24" cy="24" r="24" fill="#FFF"></circle><path
+                    fill="#0B0D17"
+                    d="M24 0c0 16-8 24-24 24 15.718.114 23.718 8.114 24 24 0-16 8-24 24-24-16 0-24-8-24-24z"
+                ></path></g
+            ></svg
+        >
         <span class="sr-only">Back to homepage</span>
     </a>
 
@@ -69,7 +79,7 @@ import Navigation from './Navigation.astro'
         place-items: center;
         margin-inline-end: calc(var(--site-spacing) * -1);
 
-        > img {
+        > * {
             inline-size: var(--logo-size);
             block-size: var(--logo-size);
         }

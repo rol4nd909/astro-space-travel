@@ -1,7 +1,6 @@
 ---
 import Main from '@components/Main.astro'
 import Layout from '@layouts/Layout.astro'
-import moon from '../assets/destination/image-moon.webp'
 import { Image } from 'astro:assets'
 ---
 
@@ -9,7 +8,7 @@ import { Image } from 'astro:assets'
     <Main>
         <h1 class="numbered-title"><span aria-hidden="true">01</span> Pick your destination</h1>
 
-        <Image src={moon} width={445} height={445} alt="Moon" />
+        <Image src="/destination/image-moon.webp" width={445} height={445} alt="Moon" />
 
         <div class="line-indicators flex fs-300" role="tablist">
             <button
