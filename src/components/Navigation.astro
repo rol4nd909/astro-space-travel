@@ -1,8 +1,6 @@
 ---
 const pathname = new URL(Astro.request.url).pathname
-const currentPath = pathname.slice(1) // remove the first "/"
-const inActveClass = 'uppercase text-white letter-spacing-2'
-const activeClass = 'uppercase text-white letter-spacing-2 is-active'
+const currentPath = pathname.slice(1)
 ---
 
 <nav role="navigation" aria-label="Site Navigation" data-menu>
@@ -21,27 +19,45 @@ const activeClass = 'uppercase text-white letter-spacing-2 is-active'
     <div data-menu-list hidden>
         <ul class="nav-list line-indicators flex fs-300" style="--underline-gap: 2.5rem">
             <li>
-                <a class={currentPath === '' ? activeClass : inActveClass} href="/">
+                <a
+                    class:list={[
+                        'uppercase text-white letter-spacing-2',
+                        { 'is-active': currentPath === '' },
+                    ]}
+                    href="/"
+                >
                     <span class="fw-bold" aria-hidden="true">00</span>Home
                 </a>
             </li>
             <li>
                 <a
-                    class={currentPath === 'destination' ? activeClass : inActveClass}
-                    href="/destination"
+                    class:list={[
+                        'uppercase text-white letter-spacing-2',
+                        { 'is-active': currentPath === 'destination/' },
+                    ]}
+                    href="/destination/"
                 >
                     <span class="fw-bold" aria-hidden="true">01</span>Destination
                 </a>
             </li>
             <li>
-                <a class={currentPath === 'crew' ? activeClass : inActveClass} href="/crew">
+                <a
+                    class:list={[
+                        'uppercase text-white letter-spacing-2',
+                        { 'is-active': currentPath === 'crew/' },
+                    ]}
+                    href="/crew/"
+                >
                     <span class="fw-bold" aria-hidden="true">02</span>Crew
                 </a>
             </li>
             <li>
                 <a
-                    class={currentPath === 'technology' ? activeClass : inActveClass}
-                    href="/technology"
+                    class:list={[
+                        'uppercase text-white letter-spacing-2',
+                        { 'is-active': currentPath === 'technology/' },
+                    ]}
+                    href="/technology/"
                 >
                     <span class="fw-bold" aria-hidden="true">03</span>Technology
                 </a>
