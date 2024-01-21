@@ -1,107 +1,16 @@
 ---
 import Main from '@components/Main.astro'
+import TabList from '@components/TabList.astro'
 import Layout from '@layouts/Layout.astro'
 import { Image } from 'astro:assets'
 ---
 
 <Layout title="Space Tourism | Destination" className="destination">
-    <Main>
-        <h1 class="numbered-title"><span aria-hidden="true">01</span> Pick your destination</h1>
+    <Main transition:animate="slide">
+        <h1 class="numbered-title">
+            <span aria-hidden="true">01</span> Pick your destination
+        </h1>
 
-        <Image src="/destination/image-moon.webp" width={445} height={445} alt="Moon" />
-
-        <div class="line-indicators flex fs-300" role="tablist">
-            <button
-                class="uppercase text-accent letter-spacing-2"
-                id="tab-1"
-                role="tab"
-                aria-selected="true"
-                aria-controls="tabpanel-1"
-                tabindex="0"
-            >
-                Moon
-            </button>
-            <button
-                class="uppercase text-accent letter-spacing-2"
-                id="tab-2"
-                role="tab"
-                aria-selected="false"
-                aria-controls="tabpanel-2"
-                tabindex="-1"
-            >
-                Mars
-            </button>
-            <button
-                class="uppercase text-accent letter-spacing-2"
-                id="tab-3"
-                role="tab"
-                aria-selected="false"
-                aria-controls="tabpanel-3"
-                tabindex="-1"
-            >
-                Europa
-            </button>
-            <button
-                class="uppercase text-accent letter-spacing-2"
-                id="tab-4"
-                role="tab"
-                aria-selected="false"
-                aria-controls="tabpanel-4"
-                tabindex="-1"
-            >
-                Titan
-            </button>
-        </div>
-
-        <div class="flow" id="tabpanel-1" role="tabpanel" aria-labelledby="tab-1">
-            <h2 class="fs-fluid-800 ff-serif uppercase">Moon</h2>
-
-            <div>
-                <p class="text-accent">
-                    See our planet as you’ve never seen it before. A perfect relaxing trip away to
-                    help regain perspective and come back refreshed. While you’re there, take in
-                    some history by visiting the Luna 2 and Apollo 11 landing sites.
-                </p>
-            </div>
-
-            <div class="meta">
-                <div>
-                    <p class="fs-200 ff-sans-cond letter-spacing-3 text-accent">Avg. distance</p>
-                    <p class="fs-500 ff-serif uppercase">384,400 km</p>
-                </div>
-
-                <div>
-                    <p class="fs-200 ff-sans-cond letter-spacing-3 text-accent">Est. travel time</p>
-                    <p class="fs-500 ff-serif uppercase">3 days</p>
-                </div>
-            </div>
-        </div>
+        <TabList />
     </Main>
 </Layout>
-
-<style lang="scss">
-    @use 'src/scss/functions/fluid' as *;
-
-    [role='tablist'] {
-        --gap: #{fluid(24px, 32px, 600px, 900px)};
-    }
-
-    @media (--for-phone-only) {
-        img {
-            max-inline-size: 65%;
-        }
-    }
-
-    @media (--for-tablet-l-up) {
-        img {
-            grid-column: col1;
-            grid-row: span 2;
-            align-self: center;
-        }
-
-        [role='tablist'],
-        [role='tabpanel'] {
-            grid-column: col2;
-        }
-    }
-</style>
