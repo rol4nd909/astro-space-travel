@@ -87,16 +87,16 @@ const currentPath = pathname.slice(1)
             animation:
                 var(--animation-fade-in) forwards,
                 var(--animation-slide-out-left) forwards;
-            animation-timing-function: var(--ease-elastic-3);
-            animation-duration: 0.65s;
+            animation-timing-function: var(--ease-bounce-1);
+            animation-duration: 0.5s;
         }
 
         &[closing] {
             animation:
                 var(--animation-fade-out) forwards,
                 var(--animation-slide-out-right);
-            animation-timing-function: var(--ease-squish-5);
-            animation-duration: 1s;
+            animation-timing-function: var(--ease-elastic-out-3);
+            animation-duration: 0.5s;
         }
 
         @media (--for-tablet-p-up) {
