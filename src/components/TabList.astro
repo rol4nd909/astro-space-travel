@@ -1,5 +1,5 @@
 ---
-import { Image } from 'astro:assets'
+
 ---
 
 <div class="tabs">
@@ -186,10 +186,8 @@ import { Image } from 'astro:assets'
     .tab-panel-images {
         display: grid;
         place-items: center;
-
-        > * {
-            grid-area: 1 / 1;
-        }
+        aspect-ratio: 1;
+        inline-size: 100%;
 
         @media (--for-tablet-l-up) {
             grid-column: col1;
