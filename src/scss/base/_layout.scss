@@ -13,8 +13,8 @@
     display: grid;
     column-gap: var(--site-spacing);
     row-gap: calc(var(--site-spacing) * 1.5);
-    padding-block: #{fluid(24px, 72px, 600px, 1200px)};
     padding-inline: var(--site-spacing);
+    padding-block: #{fluid(32px, 56px, 600px, 900px)};
 
     > * {
       max-inline-size: 62ch;
@@ -33,15 +33,12 @@
         [col1-end col2-start]
         minmax(0, calc(var(--site-constrain) / 2 - var(--site-spacing) / 2)) [col2-end]
         minmax(0, 1fr) [fullbleed-end];
+      grid-template-rows: auto 1fr;
+      align-items: center;
       padding-inline: 0;
-    }
 
-    body:is(.home) & {
-      padding-block: #{fluid(32px, 56px, 600px, 900px)};
-
-      @media (--for-tablet-l-up) {
-        align-items: end;
-        padding-block-end: max(6rem, 18vh);
+      body:is(.home) & {
+        grid-template-rows: 1fr;
 
         > :first-child {
           grid-column: 2;

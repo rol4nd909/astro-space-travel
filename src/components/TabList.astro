@@ -168,7 +168,6 @@ import { Image } from 'astro:assets'
         max-inline-size: inherit;
 
         display: grid;
-        gap: calc(var(--site-spacing) * 1.5);
         grid-template-areas:
             'image'
             'tablist'
@@ -179,6 +178,7 @@ import { Image } from 'astro:assets'
         }
 
         @media (--until-tablet-l) {
+            gap: calc(var(--site-spacing) * 1.5);
             place-items: center;
         }
 
@@ -186,8 +186,9 @@ import { Image } from 'astro:assets'
             grid-column: col1 / col2;
             grid-template-rows: auto 1fr;
             grid-template-columns: auto 1fr 62ch;
+            column-gap: calc(var(--site-spacing) * 1.5);
             grid-template-areas:
-                'image . tablist'
+                '..... . tablist'
                 'image . tabpanel';
         }
     }
@@ -257,7 +258,7 @@ import { Image } from 'astro:assets'
         }
 
         @media (--for-tablet-l-up) {
-            place-self: center start;
+            place-self: start;
             margin-inline-end: calc(var(--site-spacing) * -4.5);
         }
     }
