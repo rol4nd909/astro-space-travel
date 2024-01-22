@@ -24,6 +24,13 @@
     outline: none;
     box-shadow: var(--outline);
   }
+
+  .is-locked {
+    &,
+    body {
+      overflow: hidden;
+    }
+  }
 }
 
 @layer base.home {

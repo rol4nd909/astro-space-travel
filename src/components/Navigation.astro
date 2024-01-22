@@ -87,8 +87,8 @@ const currentPath = pathname.slice(1)
             animation:
                 var(--animation-fade-in) forwards,
                 var(--animation-slide-out-left) forwards;
-            animation-timing-function: var(--ease-bounce-1);
-            animation-duration: 0.5s;
+            animation-timing-function: var(--ease-in-3);
+            animation-duration: 0.25s;
         }
 
         &[closing] {
@@ -129,7 +129,7 @@ const currentPath = pathname.slice(1)
         svg:first-of-type {
             width: 80%;
             rotate: calc(var(--p) * 90deg); // rotate IFF pressed
-            transition: rotate calc(var(--p) * 1s) calc(var(--p) * 0.4s);
+            transition: rotate calc(var(--p) * 0.75s) calc(var(--p) * 0.25s);
             stroke: hsl(var(--clr-white));
             stroke-width: 1.5;
         }

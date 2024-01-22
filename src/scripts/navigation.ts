@@ -15,6 +15,7 @@ document.addEventListener('astro:page-load', () => {
     if (isAnimating) return // Don't open if already animating
     isAnimating = true
 
+    document.documentElement.classList.add('is-locked')
     toggle.setAttribute('aria-expanded', 'true')
 
     // Make every other element inert
@@ -31,6 +32,9 @@ document.addEventListener('astro:page-load', () => {
       { once: true }
     )
 
+    window.addEventListener('click', handleClosure)
+    window.addEventListener('focusin', handleClosure)
+
     // Focus on the first focusable element inside the menu
     // const firstFocusableElement = navList.querySelector(
     //     'a, button, input, select, textarea'
@@ -44,6 +48,7 @@ document.addEventListener('astro:page-load', () => {
     if (isAnimating) return // Don't close if already animating
     isAnimating = true
 
+    document.documentElement.classList.remove('is-locked')
     toggle.setAttribute('aria-expanded', 'false')
 
     // Remove inert attribute from other elements
@@ -59,6 +64,17 @@ document.addEventListener('astro:page-load', () => {
       },
       { once: true }
     )
+
+    window.removeEventListener('click', handleClosure)
+    window.removeEventListener('focusin', handleClosure)
+  }
+
+  const handleClosure = (event: Event) => {
+    const open = JSON.parse(toggle.getAttribute('aria-expanded') as string)
+
+    if (!open) return
+
+    !menu.contains(event.target as Node) && closeMenu()
   }
 
   toggle.addEventListener('click', () => {
@@ -79,8 +95,6 @@ function toggleInertOnOtherElements(element: HTMLElement, setInert: boolean) {
   const otherElements = Array.from(document.body.children).filter(
     (item) => item !== element && !element.contains(item)
   ) as HTMLElement[]
-
-  console.log(otherElements)
 
   otherElements.forEach((item) => {
     if (setInert) {
