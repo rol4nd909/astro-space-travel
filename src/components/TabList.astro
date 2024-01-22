@@ -163,6 +163,12 @@ import { Image } from 'astro:assets'
             max-inline-size: 62ch;
         }
 
+        @media (--for-phone-only) {
+            > .tab-panel-images {
+                max-inline-size: 65%;
+            }
+        }
+
         @media (--until-tablet-l) {
             place-items: center;
             text-align: center;
@@ -183,12 +189,6 @@ import { Image } from 'astro:assets'
 
         > * {
             grid-area: 1 / 1;
-        }
-
-        @media (--for-phone-only) {
-            > img {
-                max-inline-size: 65%;
-            }
         }
 
         @media (--for-tablet-l-up) {
