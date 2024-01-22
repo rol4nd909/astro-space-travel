@@ -168,7 +168,7 @@ import { Image } from 'astro:assets'
         max-inline-size: inherit;
 
         display: grid;
-        gap: var(--site-spacing);
+        gap: calc(var(--site-spacing) * 1.5);
         grid-template-areas:
             'image'
             'tablist'
@@ -258,6 +258,7 @@ import { Image } from 'astro:assets'
 
         @media (--for-tablet-l-up) {
             place-self: center start;
+            margin-inline-end: calc(var(--site-spacing) * -4.5);
         }
     }
 
