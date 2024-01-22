@@ -1,10 +1,8 @@
 ---
-
+import { Image } from 'astro:assets'
 ---
 
-<div class="tabs">
-    <div class="tab-panel-images"></div>
-
+<div class="tablist">
     <div class="line-indicators flex fs-300" role="tablist">
         <button
             class="uppercase text-accent letter-spacing-2"
@@ -13,7 +11,6 @@
             aria-selected="true"
             aria-controls="tabpanel-1"
             tabindex="0"
-            data-image-src="/destination/resize/image-moon.webp"
         >
             Moon</button
         >
@@ -23,8 +20,7 @@
             role="tab"
             aria-selected="false"
             aria-controls="tabpanel-2"
-            tabindex="-1"
-            data-image-src="/destination/resize/image-mars.webp">Mars</button
+            tabindex="-1">Mars</button
         >
         <button
             class="uppercase text-accent letter-spacing-2"
@@ -32,8 +28,7 @@
             role="tab"
             aria-selected="false"
             aria-controls="tabpanel-3"
-            tabindex="-1"
-            data-image-src="/destination/resize/image-europa.webp">Europa</button
+            tabindex="-1">Europa</button
         >
         <button
             class="uppercase text-accent letter-spacing-2"
@@ -41,13 +36,16 @@
             role="tab"
             aria-selected="false"
             aria-controls="tabpanel-4"
-            tabindex="-1"
-            data-image-src="/destination/resize/image-titan.webp">Titan</button
+            tabindex="-1">Titan</button
         >
     </div>
 
     <div id="tabpanel-1" role="tabpanel" aria-labelledby="tab-1" tabindex="0">
-        <div class="flow">
+        <div class="tabpanel__image">
+            <Image src="/destination/resize/image-moon.webp" width={445} height={445} alt="" />
+        </div>
+
+        <div class="tabpanel__content flow">
             <h2 class="fs-fluid-800 ff-serif uppercase">Moon</h2>
 
             <div>
@@ -73,7 +71,11 @@
     </div>
 
     <div id="tabpanel-2" role="tabpanel" aria-labelledby="tab-2" tabindex="0" hidden>
-        <div class="flow">
+        <div class="tabpanel__image">
+            <Image src="/destination/resize/image-mars.webp" width={445} height={445} alt="" />
+        </div>
+
+        <div class="tabpanel__content flow">
             <h2 class="fs-fluid-800 ff-serif uppercase">Mars</h2>
 
             <div>
@@ -99,7 +101,11 @@
     </div>
 
     <div id="tabpanel-3" role="tabpanel" aria-labelledby="tab-3" tabindex="0" hidden>
-        <div class="flow">
+        <div class="tabpanel__image">
+            <Image src="/destination/resize/image-europa.webp" width={445} height={445} alt="" />
+        </div>
+
+        <div class="tabpanel__content flow">
             <h2 class="fs-fluid-800 ff-serif uppercase">Europa</h2>
 
             <div>
@@ -125,7 +131,11 @@
     </div>
 
     <div id="tabpanel-4" role="tabpanel" aria-labelledby="tab-4" tabindex="0" hidden>
-        <div class="flow">
+        <div class="tabpanel__image">
+            <Image src="/destination/resize/image-titan.webp" width={445} height={445} alt="" />
+        </div>
+
+        <div class="tabpanel__content flow">
             <h2 class="fs-fluid-800 ff-serif uppercase">Titan</h2>
 
             <div>
@@ -154,28 +164,31 @@
 <style lang="scss">
     @use 'src/scss/functions/fluid' as *;
 
-    .tabs {
+    .tablist {
+        max-inline-size: inherit;
+
         display: grid;
-        grid-template-columns: subgrid;
-        gap: inherit;
+        gap: var(--site-spacing);
+        grid-template-areas:
+            'image'
+            'tablist'
+            'tabpanel';
 
         > * {
             max-inline-size: 62ch;
         }
 
-        @media (--for-phone-only) {
-            > .tab-panel-images {
-                max-inline-size: 65%;
-            }
-        }
-
         @media (--until-tablet-l) {
             place-items: center;
-            text-align: center;
         }
 
         @media (--for-tablet-l-up) {
-            grid-column: fullbleed;
+            grid-column: col1 / col2;
+            grid-template-rows: auto 1fr;
+            grid-template-columns: auto 1fr 62ch;
+            grid-template-areas:
+                'image . tablist'
+                'image . tabpanel';
         }
     }
 
@@ -184,6 +197,8 @@
         --_duration: 0.15s;
 
         position: relative;
+        grid-area: tablist;
+        z-index: 1;
 
         &::after {
             content: '';
@@ -203,24 +218,49 @@
         }
     }
 
-    .tab-panel-images {
-        display: grid;
+    [role='tabpanel'] {
+        grid-row: 1 / span 3;
+        grid-column: 1;
+
         place-items: center;
-        aspect-ratio: 1;
-        inline-size: 100%;
+        grid-template-rows: subgrid;
+        grid-template-columns: subgrid;
+
+        &:not([hidden]) {
+            display: grid;
+        }
+
+        @media (--until-tablet-l) {
+            > * {
+                max-inline-size: 62ch;
+            }
+
+            .tabpanel__image {
+                max-inline-size: 65%;
+            }
+        }
 
         @media (--for-tablet-l-up) {
-            grid-column: col1;
             grid-row: 1 / span 2;
-            align-self: center;
+            grid-column: 1 / span 3;
         }
     }
 
-    @media (--for-tablet-l-up) {
-        [role='tablist'],
-        [role='tabpanel'] {
-            grid-column: col2;
+    .tabpanel__image {
+        grid-area: image;
+
+        @media (--until-tablet-l) {
+            inline-size: 100%;
+            aspect-ratio: 1;
         }
+
+        @media (--for-tablet-l-up) {
+            place-self: center start;
+        }
+    }
+
+    .tabpanel__content {
+        grid-area: tabpanel;
     }
 </style>
 
@@ -271,9 +311,6 @@
 
             // Move the indicator under the active tab
             moveIndicator(activeTab, newTab)
-
-            // Display the linked image in a separate container
-            displayLinkedImage(newTab)
 
             // Update the active tab
             activeTab = newTab
@@ -333,19 +370,6 @@
             })
         }
 
-        // Function to display the linked image in a separate container
-        const displayLinkedImage = (tab: HTMLElement): void => {
-            const imageContainer = document.querySelector('.tab-panel-images')
-
-            if (imageContainer && tab instanceof HTMLButtonElement) {
-                const imageSrc = tab.getAttribute('data-image-src')
-                if (imageSrc) {
-                    // Update the content of the image container with the linked image
-                    imageContainer.innerHTML = `<img src="${imageSrc}" width="445" height="445" alt="" fetchpriority="high">`
-                }
-            }
-        }
-
         // Listen for click events on tab elements
         tabsList.addEventListener('click', (event) => {
             const clickedTab = event.target as HTMLElement
@@ -381,7 +405,7 @@
 
     // init tabbed content
     document.addEventListener('astro:page-load', () => {
-        const tabbedContent = document.querySelectorAll<HTMLElement>('.tabs')
+        const tabbedContent = document.querySelectorAll<HTMLElement>('.tablist')
         tabbedContent.forEach(TabbedContent)
     })
 </script>
