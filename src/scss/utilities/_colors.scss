@@ -22,4 +22,8 @@
   .text-white {
     color: hsl(var(--clr-white));
   }
+
+  .text-white-50 {
+    color: hsl(var(--clr-white) / 50%);
+  }
 }

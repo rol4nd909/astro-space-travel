@@ -6,6 +6,7 @@ import { Image } from 'astro:assets'
     <div class="line-indicators flex fs-300" role="tablist">
         <button
             class="uppercase text-accent letter-spacing-2"
+            type="button"
             id="tab-1"
             role="tab"
             aria-selected="true"
@@ -16,6 +17,7 @@ import { Image } from 'astro:assets'
         >
         <button
             class="uppercase text-accent letter-spacing-2"
+            type="button"
             id="tab-2"
             role="tab"
             aria-selected="false"
@@ -24,6 +26,7 @@ import { Image } from 'astro:assets'
         >
         <button
             class="uppercase text-accent letter-spacing-2"
+            type="button"
             id="tab-3"
             role="tab"
             aria-selected="false"
@@ -32,6 +35,7 @@ import { Image } from 'astro:assets'
         >
         <button
             class="uppercase text-accent letter-spacing-2"
+            type="button"
             id="tab-4"
             role="tab"
             aria-selected="false"
@@ -173,10 +177,6 @@ import { Image } from 'astro:assets'
             'tablist'
             'tabpanel';
 
-        > * {
-            max-inline-size: 62ch;
-        }
-
         @media (--until-tablet-l) {
             gap: calc(var(--site-spacing) * 1.5);
             align-self: flex-start;
@@ -271,17 +271,13 @@ import { Image } from 'astro:assets'
 </style>
 
 <script>
-    // Define a function called TabbedContent that takes a DOM node as an argument
-    export const TabbedContent = (domNode: HTMLElement): void => {
+    document.addEventListener('astro:page-load', () => {
         // Find the container for the tabs
-        const tabsList = domNode.querySelector<HTMLElement>('[role=tablist]')
+        const tabsList = document.querySelector<HTMLElement>('[role=tablist]')
         if (!tabsList) return // If no tablist is found, exit the function
 
-        const hasAutoTab = domNode.hasAttribute('tabs-auto-tab')
-
-        // Get all the tab elements and panel elements
+        // Get all the tab elements
         const tabs = Array.from(tabsList.querySelectorAll<HTMLElement>('[role=tab]'))
-        const panels = Array.from(domNode.querySelectorAll<HTMLElement>('[role=tabpanel]'))
 
         // Create a mapping between tab elements and panel elements
         const tabPanelMap = new Map<HTMLElement, HTMLElement>()
@@ -289,7 +285,7 @@ import { Image } from 'astro:assets'
         tabs.forEach((tab) => {
             const panelId = tab.getAttribute('aria-controls')
             if (panelId) {
-                const panel = domNode.querySelector<HTMLElement>(`#${CSS.escape(panelId)}`)
+                const panel = document.querySelector<HTMLElement>(`#${CSS.escape(panelId)}`)
                 if (panel) {
                     tabPanelMap.set(tab, panel)
                 }
@@ -305,7 +301,7 @@ import { Image } from 'astro:assets'
             if (!newPanel) return
 
             // Hide all panels and show the new one
-            panels.forEach((panel) => panel.setAttribute('hidden', 'true'))
+            tabPanelMap.forEach((panel) => panel.setAttribute('hidden', 'true'))
             newPanel.removeAttribute('hidden')
 
             // Update the selected state of tabs
@@ -327,10 +323,6 @@ import { Image } from 'astro:assets'
             const currentTab = document.activeElement as HTMLElement
             const currentIndex = tabs.indexOf(currentTab)
             const newIndex = (currentIndex + delta + tabs.length) % tabs.length
-
-            if (hasAutoTab) {
-                switchTab(tabs[newIndex])
-            }
 
             tabs[newIndex].focus()
         }
@@ -407,11 +399,5 @@ import { Image } from 'astro:assets'
 
         // Initialize the tabbed content with the active tab
         switchTab(activeTab)
-    }
-
-    // init tabbed content
-    document.addEventListener('astro:page-load', () => {
-        const tabbedContent = document.querySelectorAll<HTMLElement>('.tablist')
-        tabbedContent.forEach(TabbedContent)
     })
 </script>

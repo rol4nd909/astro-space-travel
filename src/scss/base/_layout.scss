@@ -11,13 +11,22 @@
 
   .grid-layout {
     display: grid;
+    grid-template-columns:
+      [fullbleed-start] minmax(0, 1fr)
+      [main-start] minmax(0, min(100% - (var(--site-spacing) * 2))) [main-end]
+      minmax(0, 1fr) [fullbleed-end];
     column-gap: var(--site-spacing);
     row-gap: calc(var(--site-spacing) * 1.5);
-    padding-inline: var(--site-spacing);
     padding-block: #{fluid(32px, 56px, 600px, 900px)};
 
     body:not(.home) & {
       grid-template-rows: auto 1fr;
+    }
+
+    body:is(.crew) & {
+      @media (--for-tablet-p-up) {
+        padding-block-end: 0;
+      }
     }
 
     > * {
@@ -25,19 +34,24 @@
     }
 
     @media (--until-tablet-l) {
-      place-items: center;
       text-align: center;
+
+      body:is(.home) & {
+        place-items: center;
+      }
+
+      > * {
+        grid-column: main;
+      }
     }
 
     @media (--for-tablet-l-up) {
       grid-template-columns:
         [fullbleed-start] minmax(0, 1fr)
-        [main-start col1-start]
-        minmax(0, calc(var(--site-constrain) / 2 - var(--site-spacing) / 2))
-        [col1-end col2-start]
-        minmax(0, calc(var(--site-constrain) / 2 - var(--site-spacing) / 2)) [col2-end main-end]
+        [main-start]
+        repeat(2, minmax(0, calc(var(--site-constrain) / 2 - var(--site-spacing) / 2)))
+        [main-end]
         minmax(0, 1fr) [fullbleed-end];
-      grid-template-rows: auto 1fr;
       align-items: center;
       padding-inline: 0;
 
@@ -62,7 +76,7 @@
       }
 
       @media (--for-tablet-l-up) {
-        grid-column: col1 / col2;
+        grid-column: main;
       }
     }
   }

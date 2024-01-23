@@ -1,0 +1,275 @@
+---
+
+---
+
+<div class="crew-slider">
+    <div class="carousel--scroller">
+        <div class="carousel--snap">
+            <div class="crew-info flow">
+                <h2 class="fs-fluid-700 ff-serif uppercase grid">
+                    <span class="fs-fluid-600 text-white-50">Commander</span>
+                     Douglas Hurley
+                </h2>
+
+                <p class="ff-sans-normal text-accent">
+                    Douglas Gerald Hurley is an American engineer, former Marine Corps pilot and
+                    former NASA astronaut. He launched into space for the third time as commander of
+                    Crew Dragon Demo-2.
+                </p>
+            </div>
+
+            <figure class="crew-image">
+                <img src="/crew/image-douglas-hurley.webp" alt="" />
+            </figure>
+        </div>
+        <div class="carousel--snap">
+            <div class="crew-info flow">
+                <h2 class="fs-fluid-700 ff-serif uppercase grid">
+                    <span class="fs-fluid-600 text-white-50">Mission Specialist</span>
+                     Mark Shuttleworth
+                </h2>
+
+                <p class="ff-sans-normal text-accent">
+                    Mark Richard Shuttleworth is the founder and CEO of Canonical, the company
+                    behind the Linux-based Ubuntu operating system. Shuttleworth became the first
+                    South African to travel to space as a space tourist.
+                </p>
+            </div>
+
+            <figure class="crew-image">
+                <img src="/crew/image-mark-shuttleworth.webp" alt="" />
+            </figure>
+        </div>
+        <div class="carousel--snap">
+            <div class="crew-info flow">
+                <h2 class="fs-fluid-700 ff-serif uppercase grid">
+                    <span class="fs-fluid-600 text-white-50">Pilot</span>
+                     Victor Glover
+                </h2>
+
+                <p class="ff-sans-normal text-accent">
+                    Pilot on the first operational flight of the SpaceX Crew Dragon to the
+                    International Space Station. Glover is a commander in the U.S. Navy where he
+                    pilots an F/A-18.He was a crew member of Expedition 64, and served as a station
+                    systems flight engineer.
+                </p>
+            </div>
+
+            <figure class="crew-image">
+                <img src="/crew/image-victor-glover.webp" alt="" />
+            </figure>
+        </div>
+        <div class="carousel--snap">
+            <div class="crew-info flow">
+                <h2 class="fs-fluid-700 ff-serif uppercase grid">
+                    <span class="fs-fluid-600 text-white-50">Flight Engineer</span>
+                     Anousheh Ansari
+                </h2>
+
+                <p class="ff-sans-normal text-accent">
+                    Anousheh Ansari is an Iranian American engineer and co-founder of Prodea
+                    Systems. Ansari was the fourth self-funded space tourist, the first self-funded
+                    woman to fly to the ISS, and the first Iranian in space.
+                </p>
+            </div>
+
+            <figure class="crew-image">
+                <img src="/crew/image-anousheh-ansari.webp" alt="" />
+            </figure>
+        </div>
+    </div>
+
+    <nav class="carousel--pagination dot-indicators flex" role="tablist">
+        <button
+            type="button"
+            role="tab"
+            title="Item 1: Blue ocean with a large wave"
+            aria-label="Blue ocean with a large wave"
+            aria-setsize="4"
+            aria-posinset="1"
+            aria-selected="true"
+            tabindex="0"></button>
+        <button
+            type="button"
+            role="tab"
+            title="Item 2: Frosty orange desert sunset"
+            aria-label="Frosty orange desert sunset"
+            aria-setsize="4"
+            aria-posinset="2"
+            aria-selected="false"
+            tabindex="-1"></button>
+        <button
+            type="button"
+            role="tab"
+            title="Item 3: African sahara with a giraffe"
+            aria-label="African sahara with a giraffe"
+            aria-setsize="4"
+            aria-posinset="3"
+            aria-selected="false"
+            tabindex="-1"></button>
+        <button
+            type="button"
+            role="tab"
+            title="Item 4: African sahara with a giraffe"
+            aria-label="African sahara with a giraffe"
+            aria-setsize="4"
+            aria-posinset="4"
+            aria-selected="false"
+            tabindex="-1"></button>
+    </nav>
+</div>
+
+<style lang="scss">
+    .crew-slider {
+        --_carousel-gutters: calc(50vw - (var(--site-constrain) / 2) - var(--site-spacing));
+
+        grid-column: fullbleed;
+        max-inline-size: inherit;
+
+        display: grid;
+        grid-template-columns: subgrid;
+
+        grid-template-areas:
+            '. image .'
+            '. nav .'
+            '. text .';
+
+        @media (--for-phone-only) {
+            align-self: flex-start;
+        }
+
+        @media (--for-tablet-p-up) {
+            grid-template-areas:
+                '. text .'
+                '. nav .'
+                '. image .';
+        }
+
+        @media (--until-tablet-l) {
+            gap: calc(var(--site-spacing) * 1.5);
+        }
+
+        @media (--for-tablet-l-up) {
+            grid-template-areas:
+                '. text image .'
+                '. nav  image .';
+        }
+    }
+
+    .carousel--scroller {
+        grid-column: fullbleed;
+        grid-row: 1 / -1;
+        grid-template-rows: subgrid;
+
+        display: grid;
+        grid-auto-columns: 100%;
+        grid-auto-flow: column;
+        column-gap: var(--_carousel-gutters);
+        row-gap: calc(var(--site-spacing) * 1.5);
+
+        padding-inline: var(--_carousel-gutters);
+
+        overflow-x: auto;
+        overscroll-behavior-x: contain;
+        scroll-snap-type: x mandatory;
+        scroll-padding-inline: var(--_carousel-gutters);
+        scrollbar-width: none;
+
+        &::-webkit-scrollbar {
+            display: none;
+        }
+
+        @media (prefers-reduced-motion: no-preference) {
+            scroll-behavior: smooth;
+        }
+    }
+
+    .carousel--snap {
+        grid-template-rows: subgrid;
+        grid-row: 1 / 4;
+
+        display: grid;
+        row-gap: inherit;
+        grid-template-areas:
+            'image'
+            'nav'
+            'text';
+
+        padding-inline: var(--site-spacing);
+        scroll-snap-align: center;
+        scroll-snap-stop: always;
+
+        @media (--for-tablet-p-up) {
+            grid-template-areas:
+                'text'
+                'nav'
+                'image';
+        }
+
+        @media (--for-tablet-l-up) {
+            grid-template-columns: 1fr max-content;
+            grid-template-areas:
+                'text image'
+                'nav  image';
+        }
+    }
+
+    .carousel--pagination {
+        grid-area: nav;
+        align-self: start;
+
+        @media (--for-phone-only) {
+            margin-block-start: calc(var(--site-spacing) * -1.5);
+            padding-block-start: calc(var(--site-spacing) * 1.5);
+            border-block-start: 1px solid hsl(var(--clr-white) / 25%);
+        }
+
+        grid-column: 2;
+
+        @media (--until-tablet-l) {
+            justify-content: center;
+        }
+    }
+
+    .crew-info {
+        grid-area: text;
+        align-self: center;
+
+        @media (--for-phone-only) {
+            align-self: start;
+        }
+
+        @media (--until-tablet-l) {
+            max-inline-size: 62ch;
+        }
+    }
+
+    .crew-image {
+        grid-area: image;
+        align-self: end;
+
+        @media (--for-phone-only) {
+            max-inline-size: 65%;
+        }
+
+        @media (--for-tablet-p-up) and (--until-tablet-l) {
+            max-inline-size: 50%;
+        }
+    }
+
+    .crew-info,
+    .crew-image {
+        @media (--until-tablet-l) {
+            justify-self: center;
+        }
+    }
+
+    .image-spacer {
+        grid-area: image;
+        min-block-size: 10rem;
+    }
+    .text-spacer {
+        grid-area: text;
+        min-block-size: 5rem;
+    }
+</style>
