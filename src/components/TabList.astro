@@ -179,17 +179,16 @@ import { Image } from 'astro:assets'
 
         @media (--until-tablet-l) {
             gap: calc(var(--site-spacing) * 1.5);
-            place-items: center;
+            align-self: flex-start;
         }
 
         @media (--for-tablet-l-up) {
-            grid-column: col1 / col2;
-            grid-template-rows: auto 1fr;
-            grid-template-columns: auto 1fr 62ch;
+            grid-column: main;
+            grid-template-columns: auto 62ch;
             column-gap: calc(var(--site-spacing) * 1.5);
             grid-template-areas:
-                '..... . tablist'
-                'image . tabpanel';
+                '.....  tablist'
+                'image  tabpanel';
         }
     }
 
@@ -217,10 +216,14 @@ import { Image } from 'astro:assets'
                 scale var(--_duration),
                 translate var(--_duration);
         }
+
+        @media (--until-tablet-l) {
+            justify-self: center;
+        }
     }
 
     [role='tabpanel'] {
-        grid-row: 1 / span 3;
+        grid-row: 1 / -1;
         grid-column: 1;
 
         place-items: center;
@@ -244,8 +247,7 @@ import { Image } from 'astro:assets'
         }
 
         @media (--for-tablet-l-up) {
-            grid-row: 1 / span 2;
-            grid-column: 1 / span 3;
+            grid-column: 1 / -1;
         }
     }
 
