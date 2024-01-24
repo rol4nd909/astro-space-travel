@@ -46,7 +46,13 @@ import { Image } from 'astro:assets'
 
     <div id="tabpanel-1" role="tabpanel" aria-labelledby="tab-1" tabindex="0">
         <div class="tabpanel__image">
-            <Image src="/destination/resize/image-moon.webp" width={445} height={445} alt="" />
+            <Image
+                src="/destination/resize/image-moon.webp"
+                width={445}
+                height={445}
+                loading="eager"
+                alt=""
+            />
         </div>
 
         <div class="tabpanel__content flow">
