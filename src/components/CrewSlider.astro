@@ -1,5 +1,5 @@
 ---
-
+import { Image } from 'astro:assets'
 ---
 
 <div class="crew-slider">
@@ -19,7 +19,12 @@
             </div>
 
             <figure class="crew-image">
-                <img src="/crew/resize/image-douglas-hurley.webp" alt="" />
+                <Image
+                    src="/crew/resize/image-douglas-hurley.webp"
+                    width={514}
+                    height={700}
+                    alt="Douglas Hurley in a blue space suit triumphantly raises his fist, celebrating a successful mission."
+                />
             </figure>
         </div>
         <div class="carousel--snap">
@@ -37,7 +42,13 @@
             </div>
 
             <figure class="crew-image">
-                <img src="/crew/resize/image-mark-shuttleworth.webp" style="scale:-1 1" alt="" />
+                <Image
+                    src="/crew/resize/image-mark-shuttleworth.webp"
+                    width={433}
+                    height={640}
+                    style="scale:-1 1"
+                    alt="Mark Shuttleworth, wearing a grey shirt, holds a microphone with confidence."
+                />
             </figure>
         </div>
         <div class="carousel--snap">
@@ -56,7 +67,12 @@
             </div>
 
             <figure class="crew-image">
-                <img src="/crew/resize/image-victor-glover.webp" alt="" />
+                <Image
+                    src="/crew/resize/image-victor-glover.webp"
+                    width={549}
+                    height={645}
+                    alt="Victor Glover, NASA astronaut."
+                />
             </figure>
         </div>
         <div class="carousel--snap">
@@ -74,7 +90,13 @@
             </div>
 
             <figure class="crew-image">
-                <img src="/crew/resize/image-anousheh-ansari.webp" style="scale:-1 1" alt="" />
+                <Image
+                    src="/crew/resize/image-anousheh-ansari.webp"
+                    width={575}
+                    height={602}
+                    style="scale:-1 1"
+                    alt="Anousheh Ansari confidently holds a microphone, ready to speak."
+                />
             </figure>
         </div>
     </div>
