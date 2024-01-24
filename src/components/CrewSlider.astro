@@ -156,10 +156,6 @@ import { Image } from 'astro:assets'
             '. nav .'
             '. text .';
 
-        @media (--for-phone-only) {
-            align-self: flex-start;
-        }
-
         @media (--for-tablet-p-up) {
             grid-template-areas:
                 '. text .'
@@ -169,6 +165,11 @@ import { Image } from 'astro:assets'
 
         @media (--until-tablet-l) {
             gap: calc(var(--site-spacing) * 1.5);
+        }
+
+        @media (--for-phone-only) {
+            align-self: flex-start;
+            row-gap: var(--site-spacing);
         }
 
         @media (--for-tablet-l-up) {
@@ -185,9 +186,8 @@ import { Image } from 'astro:assets'
 
         display: grid;
         grid-auto-columns: 100%;
-        grid-auto-flow: column;
+        // grid-auto-flow: column;
         column-gap: var(--_carousel-gutters);
-        row-gap: calc(var(--site-spacing) * 1.5);
 
         padding-inline: var(--_carousel-gutters);
 
@@ -229,7 +229,7 @@ import { Image } from 'astro:assets'
         }
 
         @media (--for-tablet-l-up) {
-            grid-template-columns: 1.4fr minmax(28rem, 1fr);
+            grid-template-columns: 1fr;
             grid-template-areas:
                 'text image'
                 'nav  image';
@@ -239,11 +239,11 @@ import { Image } from 'astro:assets'
 
     .carousel--pagination {
         grid-area: nav;
-        align-self: start;
+        align-self: center;
 
         @media (--for-phone-only) {
-            margin-block-start: calc(var(--site-spacing) * -1.5);
-            padding-block-start: calc(var(--site-spacing) * 1.5);
+            margin-block-start: calc(var(--site-spacing) * -1);
+            padding-block-start: var(--site-spacing);
             border-block-start: 1px solid hsl(var(--clr-white) / 25%);
         }
 
@@ -256,7 +256,7 @@ import { Image } from 'astro:assets'
 
     .crew-info {
         grid-area: text;
-        align-self: center;
+        align-self: end;
 
         @media (--for-phone-only) {
             align-self: start;
@@ -265,18 +265,34 @@ import { Image } from 'astro:assets'
         @media (--until-tablet-l) {
             max-inline-size: 62ch;
         }
+
+        @media (--for-tablet-l-up) {
+            > h2 {
+                white-space: nowrap;
+            }
+        }
     }
 
     .crew-image {
         grid-area: image;
         align-self: end;
 
-        @media (--for-phone-only) {
-            max-inline-size: 65%;
-        }
+        > img {
+            block-size: 100%;
+            inline-size: 100%;
+            object-fit: contain;
 
-        @media (--for-tablet-p-up) and (--until-tablet-l) {
-            max-inline-size: 50%;
+            @media (--for-phone-only) {
+                max-block-size: 14rem;
+            }
+
+            @media (--for-tablet-p-up) {
+                max-block-size: 28rem;
+            }
+
+            @media (--for-tablet-l-up) {
+                max-block-size: 38rem;
+            }
         }
     }
 
@@ -285,15 +301,6 @@ import { Image } from 'astro:assets'
         @media (--until-tablet-l) {
             justify-self: center;
         }
-    }
-
-    .image-spacer {
-        grid-area: image;
-        min-block-size: 10rem;
-    }
-    .text-spacer {
-        grid-area: text;
-        min-block-size: 5rem;
     }
 
     .dot-indicators > * {

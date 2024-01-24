@@ -24,9 +24,7 @@
     }
 
     body:is(.crew) & {
-      @media (--for-tablet-p-up) {
-        padding-block-end: 0;
-      }
+      padding-block-end: 0;
     }
 
     > * {

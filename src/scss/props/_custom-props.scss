@@ -15,6 +15,7 @@
     --fs-fluid-650: #{fluid(20px, 32px, 600px)};
     --fs-fluid-600: #{fluid(16px, 32px, 600px)};
     --fs-fluid-500: #{fluid(16px, 28px, 600px)};
+    --fs-fluid-400: #{fluid(15px, 18px, 600px)};
     --fs-500: 1.75rem;
     --fs-400: 1.125rem;
     --fs-300: 1rem;
@@ -48,20 +49,20 @@
 
 @layer props.easings {
   :where(html) {
-    --ease-3: cubic-bezier(0.25, 0, 0.3, 1);
-    --ease-in-3: cubic-bezier(0.7, 0, 1, 1);
-    --ease-elastic-out-3: cubic-bezier(0.5, 1.25, 0.75, 1.25);
-    --ease-out-3: cubic-bezier(0, 0, 0.3, 1);
+    --ease: cubic-bezier(0.25, 0, 0.3, 1);
+    --ease-in: cubic-bezier(0.7, 0, 1, 1);
+    --ease-out: cubic-bezier(0, 0, 0.3, 1);
+    --ease-in--ease-elastic-out: cubic-bezier(0.5, 1.25, 0.75, 1.25);
   }
 }
 
 @layer props.animations {
   :where(html) {
-    --animation-fade-in: fade-in 0.5s var(--ease-3);
-    --animation-fade-out: fade-out 0.5s var(--ease-3);
-    --animation-slide-out-right: slide-out-right 0.5s var(--ease-3);
-    --animation-slide-out-left: slide-out-left 0.5s var(--ease-3);
-    --animation-pulse: pulse 2s var(--ease-out-3) infinite;
+    --animation-fade-in: fade-in 0.5s var(--ease);
+    --animation-fade-out: fade-out 0.5s var(--ease);
+    --animation-slide-out-right: slide-out-right 0.5s var(--ease);
+    --animation-slide-out-left: slide-out-left 0.5s var(--ease);
+    --animation-pulse: pulse 2s var(--ease-out) infinite;
   }
 
   @keyframes fade-in {
