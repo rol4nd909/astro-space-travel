@@ -234,15 +234,19 @@ import { Image } from 'astro:assets'
             display: grid;
         }
 
-        @media (--for-phone-only) {
-            .tabpanel__image {
-                max-inline-size: 65%;
-            }
-        }
-
         @media (--until-tablet-l) {
             > * {
                 max-inline-size: 62ch;
+            }
+
+            .tabpanel__image {
+                max-inline-size: 20rem;
+            }
+        }
+
+        @media (--for-phone-only) {
+            .tabpanel__image {
+                max-inline-size: 11rem;
             }
         }
 
@@ -253,11 +257,8 @@ import { Image } from 'astro:assets'
 
     .tabpanel__image {
         grid-area: image;
-
-        @media (--until-tablet-l) {
-            inline-size: 100%;
-            aspect-ratio: 1;
-        }
+        inline-size: 100%;
+        aspect-ratio: 1;
 
         @media (--for-tablet-l-up) {
             place-self: start;

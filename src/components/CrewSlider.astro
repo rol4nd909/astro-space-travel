@@ -229,7 +229,7 @@ import { Image } from 'astro:assets'
         }
 
         @media (--for-tablet-l-up) {
-            grid-template-columns: 1fr;
+            grid-template-columns: 1fr minmax(18rem, 1fr);
             grid-template-areas:
                 'text image'
                 'nav  image';
