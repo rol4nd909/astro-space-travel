@@ -48,8 +48,10 @@
 
 @layer props.easings {
   :where(html) {
+    --ease-3: cubic-bezier(0.25, 0, 0.3, 1);
     --ease-in-3: cubic-bezier(0.7, 0, 1, 1);
     --ease-elastic-out-3: cubic-bezier(0.5, 1.25, 0.75, 1.25);
+    --ease-out-3: cubic-bezier(0, 0, 0.3, 1);
   }
 }
 
@@ -83,6 +85,17 @@
   @keyframes slide-out-left {
     to {
       transform: translateX(0%);
+    }
+  }
+
+  @keyframes blink {
+    0%,
+    100% {
+      opacity: 1;
+    }
+
+    50% {
+      opacity: 0.5;
     }
   }
 
