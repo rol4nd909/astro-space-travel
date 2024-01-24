@@ -11,3 +11,19 @@ import Layout from '@layouts/Layout.astro'
         <CrewSlider />
     </Main>
 </Layout>
+
+<style>
+    @layer base.crew {
+        body:is(.crew) {
+            --_bg: url('../assets/webp/background-crew-mobile.webp');
+
+            @media (--for-tablet-p-up) {
+                --_bg: url('../assets/webp/background-crew-tablet.webp');
+            }
+
+            @media (--for-tablet-l-up) {
+                --_bg: url('../assets/webp/background-crew-desktop.webp');
+            }
+        }
+    }
+</style>

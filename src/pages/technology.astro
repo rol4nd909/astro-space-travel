@@ -8,3 +8,19 @@ import Layout from '@layouts/Layout.astro'
         <h1 class="numbered-title"><span aria-hidden="true">03</span> SPACE LAUNCH 101</h1>
     </Main>
 </Layout>
+
+<style>
+    @layer base.technology {
+        body:is(.technology) {
+            --_bg: url('../assets/webp/background-technology-mobile.webp');
+
+            @media (--for-tablet-p-up) {
+                --_bg: url('../assets/webp/background-technology-tablet.webp');
+            }
+
+            @media (--for-tablet-l-up) {
+                --_bg: url('../assets/webp/background-technology-desktop.webp');
+            }
+        }
+    }
+</style>

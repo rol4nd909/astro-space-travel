@@ -1,9 +1,12 @@
 ---
 import Cta from '@components/Cta.astro'
-import DesignLayout from '@layouts/DesignLayout.astro'
+import SimpleHeader from '@components/SimpleHeader.astro'
+import Layout from '@layouts/Layout.astro'
 ---
 
-<DesignLayout title="Design system" description="This is an overview of the design system">
+<Layout title="Design system" description="This is an overview of the design system">
+    <SimpleHeader title="Design system" />
+
     <main class="flow lane">
         <div class="flow" id="colors">
             <h2 class="numbered-title"><span>01</span> colors</h2>
@@ -244,7 +247,7 @@ import DesignLayout from '@layouts/DesignLayout.astro'
             </div>
         </div>
     </main>
-</DesignLayout>
+</Layout>
 
 <style>
     @layer design-system {

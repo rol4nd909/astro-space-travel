@@ -14,3 +14,19 @@ import Layout from '@layouts/Layout.astro'
         <TabList />
     </Main>
 </Layout>
+
+<style>
+    @layer base.destination {
+        body:is(.destination) {
+            --_bg: url('../assets/webp/background-destination-mobile.webp');
+
+            @media (--for-tablet-p-up) {
+                --_bg: url('../assets/webp/background-destination-tablet.webp');
+            }
+
+            @media (--for-tablet-l-up) {
+                --_bg: url('../assets/webp/background-destination-desktop.webp');
+            }
+        }
+    }
+</style>

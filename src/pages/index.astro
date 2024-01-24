@@ -27,3 +27,19 @@ import Layout from '@layouts/Layout.astro'
         </div>
     </Main>
 </Layout>
+
+<style>
+    @layer base.home {
+        body:is(.home) {
+            --_bg: url('../assets/webp/background-home-mobile.webp');
+
+            @media (--for-tablet-p-up) {
+                --_bg: url('../assets/webp/background-home-tablet.webp');
+            }
+
+            @media (--for-tablet-l-up) {
+                --_bg: url('../assets/webp/background-home-desktop.webp');
+            }
+        }
+    }
+</style>

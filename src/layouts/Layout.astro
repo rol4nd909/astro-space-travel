@@ -1,11 +1,10 @@
 ---
-import '@styles/global.scss'
 import '@fontsource/barlow'
 import '@fontsource/barlow-condensed/400.css'
 import '@fontsource/barlow-condensed/700.css'
 import '@fontsource/bellefair'
+import '@styles/global.scss'
 
-import Header from '@components/Header.astro'
 import { ViewTransitions } from 'astro:transitions'
 
 interface Props {
@@ -33,7 +32,6 @@ const {
         <ViewTransitions />
     </head>
     <body class=`${className}`>
-        <Header />
         <slot />
     </body>
 </html>

@@ -1,23 +1,4 @@
 @layer components {
-  .dot-indicators > * {
-    --_indicator-opacity: 25%;
-
-    padding: 0.5em;
-    border: 0;
-    background-color: hsl(var(--clr-white) / var(--_indicator-opacity));
-    cursor: pointer;
-    border-radius: 50%;
-    transition: background-color 0.25s ease-in-out;
-
-    &:is(:hover, :focus-visible) {
-      --_indicator-opacity: 50%;
-    }
-
-    &:is(.is-active, [aria-expanded='true'], [aria-selected='true']) {
-      --_indicator-opacity: 100%;
-    }
-  }
-
   .number-indicators > * {
     --_indicator-opacity: 25%;
     --_clr: var(--clr-white);
