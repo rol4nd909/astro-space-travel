@@ -19,7 +19,7 @@
             </div>
 
             <figure class="crew-image">
-                <img src="/crew/image-douglas-hurley.webp" alt="" />
+                <img src="/crew/resize/image-douglas-hurley.webp" alt="" />
             </figure>
         </div>
         <div class="carousel--snap">
@@ -37,7 +37,7 @@
             </div>
 
             <figure class="crew-image">
-                <img src="/crew/image-mark-shuttleworth.webp" alt="" />
+                <img src="/crew/resize/image-mark-shuttleworth.webp" style="scale:-1 1" alt="" />
             </figure>
         </div>
         <div class="carousel--snap">
@@ -56,7 +56,7 @@
             </div>
 
             <figure class="crew-image">
-                <img src="/crew/image-victor-glover.webp" alt="" />
+                <img src="/crew/resize/image-victor-glover.webp" alt="" />
             </figure>
         </div>
         <div class="carousel--snap">
@@ -74,7 +74,7 @@
             </div>
 
             <figure class="crew-image">
-                <img src="/crew/image-anousheh-ansari.webp" alt="" />
+                <img src="/crew/resize/image-anousheh-ansari.webp" style="scale:-1 1" alt="" />
             </figure>
         </div>
     </div>
@@ -207,10 +207,11 @@
         }
 
         @media (--for-tablet-l-up) {
-            grid-template-columns: 1fr max-content;
+            grid-template-columns: 1.4fr minmax(28rem, 1fr);
             grid-template-areas:
                 'text image'
                 'nav  image';
+            column-gap: var(--site-spacing);
         }
     }
 
