@@ -1,4 +1,5 @@
 ---
+import NumberedTitle from '@/components/NumberedTitle.astro'
 import Cta from '@components/Cta.astro'
 import SimpleHeader from '@components/SimpleHeader.astro'
 import Layout from '@layouts/Layout.astro'
@@ -9,7 +10,7 @@ import Layout from '@layouts/Layout.astro'
 
     <main class="flow lane">
         <div class="flow" id="colors">
-            <h2 class="numbered-title"><span>01</span> colors</h2>
+            <NumberedTitle tag="h2" number="01">colors</NumberedTitle>
 
             <div class="flex even-columns" style="--gap: 2rem; --flow-space: 1.5rem">
                 <div class="flow" style="--flow-space: 0">
@@ -58,7 +59,7 @@ import Layout from '@layouts/Layout.astro'
         </div>
 
         <div class="flow" id="typography" style="--flow-space: 6rem">
-            <h2 class="numbered-title"><span>02</span> typography</h2>
+            <NumberedTitle tag="h2" number="02">typography</NumberedTitle>
 
             <div class="flex even-columns" style="--flow-space: 1.5rem; --gap:2rem">
                 <div class="flow">
@@ -130,7 +131,7 @@ import Layout from '@layouts/Layout.astro'
         </div>
 
         <div class="flow" id="interactive-elements" style="--flow-space: 6rem">
-            <h2 class="numbered-title"><span>03</span> Interactive elements</h2>
+            <NumberedTitle tag="h2" number="03">Interactive elements</NumberedTitle>
 
             <!-- navigation -->
             <div class="flow" style="--flow-space: 1.5rem">

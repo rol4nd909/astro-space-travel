@@ -3,15 +3,14 @@ import Main from '@components/Main.astro'
 import Tabs from '@/components/Tabs/Tabs.astro'
 import Layout from '@layouts/Layout.astro'
 import { getCollection } from 'astro:content'
+import NumberedTitle from '@/components/NumberedTitle.astro'
 
 const destinations = await getCollection('destinations')
 ---
 
 <Layout title="Space Tourism | Destination" className="destination">
     <Main transition:animate="slide">
-        <h1 class="numbered-title">
-            <span aria-hidden="true">01</span> Pick your destination
-        </h1>
+        <NumberedTitle tag="h1" number="01">Pick your destination</NumberedTitle>
 
         <Tabs items={destinations} />
     </Main>

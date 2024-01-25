@@ -91,19 +91,6 @@
     font-weight: 700;
   }
 
-  .numbered-title {
-    font-family: var(--ff-sans-cond);
-    font-size: var(--fs-fluid-500);
-    letter-spacing: var(--ls-900);
-    text-transform: uppercase;
-
-    > span {
-      margin-inline-end: 0.5em;
-      color: hsl(var(--clr-white) / 25%);
-      font-weight: var(--fw-bold);
-    }
-  }
-
   .line-indicators {
     --underline-gap: 1rem;
     --line-thikness: 3px;

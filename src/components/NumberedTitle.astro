@@ -1,0 +1,37 @@
+---
+import type { HTMLAttributes } from 'astro/types'
+
+interface Props extends HTMLAttributes<'h1' | 'h2'> {
+    tag: string
+    number: string
+}
+
+const { tag, number } = Astro.props
+---
+
+{
+    tag === 'h1' ? (
+        <h1 class="numbered-title">
+            <span aria-hidden="true">{number}</span> <slot />
+        </h1>
+    ) : (
+        <h2 class="numbered-title">
+            <span aria-hidden="true">{number}</span> <slot />
+        </h2>
+    )
+}
+
+<style>
+    .numbered-title {
+        font-family: var(--ff-sans-cond);
+        font-size: var(--fs-fluid-500);
+        letter-spacing: var(--ls-900);
+        text-transform: uppercase;
+
+        > span {
+            margin-inline-end: 0.5em;
+            color: hsl(var(--clr-white) / 25%);
+            font-weight: var(--fw-bold);
+        }
+    }
+</style>
