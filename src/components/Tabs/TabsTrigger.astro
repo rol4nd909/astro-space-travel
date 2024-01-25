@@ -1,0 +1,23 @@
+---
+import type { CollectionEntry } from 'astro:content'
+
+type Props = {
+    id: number
+    tab: CollectionEntry<'destinations'>
+}
+
+const { id, tab } = Astro.props
+const { name } = tab.data
+---
+
+<button
+    class="uppercase text-accent letter-spacing-2"
+    type="button"
+    id=`tab-${id}`
+    role="tab"
+    aria-selected=`${id === 0 ? 'true' : 'false'}`
+    aria-controls=`tabpanel-${id}`
+    tabindex=`${id === 0 ? 0 : -1}`
+>
+    {name}
+</button>

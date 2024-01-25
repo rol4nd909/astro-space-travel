@@ -11,7 +11,7 @@ const { url, label, style } = Astro.props
 <a href={url} class="uppercase" {style}>{label}</a>
 
 <style lang="scss">
-    @use 'src/scss/functions/fluid' as *;
+    @use '@styles/functions/fluid' as *;
 
     a {
         --_hover-size: 1;

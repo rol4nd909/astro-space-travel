@@ -1,0 +1,37 @@
+<div class="line-indicators flex fs-300" role="tablist">
+    <slot />
+</div>
+
+<style lang="scss">
+    @use 'src/scss/functions/fluid' as *;
+
+    [role='tablist'] {
+        --gap: #{fluid(24px, 32px, 600px, 900px)};
+        --_duration: 0.15s;
+
+        position: relative;
+        grid-area: tablist;
+        z-index: 1;
+
+        &::after {
+            content: '';
+            position: absolute;
+            inset: auto 0 0;
+            block-size: 3px;
+            background-color: hsl(var(--clr-white));
+
+            // the 0.09 is a magic number to set the initial width of the first item
+            // it's calculated with js onload.
+            scale: var(--_width, 0.09) 1;
+            translate: var(--_left, 0) 0;
+            transform-origin: left;
+            transition:
+                scale var(--_duration),
+                translate var(--_duration);
+        }
+
+        @media (--until-tablet-l) {
+            justify-self: center;
+        }
+    }
+</style>

@@ -1,8 +1,10 @@
 ---
 import Main from '@components/Main.astro'
-import TabList from '@components/TabList.astro'
-import TabList2 from '@components/TabList.astro'
+import Tabs from '@/components/Tabs/Tabs.astro'
 import Layout from '@layouts/Layout.astro'
+import { getCollection } from 'astro:content'
+
+const destinations = await getCollection('destinations')
 ---
 
 <Layout title="Space Tourism | Destination" className="destination">
@@ -11,7 +13,7 @@ import Layout from '@layouts/Layout.astro'
             <span aria-hidden="true">01</span> Pick your destination
         </h1>
 
-        <TabList />
+        <Tabs items={destinations} />
     </Main>
 </Layout>
 

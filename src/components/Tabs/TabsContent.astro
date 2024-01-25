@@ -1,0 +1,114 @@
+---
+import { Image } from 'astro:assets'
+import type { CollectionEntry } from 'astro:content'
+
+type Props = {
+    id: number
+    panelContent: CollectionEntry<'destinations'>
+}
+
+const { id, panelContent } = Astro.props
+const { name, description, distance, travel, image } = panelContent.data
+---
+
+<div
+    id=`tabpanel-${id}`
+    role="tabpanel"
+    aria-labelledby=`tab-${id}`
+    tabindex=`${id === 0 ? 0 : -1}`
+    hidden=`${id !== 0}`
+>
+    <div class="image">
+        <Image
+            src={image}
+            width={445}
+            height={445}
+            loading=`${id === 0 ? 'eager' : 'lazy'}`
+            alt=""
+        />
+    </div>
+
+    <div class="content flow">
+        <h2 class="fs-fluid-800 ff-serif uppercase">{name}</h2>
+
+        <p class="text-accent">{description}</p>
+
+        <div class="meta">
+            <div>
+                <p class="fs-200 ff-sans-cond letter-spacing-3 text-accent">Avg. distance</p>
+                <p class="fs-500 ff-serif uppercase">{distance}</p>
+            </div>
+
+            <div>
+                <p class="fs-200 ff-sans-cond letter-spacing-3 text-accent">Est. travel time</p>
+                <p class="fs-500 ff-serif uppercase">{travel}</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<style lang="scss">
+    @use 'src/scss/functions/fluid' as *;
+
+    [role='tabpanel'] {
+        grid-row: 1 / -1;
+        grid-column: 1;
+
+        place-items: center;
+        grid-template-rows: subgrid;
+        grid-template-columns: subgrid;
+
+        &:not([hidden]),
+        &:is([hidden='false']) {
+            display: grid;
+        }
+
+        @media (--until-tablet-l) {
+            > * {
+                max-inline-size: 62ch;
+            }
+
+            .image {
+                max-inline-size: 20rem;
+            }
+        }
+
+        @media (--for-phone-only) {
+            .image {
+                max-inline-size: 11rem;
+            }
+        }
+
+        @media (--for-tablet-l-up) {
+            grid-column: 1 / -1;
+        }
+    }
+
+    .image {
+        grid-area: image;
+        aspect-ratio: 1;
+
+        @media (--for-tablet-l-up) {
+            align-self: end;
+            justify-self: start;
+            margin-inline-end: calc(var(--site-spacing) * -4.5);
+        }
+    }
+
+    .content {
+        grid-area: tabpanel;
+    }
+
+    .meta {
+        --flow-space: #{fluid(32px, 56px, 600px, 1200px)};
+
+        display: grid;
+        row-gap: 2rem;
+        padding-block-start: 2rem;
+        border-block-start: 1px solid hsl(var(--clr-white) / 25%);
+
+        @media (--for-tablet-p-up) {
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+        }
+    }
+</style>
