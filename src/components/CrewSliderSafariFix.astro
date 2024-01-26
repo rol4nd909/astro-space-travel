@@ -333,8 +333,11 @@ import imageAnoushehAnsari from '@/assets/crew/image-anousheh-ansari.webp'
             }
 
             @media (--for-tablet-l-up) {
-                border-block-end: 1px solid hsl(var(--clr-white) / 25%);
                 max-block-size: 38rem;
+            }
+
+            @media (--for-tablet-l-up) and (height > 56.25em) {
+                border-block-end: 1px solid hsl(var(--clr-white) / 25%);
             }
         }
     }
