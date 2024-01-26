@@ -21,9 +21,11 @@ const { name, description, distance, travel, image } = panelContent.data
     <div class="image">
         <Image
             src={image}
-            width={445}
-            height={445}
-            loading=`${id === 0 ? 'eager' : 'lazy'}`
+            widths={[352, 640, image.width]}
+            sizes={`(width < 37.5em) 352px, (width < 56.25em) 640px, ${image.width}px`}
+            format="avif"
+            loading={id === 0 ? 'eager' : 'lazy'}
+            fetchpriority={id === 0 ? 'high' : 'low'}
             alt=""
         />
     </div>
@@ -67,16 +69,6 @@ const { name, description, distance, travel, image } = panelContent.data
             > * {
                 max-inline-size: 62ch;
             }
-
-            .image {
-                max-inline-size: 20rem;
-            }
-        }
-
-        @media (--for-phone-only) {
-            .image {
-                max-inline-size: 11rem;
-            }
         }
 
         @media (--for-tablet-l-up) {
@@ -92,6 +84,22 @@ const { name, description, distance, travel, image } = panelContent.data
             align-self: end;
             justify-self: start;
             margin-inline-end: calc(var(--site-spacing) * -4.5);
+
+            > img {
+                max-inline-size: 27.8125rem;
+            }
+        }
+
+        @media (--until-tablet-l) {
+            > img {
+                max-inline-size: 20rem;
+            }
+        }
+
+        @media (--for-phone-only) {
+            > img {
+                max-inline-size: 11rem;
+            }
         }
     }
 

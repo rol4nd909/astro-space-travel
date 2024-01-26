@@ -1,5 +1,10 @@
 ---
 import { Image } from 'astro:assets'
+
+import imageDouglasHurley from '@/assets/crew/image-douglas-hurley.webp'
+import imageMarkShuttleworth from '@/assets/crew/image-mark-shuttleworth.webp'
+import imageVictorGlover from '@/assets/crew/image-victor-glover.webp'
+import imageAnoushehAnsari from '@/assets/crew/image-anousheh-ansari.webp'
 ---
 
 <div class="crew-slider">
@@ -20,10 +25,12 @@ import { Image } from 'astro:assets'
 
             <figure class="crew-image">
                 <Image
-                    src="/crew/resize/image-douglas-hurley.webp"
+                    src={imageDouglasHurley}
                     width={514}
                     height={700}
                     loading="eager"
+                    fetchpriority="high"
+                    format="avif"
                     alt="Douglas Hurley in a blue space suit triumphantly raises his fist, celebrating a successful mission."
                 />
             </figure>
@@ -44,9 +51,11 @@ import { Image } from 'astro:assets'
 
             <figure class="crew-image">
                 <Image
-                    src="/crew/resize/image-mark-shuttleworth.webp"
+                    src={imageMarkShuttleworth}
                     width={433}
                     height={640}
+                    fetchpriority="low"
+                    format="avif"
                     style="scale:-1 1"
                     alt="Mark Shuttleworth, wearing a grey shirt, holds a microphone with confidence."
                 />
@@ -69,9 +78,11 @@ import { Image } from 'astro:assets'
 
             <figure class="crew-image">
                 <Image
-                    src="/crew/resize/image-victor-glover.webp"
+                    src={imageVictorGlover}
                     width={549}
                     height={645}
+                    fetchpriority="low"
+                    format="avif"
                     alt="Victor Glover, NASA astronaut."
                 />
             </figure>
@@ -92,9 +103,11 @@ import { Image } from 'astro:assets'
 
             <figure class="crew-image">
                 <Image
-                    src="/crew/resize/image-anousheh-ansari.webp"
+                    src={imageAnoushehAnsari}
                     width={575}
                     height={602}
+                    fetchpriority="low"
+                    format="avif"
                     style="scale:-1 1"
                     alt="Anousheh Ansari confidently holds a microphone, ready to speak."
                 />
@@ -140,48 +153,19 @@ import { Image } from 'astro:assets'
             aria-selected="false"
             tabindex="-1"></button>
     </nav>
-
-    <!-- Test block -->
-    <div class="fake-grid" aria-hidden="true">
-        <div class="crew-info flow">
-            <h2 class="fs-fluid-700 ff-serif uppercase grid">
-                <span class="fs-fluid-600 text-white-50">Commander</span>
-                 Douglas Hurley
-            </h2>
-
-            <p class="ff-sans-normal text-accent">
-                Douglas Gerald Hurley is an American engineer, former Marine Corps pilot and former
-                NASA astronaut. He launched into space for the third time as commander of Crew
-                Dragon Demo-2.
-            </p>
-        </div>
-
-        <figure class="crew-image">
-            <Image
-                src="/crew/resize/image-douglas-hurley.webp"
-                width={514}
-                height={700}
-                loading="eager"
-                alt="Douglas Hurley in a blue space suit triumphantly raises his fist, celebrating a successful mission."
-            />
-        </figure>
-    </div>
-    <!-- test block -->
 </div>
 
 <style lang="scss">
     .crew-slider {
         --_carousel-gutters: calc(50vw - (var(--site-constrain) / 2) - var(--site-spacing));
+        --_rows: 14rem 1rem auto;
 
         grid-column: fullbleed;
         max-inline-size: inherit;
 
         display: grid;
         grid-template-columns: subgrid;
-
-        @media (--for-phone-only) {
-            grid-template-rows: 14rem 1rem auto;
-        }
+        grid-template-rows: var(--_rows, subgrid);
 
         grid-template-areas:
             '. image .'
@@ -189,7 +173,8 @@ import { Image } from 'astro:assets'
             '. text .';
 
         @media (--for-tablet-p-up) {
-            grid-template-rows: auto 1rem minmax(28rem, 1fr);
+            --_rows: 1fr 1rem minmax(28rem, 2fr);
+
             grid-template-areas:
                 '. text .'
                 '. nav .'
@@ -197,7 +182,7 @@ import { Image } from 'astro:assets'
         }
 
         @media (--until-tablet-l) {
-            gap: calc(var(--site-spacing) * 1.5);
+            row-gap: calc(var(--site-spacing) * 1.5);
         }
 
         @media (--for-phone-only) {
@@ -206,7 +191,8 @@ import { Image } from 'astro:assets'
         }
 
         @media (--for-tablet-l-up) {
-            grid-template-rows: 1fr 1fr;
+            --_rows: 1fr 1fr;
+
             grid-template-areas:
                 '. text image .'
                 '. nav  image .';
@@ -216,11 +202,11 @@ import { Image } from 'astro:assets'
     .carousel--scroller {
         grid-column: fullbleed;
         grid-row: 1 / span 3;
-        // grid-template-rows: subgrid;
+        grid-template-rows: var(--_rows, subgrid);
 
         display: grid;
         grid-auto-columns: 100%;
-        // grid-auto-flow: column;
+        grid-auto-flow: column;
         column-gap: var(--_carousel-gutters);
 
         padding-inline: var(--_carousel-gutters);
@@ -235,18 +221,16 @@ import { Image } from 'astro:assets'
             display: none;
         }
 
-        @media (--for-phone-only) {
-            row-gap: var(--site-spacing);
-            grid-template-rows: 14rem 1rem auto;
+        @media (--until-tablet-l) {
+            row-gap: calc(var(--site-spacing) * 1.5);
         }
 
-        @media (--for-tablet-p-up) {
-            grid-template-rows: auto 1rem minmax(28rem, 1fr);
+        @media (--for-phone-only) {
+            row-gap: var(--site-spacing);
         }
 
         @media (--for-tablet-l-up) {
             grid-row: 1 / span 2;
-            grid-template-rows: 1fr 1fr;
         }
 
         @media (prefers-reduced-motion: no-preference) {
@@ -255,8 +239,8 @@ import { Image } from 'astro:assets'
     }
 
     .carousel--snap {
-        // grid-template-rows: subgrid;
         grid-row: 1 / span 3;
+        grid-template-rows: var(--_rows, subgrid);
 
         display: grid;
         row-gap: inherit;
@@ -269,13 +253,15 @@ import { Image } from 'astro:assets'
         scroll-snap-align: center;
         scroll-snap-stop: always;
 
+        @media (--until-tablet-l) {
+            row-gap: calc(var(--site-spacing) * 1.5);
+        }
+
         @media (--for-phone-only) {
-            grid-template-rows: 14rem 1rem auto;
             row-gap: var(--site-spacing);
         }
 
         @media (--for-tablet-p-up) {
-            grid-template-rows: auto 1rem minmax(28rem, 1fr);
             grid-template-areas:
                 'text'
                 'nav'
@@ -283,9 +269,8 @@ import { Image } from 'astro:assets'
         }
 
         @media (--for-tablet-l-up) {
-            grid-template-columns: 1fr minmax(18rem, 1fr);
             grid-row: 1 / span 2;
-            grid-template-rows: 1fr 1fr;
+            grid-template-columns: 1fr minmax(18rem, 1fr);
             grid-template-areas:
                 'text image'
                 'nav  image';
@@ -304,25 +289,11 @@ import { Image } from 'astro:assets'
         }
 
         grid-column: 2;
+        z-index: 1;
 
         @media (--until-tablet-l) {
             justify-content: center;
         }
-    }
-
-    .fake-grid {
-        grid-column: 2 / -2;
-        grid-row: 1 / -1;
-
-        display: grid;
-        grid-template-columns: subgrid;
-        grid-template-rows: subgrid;
-
-        opacity: 0;
-        visibility: hidden;
-
-        z-index: -1;
-        pointer-events: none;
     }
 
     .crew-info {
@@ -362,6 +333,7 @@ import { Image } from 'astro:assets'
             }
 
             @media (--for-tablet-l-up) {
+                border-block-end: 1px solid hsl(var(--clr-white) / 25%);
                 max-block-size: 38rem;
             }
         }
