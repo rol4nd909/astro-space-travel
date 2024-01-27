@@ -1,15 +1,27 @@
 ---
-import CrewSliderSafariFix from '@/components/CrewSliderSafariFix.astro'
-import NumberedTitle from '@/components/NumberedTitle.astro'
-import Main from '@components/Main.astro'
+import { getCollection } from 'astro:content'
+
 import Layout from '@layouts/Layout.astro'
+import Main from '@components/Main.astro'
+import NumberedTitle from '@/components/NumberedTitle.astro'
+import Carousel from '@/components/Carousel/Carousel.astro'
+import CarouselSnap from '@/components/Carousel/CarouselSnap.astro'
+import CrewDetails from '@/components/CrewDetails.astro'
+
+const crew = await getCollection('crew')
 ---
 
 <Layout title="Space Tourism | Crew" className="crew">
     <Main>
         <NumberedTitle tag="h1" number="02">Meet your crew</NumberedTitle>
 
-        <CrewSliderSafariFix />
+        <Carousel>
+            {crew.map((member, id) => (
+                <CarouselSnap>
+                    <CrewDetails props={member} id={id} />
+                </CarouselSnap>
+            ))}
+        </Carousel>
     </Main>
 </Layout>
 

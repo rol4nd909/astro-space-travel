@@ -6,5 +6,8 @@ import react from "@astrojs/react";
 // https://astro.build/config
 export default defineConfig({
   site: 'https://rol4nd909.github.io',
-  integrations: [icon(), react()]
+  integrations: [
+    icon(),
+    react()
+  ]
 });

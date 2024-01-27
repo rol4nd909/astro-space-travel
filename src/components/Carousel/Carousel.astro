@@ -1,0 +1,130 @@
+<div class="carousel" carousel-pagination="dots" aria-label="Featured Items Carousel">
+    <div class="carousel--scroller">
+        <slot />
+    </div>
+</div>
+
+<style>
+    .carousel {
+        --_carousel-gutters: calc(50vw - (var(--site-constrain) / 2) - var(--site-spacing));
+        --_rows: 14rem 1rem auto;
+
+        grid-column: fullbleed;
+        max-inline-size: inherit;
+
+        display: grid;
+        grid-template-columns: subgrid;
+        grid-template-rows: var(--_rows, subgrid);
+
+        grid-template-areas:
+            '. image .'
+            '. nav .'
+            '. text .';
+
+        @media (--for-tablet-p-up) {
+            --_rows: 1fr 1rem minmax(28rem, 2fr);
+
+            grid-template-areas:
+                '. text .'
+                '. nav .'
+                '. image .';
+        }
+
+        @media (--until-tablet-l) {
+            row-gap: calc(var(--site-spacing) * 1.5);
+        }
+
+        @media (--for-phone-only) {
+            align-self: flex-start;
+            row-gap: var(--site-spacing);
+        }
+
+        @media (--for-tablet-l-up) {
+            --_rows: 1fr 1fr;
+
+            grid-template-areas:
+                '. text image .'
+                '. nav  image .';
+        }
+    }
+
+    .carousel--scroller {
+        grid-column: fullbleed;
+        grid-row: 1 / span 3;
+        grid-template-rows: var(--_rows, subgrid);
+
+        display: grid;
+        grid-auto-columns: 100%;
+        grid-auto-flow: column;
+        column-gap: var(--_carousel-gutters);
+
+        padding-inline: var(--_carousel-gutters);
+
+        overflow-x: auto;
+        overscroll-behavior-x: contain;
+        scroll-snap-type: x mandatory;
+        scroll-padding-inline: var(--_carousel-gutters);
+        scrollbar-width: none;
+
+        &::-webkit-scrollbar {
+            display: none;
+        }
+
+        @media (--until-tablet-l) {
+            row-gap: calc(var(--site-spacing) * 1.5);
+        }
+
+        @media (--for-phone-only) {
+            row-gap: var(--site-spacing);
+        }
+
+        @media (--for-tablet-l-up) {
+            grid-row: 1 / span 2;
+        }
+
+        @media (--motion-ok) {
+            scroll-behavior: smooth;
+        }
+    }
+
+    :global(.carousel--pagination) {
+        grid-area: nav;
+        align-self: center;
+
+        > :global(*) {
+            --_indicator-opacity: 25%;
+
+            padding: 0.5em;
+            border: 0;
+            background-color: hsl(var(--clr-white) / var(--_indicator-opacity));
+            cursor: pointer;
+            border-radius: 50%;
+            transition: background-color 0.25s ease-in-out;
+
+            &:is(:hover, :focus-visible) {
+                --_indicator-opacity: 50%;
+            }
+
+            &:is(.is-active, [aria-expanded='true'], [aria-selected='true']) {
+                --_indicator-opacity: 100%;
+            }
+        }
+
+        @media (--for-phone-only) {
+            margin-block-start: calc(var(--site-spacing) * -1);
+            padding-block-start: var(--site-spacing);
+            border-block-start: 1px solid hsl(var(--clr-white) / 25%);
+        }
+
+        grid-column: 2;
+        z-index: 1;
+
+        @media (--until-tablet-l) {
+            justify-content: center;
+        }
+    }
+</style>
+
+<script>
+    import './Carousel.js'
+</script>

@@ -1,0 +1,91 @@
+---
+import type { CollectionEntry } from 'astro:content'
+
+import { Image } from 'astro:assets'
+
+type Props = {
+    id: number
+    props: CollectionEntry<'crew'>
+}
+
+const { id, props } = Astro.props
+const { role, name, bio, image } = props.data
+---
+
+<div class="crew-info flow">
+    <h2 class="fs-fluid-700 ff-serif uppercase grid">
+        <span class="fs-fluid-600 text-white-50">{role}</span>
+        {name}
+    </h2>
+
+    <p class="ff-sans-normal text-accent">
+        {bio}
+    </p>
+</div>
+
+<figure class="crew-image">
+    <Image
+        src={image}
+        widths={[352, 640, image.width]}
+        sizes={`(width < 37.5em) 352px, (width < 56.25em) 640px, ${image.width}px`}
+        format="avif"
+        loading={id === 0 ? 'eager' : 'lazy'}
+        fetchpriority={id === 0 ? 'high' : 'low'}
+        alt={name}
+    />
+</figure>
+
+<style>
+    .crew-info {
+        grid-area: text;
+        align-self: end;
+
+        @media (--for-phone-only) {
+            align-self: start;
+        }
+
+        @media (--until-tablet-l) {
+            max-inline-size: 62ch;
+        }
+
+        @media (--for-tablet-l-up) {
+            > h2 {
+                white-space: nowrap;
+            }
+        }
+    }
+
+    .crew-image {
+        grid-area: image;
+        align-self: end;
+
+        > img {
+            block-size: 100%;
+            inline-size: 100%;
+            object-fit: contain;
+
+            @media (--for-phone-only) {
+                max-block-size: 14rem;
+            }
+
+            @media (--for-tablet-p-up) {
+                max-block-size: 28rem;
+            }
+
+            @media (--for-tablet-l-up) {
+                max-block-size: 38rem;
+            }
+
+            @media (--for-tablet-l-up) and (height > 56.25em) {
+                border-block-end: 1px solid hsl(var(--clr-white) / 25%);
+            }
+        }
+    }
+
+    .crew-info,
+    .crew-image {
+        @media (--until-tablet-l) {
+            justify-self: center;
+        }
+    }
+</style>

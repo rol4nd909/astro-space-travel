@@ -1,0 +1,45 @@
+<div class="carousel--snap">
+    <slot />
+</div>
+
+<style>
+    .carousel--snap {
+        grid-row: 1 / span 3;
+        grid-template-rows: var(--_rows, subgrid);
+
+        display: grid;
+        row-gap: inherit;
+        grid-template-areas:
+            'image'
+            'nav'
+            'text';
+
+        padding-inline: var(--site-spacing);
+        scroll-snap-align: center;
+        scroll-snap-stop: always;
+
+        @media (--until-tablet-l) {
+            row-gap: calc(var(--site-spacing) * 1.5);
+        }
+
+        @media (--for-phone-only) {
+            row-gap: var(--site-spacing);
+        }
+
+        @media (--for-tablet-p-up) {
+            grid-template-areas:
+                'text'
+                'nav'
+                'image';
+        }
+
+        @media (--for-tablet-l-up) {
+            grid-row: 1 / span 2;
+            grid-template-columns: 1fr minmax(18rem, 1fr);
+            grid-template-areas:
+                'text image'
+                'nav  image';
+            column-gap: var(--site-spacing);
+        }
+    }
+</style>

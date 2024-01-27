@@ -13,4 +13,15 @@ export const collections = {
         travel: z.string(),
       }),
   }),
+
+  crew: defineCollection({
+    type: 'data',
+    schema: ({ image }) =>
+      z.object({
+        name: z.string(),
+        image: image(),
+        role: z.string(),
+        bio: z.string(),
+      }),
+  }),
 }
