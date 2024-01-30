@@ -18,7 +18,7 @@ const currentPath = pathname.slice(1)
     </button>
 
     <div data-menu-list hidden>
-        <ul class="nav-list line-indicators flex fs-300" style="--underline-gap: 2.5rem">
+        <ul class="nav-list flex fs-300">
             <li>
                 <a
                     class:list={[
@@ -158,13 +158,41 @@ const currentPath = pathname.slice(1)
         }
     }
 
-    ul {
+    .nav-list {
+        --underline-gap: 2.5rem;
+        --line-thikness: 3px;
+        --_indicator-opacity: 0;
+
         margin: 0;
         padding: 0;
         list-style: none;
 
-        a {
+        :is(a) {
+            display: inline-flex;
+            border: none;
+            background-color: transparent;
+            cursor: pointer;
+            padding-block-end: calc(var(--underline-gap) - var(--line-thikness));
+            padding-inline: 0;
+            border-block-end: var(--line-thikness) solid
+                hsl(var(--clr-white) / var(--_indicator-opacity));
+            transition: border-color 0.25s ease-in-out;
             text-decoration: none;
+
+            &:is(:hover, :focus-visible) {
+                --_indicator-opacity: 50%;
+            }
+
+            &:is(.is-active, [aria-expanded='true'], [aria-selected='true']) {
+                --_indicator-opacity: 100%;
+
+                color: hsl(var(--clr-white));
+            }
+
+            &:is(:focus-visible) {
+                box-shadow: none;
+                color: hsl(var(--clr-outline));
+            }
         }
 
         [aria-hidden='true'] {
@@ -182,16 +210,14 @@ const currentPath = pathname.slice(1)
             align-content: flex-start;
             padding-block-start: min(7rem, 18vh);
 
-            &.line-indicators {
-                :is(a, button) {
-                    display: flex;
-                    padding-block-end: 0;
-                    padding-block: 0.25rem;
-                    padding-inline-start: 2rem;
-                    border-block-end: 0;
-                    border-inline-end: var(--line-thikness) solid
-                        hsl(var(--clr-white) / var(--_indicator-opacity));
-                }
+            :is(a) {
+                display: flex;
+                padding-block-end: 0;
+                padding-block: 0.25rem;
+                padding-inline-start: 2rem;
+                border-block-end: 0;
+                border-inline-end: var(--line-thikness) solid
+                    hsl(var(--clr-white) / var(--_indicator-opacity));
             }
         }
 

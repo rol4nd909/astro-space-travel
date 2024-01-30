@@ -8,6 +8,7 @@
 
   /* Prevent font size inflation */
   html {
+    scrollbar-gutter: stable both-edges;
     /* stylelint-disable property-no-vendor-prefix */
     -moz-text-size-adjust: none;
     -webkit-text-size-adjust: none;

@@ -55,6 +55,10 @@
     font-size: var(--fs-fluid-500);
   }
 
+  .fs-fluid-300 {
+    font-size: var(--fs-fluid-300);
+  }
+
   .fs-500 {
     font-size: var(--fs-500);
   }
@@ -89,37 +93,5 @@
 
   .fw-bold {
     font-weight: 700;
-  }
-
-  .line-indicators {
-    --underline-gap: 1rem;
-    --line-thikness: 3px;
-    --_indicator-opacity: 0;
-
-    :is(a, button) {
-      display: inline-flex;
-      border: none;
-      background-color: transparent;
-      cursor: pointer;
-      padding-block-end: calc(var(--underline-gap) - var(--line-thikness));
-      padding-inline: 0;
-      border-block-end: var(--line-thikness) solid hsl(var(--clr-white) / var(--_indicator-opacity));
-      transition: border-color 0.25s ease-in-out;
-
-      &:is(:hover, :focus-visible) {
-        --_indicator-opacity: 50%;
-      }
-
-      &:is(.is-active, [aria-expanded='true'], [aria-selected='true']) {
-        --_indicator-opacity: 100%;
-
-        color: hsl(var(--clr-white));
-      }
-
-      &:is(:focus-visible) {
-        box-shadow: none;
-        color: hsl(var(--clr-outline));
-      }
-    }
   }
 }

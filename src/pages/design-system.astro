@@ -206,7 +206,7 @@ import Layout from '@layouts/Layout.astro'
                     </div>
 
                     <div class="flow">
-                        <div class="dot-indicators flex demo">
+                        <div class="carousel--pagination flex demo">
                             <button aria-expanded="true">
                                 <span class="sr-only">Slide title</span>
                             </button>
@@ -230,6 +230,7 @@ import Layout from '@layouts/Layout.astro'
                             <button
                                 class="fs-fluid-600 ff-serif radius-round"
                                 aria-expanded="false"
+                                style="--_indicator-opacity: 100%"
                             >
                                 2</button
                             >
@@ -304,6 +305,60 @@ import Layout from '@layouts/Layout.astro'
 
         .demo {
             justify-content: center;
+        }
+
+        .carousel--pagination {
+            > * {
+                --_indicator-opacity: 25%;
+
+                padding: 0.5em;
+                border: 0;
+                background-color: hsl(var(--clr-white) / var(--_indicator-opacity));
+                cursor: pointer;
+                border-radius: 50%;
+                transition: background-color 0.25s ease-in-out;
+
+                &:is(:hover, :focus-visible) {
+                    --_indicator-opacity: 50%;
+                }
+
+                &:is(.is-active, [aria-expanded='true'], [aria-selected='true']) {
+                    --_indicator-opacity: 100%;
+                }
+            }
+        }
+
+        .line-indicators {
+            --underline-gap: 1rem;
+            --line-thikness: 3px;
+            --_indicator-opacity: 0;
+
+            :is(a, button) {
+                display: inline-flex;
+                border: none;
+                background-color: transparent;
+                cursor: pointer;
+                padding-block-end: calc(var(--underline-gap) - var(--line-thikness));
+                padding-inline: 0;
+                border-block-end: var(--line-thikness) solid
+                    hsl(var(--clr-white) / var(--_indicator-opacity));
+                transition: border-color 0.25s ease-in-out;
+
+                &:is(:hover, :focus-visible) {
+                    --_indicator-opacity: 50%;
+                }
+
+                &:is(.is-active, [aria-expanded='true'], [aria-selected='true']) {
+                    --_indicator-opacity: 100%;
+
+                    color: hsl(var(--clr-white));
+                }
+
+                &:is(:focus-visible) {
+                    box-shadow: none;
+                    color: hsl(var(--clr-outline));
+                }
+            }
         }
     }
 </style>

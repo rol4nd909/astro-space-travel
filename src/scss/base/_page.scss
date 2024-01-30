@@ -1,6 +1,12 @@
 @use '../functions/fluid' as *;
 
 @layer base {
+  html {
+    @media (width >= 125em) {
+      font-size: 1.25rem;
+    }
+  }
+
   body {
     display: grid;
     grid-template-rows: auto 1fr;

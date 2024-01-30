@@ -15,8 +15,7 @@
       [fullbleed-start] minmax(0, 1fr)
       [main-start] minmax(0, min(100% - (var(--site-spacing) * 2))) [main-end]
       minmax(0, 1fr) [fullbleed-end];
-    column-gap: var(--site-spacing);
-    row-gap: calc(var(--site-spacing) * 1.5);
+    gap: calc(var(--site-spacing) * 1.5) var(--site-spacing);
     padding-block: #{fluid(32px, 56px, 600px, 900px)};
 
     body:not(.home) & {
@@ -25,6 +24,10 @@
 
     body:is(.crew) & {
       padding-block-end: 0;
+
+      @media (--for-tablet-l-up) {
+        align-items: stretch;
+      }
     }
 
     > * {
@@ -50,8 +53,8 @@
         repeat(2, minmax(0, calc(var(--site-constrain) / 2 - var(--site-spacing) / 2)))
         [main-end]
         minmax(0, 1fr) [fullbleed-end];
-      align-items: center;
       padding-inline: 0;
+      align-items: center;
 
       body:is(.home) & {
         grid-template-rows: 1fr;
