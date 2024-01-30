@@ -18,7 +18,7 @@ const { name, description, distance, travel, image } = panelContent.data
     tabindex=`${id === 0 ? 0 : -1}`
     hidden=`${id !== 0}`
 >
-    <div class="image">
+    <figure class="image">
         <Image
             src={image}
             widths={[352, 640, image.width]}
@@ -28,7 +28,7 @@ const { name, description, distance, travel, image } = panelContent.data
             fetchpriority={id === 0 ? 'high' : 'low'}
             alt=""
         />
-    </div>
+    </figure>
 
     <div class="content flow">
         <h2 class="fs-fluid-800 ff-serif uppercase">{name}</h2>
