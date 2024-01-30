@@ -1,6 +1,6 @@
 import {scrollend} from 'https://cdn.jsdelivr.net/gh/argyleink/scrollyfills@latest/dist/scrollyfills.modern.js'
 
-export default class Carousel {
+export class Carousel {
   constructor(element) {
     this.elements = { 
       root:       element,
@@ -289,9 +289,3 @@ export default class Carousel {
     return document.firstElementChild.getAttribute('dir') || 'ltr'
   }
 }
-
-document.addEventListener('astro:page-load', () => {
-  document.querySelectorAll('.carousel').forEach(element => {
-    new Carousel(element)
-  })
-})

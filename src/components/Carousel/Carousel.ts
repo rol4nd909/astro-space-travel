@@ -5,7 +5,7 @@ interface IntersectionInfo {
   target: Element
 }
 
-class Carousel {
+export class Carousel {
   private elements: {
     root: Element
     scroller: Element
@@ -299,8 +299,8 @@ class Carousel {
   }
 }
 
-document.addEventListener('astro:page-load', () => {
-  document.querySelectorAll('.carousel').forEach((element) => {
-    new Carousel(element)
-  })
-})
+// document.addEventListener('astro:page-load', () => {
+//   document.querySelectorAll('.carousel').forEach((element) => {
+//     new Carousel(element)
+//   })
+// })
