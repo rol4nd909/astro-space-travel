@@ -48,9 +48,10 @@ const { items } = Astro.props
 </style>
 
 <script>
-    document.addEventListener('astro:page-load', () => {
+    // document.addEventListener('astro:page-load', () => {
+    export const TabbedContent = (domNode: HTMLElement): void => {
         // Find the container for the tabs
-        const tabsList = document.querySelector<HTMLElement>('[role=tablist]')
+        const tabsList = domNode.querySelector<HTMLElement>('[role=tablist]')
         if (!tabsList) return // If no tablist is found, exit the function
 
         // Get all the tab elements
@@ -176,5 +177,10 @@ const { items } = Astro.props
 
         // Initialize the tabbed content with the active tab
         switchTab(activeTab)
-    })
+        // })
+    }
+
+    const tabbed = document.querySelectorAll<HTMLElement>('.tabs')
+
+    tabbed.forEach(TabbedContent)
 </script>

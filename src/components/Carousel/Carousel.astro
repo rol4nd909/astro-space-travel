@@ -128,9 +128,9 @@
 <script>
     import { Carousel } from './Carousel.js'
 
-    document.addEventListener('astro:page-load', () => {
-        document.querySelectorAll('.carousel').forEach((element) => {
-            new Carousel(element)
-        })
+    // document.addEventListener('astro:page-load', () => {
+    document.querySelectorAll('.carousel').forEach((element) => {
+        new Carousel(element)
     })
+    // })
 </script>
