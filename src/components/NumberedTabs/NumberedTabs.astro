@@ -1,0 +1,53 @@
+---
+import type { CollectionEntry } from 'astro:content'
+import NumberedTabsList from './NumberedTabsList.astro'
+import NumberedTabsTrigger from './NumberedTabsTrigger.astro'
+import NumberedTabsContent from './NumberedTabsContent.astro'
+
+type Props = {
+    items: CollectionEntry<'technology'>[]
+}
+
+const { items } = Astro.props
+---
+
+<div class="numbered-tabs">
+    <NumberedTabsList>
+        {items.map((_item, id) => <NumberedTabsTrigger id={id} />)}
+    </NumberedTabsList>
+
+    {items.map((item, id) => <NumberedTabsContent id={id} panelContent={item} />)}
+</div>
+
+<style>
+    .numbered-tabs {
+        grid-column: fullbleed;
+        max-inline-size: inherit;
+
+        display: grid;
+        grid-template-columns: subgrid;
+        grid-template-rows: repeat(3, max-content);
+        grid-template-areas:
+            'image image   image'
+            '..... tablist .....'
+            '..... content .....';
+        row-gap: calc(var(--site-spacing) * 1.5);
+
+        @media (--for-tablet-l-up) {
+            grid-column: main / fullbleed;
+
+            grid-template-columns: max-content 1fr minmax(10rem, 1fr);
+            grid-template-rows: auto;
+            grid-template-areas: 'tablist content iamge';
+            column-gap: calc(var(--site-spacing) * 2);
+            align-items: center;
+        }
+    }
+</style>
+
+<script>
+    import { TabbedContent } from "@/scripts/TabbedContent";
+
+    const tabbed = document.querySelectorAll<HTMLElement>('.numbered-tabs')
+    tabbed.forEach(TabbedContent)
+</script>

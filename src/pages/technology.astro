@@ -1,14 +1,18 @@
 ---
+import NumberedTabs from '@/components/NumberedTabs/NumberedTabs.astro'
 import NumberedTitle from '@/components/NumberedTitle.astro'
 import Main from '@components/Main.astro'
 import Layout from '@layouts/Layout.astro'
+import { getCollection } from 'astro:content'
+
+const technologies = await getCollection('technology')
 ---
 
 <Layout title="Space Tourism | Technology" className="technology">
     <Main>
         <NumberedTitle tag="h1" number="03">Space Launch 101</NumberedTitle>
 
-        <div class="number-tabs">
+        <!-- <div class="number-tabs">
             <div
                 class="number-indicators grid demo"
                 data-astro-cid-ddzzjigo=""
@@ -66,7 +70,9 @@ import Layout from '@layouts/Layout.astro'
                     <img src="/technology/image-launch-vehicle-portrait.jpg" alt="" />
                 </div>
             </div>
-        </div>
+        </div> -->
+
+        <NumberedTabs items={technologies}/>
     </Main>
 </Layout>
 

@@ -1,0 +1,83 @@
+---
+import { Picture } from 'astro:assets'
+import type { CollectionEntry } from 'astro:content'
+import AdaptiveImage from '../AdaptiveImage.astro'
+
+type Props = {
+    id: number
+    panelContent: CollectionEntry<'technology'>
+}
+
+const { id, panelContent } = Astro.props
+const { name, description, images } = panelContent.data
+---
+
+<div
+    id=`tabpanel-${id}`
+    role="tabpanel"
+    aria-labelledby=`tab-${id}`
+    tabindex=`${id === 0 ? 0 : -1}`
+    hidden=`${id !== 0}`
+>
+    <div class="info flow">
+        <h2 class="fs-fluid-700 ff-serif uppercase grid">
+            <span class="fs-fluid-300 ff-sans-cond letter-spacing-3 text-accent"
+                >The terminology...</span
+            >
+            {name}
+        </h2>
+        <p>{description}</p>
+    </div>
+    
+    <div class="picture">
+        <AdaptiveImage desktopImageUrl={images.portrait} mobileImageUrl={images.landscape} alt="{name}" />
+    </div>
+</div>
+
+<style lang="scss">
+    [role='tabpanel'] {
+        grid-row: 1 / -1;
+        grid-column: 1 / -1;
+
+        place-items: center;
+        grid-template-rows: subgrid;
+        grid-template-columns: subgrid;
+
+        &:not([hidden]),
+        &:is([hidden='false']) {
+            display: grid;
+        }
+
+        @media (--until-tablet-l) {
+            > * {
+                max-inline-size: 62ch;
+            }
+        }
+
+        @media (--for-tablet-l-up) {
+            grid-column: 1 / -1;
+        }
+
+        > .info {
+            grid-area: content;
+        }
+
+        > .picture {
+            grid-area: image;
+
+            max-inline-size: inherit;
+            inline-size: 100%;
+            aspect-ratio: 12 / 4;
+
+            :global(img) {
+                block-size: 100%;
+                inline-size: 100%;
+                object-fit: cover;
+            }
+
+            @media (--for-tablet-l-up) {
+                aspect-ratio: 1;
+            }
+        }
+    }
+</style>

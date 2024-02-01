@@ -24,4 +24,17 @@ export const collections = {
         bio: z.string(),
       }),
   }),
+
+  technology: defineCollection({
+    type: 'data',
+    schema: ({ image }) =>
+      z.object({
+        name: z.string(),
+        images: z.object({
+          portrait: image(),
+          landscape: image(),
+        }),
+        description: z.string(),
+      }),
+  }),
 }

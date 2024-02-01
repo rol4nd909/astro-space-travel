@@ -1,0 +1,45 @@
+---
+type Props = {
+    id: number
+}
+
+const { id } = Astro.props
+---
+
+<button
+    class="fs-fluid-600 ff-serif radius-round"
+    type="button"
+    id=`tab-${id}`
+    role="tab"
+    aria-selected=`${id === 0 ? 'true' : 'false'}`
+    aria-controls=`tabpanel-${id}`
+    tabindex=`${id === 0 ? 0 : -1}`>{id + 1}</button
+>
+
+<style>
+    button {
+        --_indicator-opacity: 25%;
+        --_clr: var(--clr-white);
+        --_clr-bg: transparent;
+
+        display: grid;
+        place-items: center;
+        inline-size: 2.5em;
+        aspect-ratio: 1;
+        cursor: pointer;
+        border: 1px solid hsl(var(--clr-white) / var(--_indicator-opacity));
+        background-color: var(--_clr-bg);
+        color: hsl(var(--_clr));
+        transition: border-color 0.25s ease-in-out;
+
+        &:is(:hover, :focus-visible) {
+            --_indicator-opacity: 100%;
+        }
+
+        &:is(.is-active, [aria-expanded='true'], [aria-selected='true']) {
+            --_indicator-opacity: 100%;
+            --_clr: var(--clr-dark);
+            --_clr-bg: hsl(var(--clr-white));
+        }
+    }
+</style>

@@ -1,0 +1,20 @@
+<div role="tablist">
+    <slot />
+</div>
+
+<style lang="scss">
+    [role='tablist'] {
+        grid-area: tablist;
+
+        display: flex;
+        justify-content: center;
+        row-gap: 2rem;
+        column-gap: 1rem;
+
+        z-index: 1;
+
+        @media (--for-tablet-l-up) {
+            display: grid;
+        }
+    }
+</style>
