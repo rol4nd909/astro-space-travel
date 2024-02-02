@@ -11,67 +11,7 @@ const technologies = await getCollection('technology')
 <Layout title="Space Tourism | Technology" className="technology">
     <Main>
         <NumberedTitle tag="h1" number="03">Space Launch 101</NumberedTitle>
-
-        <!-- <div class="number-tabs">
-            <div
-                class="number-indicators grid demo"
-                data-astro-cid-ddzzjigo=""
-                data-astro-source-file="/Users/rol4nd/projects/personal/astro-space-travel/src/pages/design-system.astro"
-                data-astro-source-loc="226:66"
-            >
-                <button
-                    class="fs-fluid-600 ff-serif radius-round"
-                    aria-expanded="true"
-                    data-astro-cid-ddzzjigo=""
-                    data-astro-source-file="/Users/rol4nd/projects/personal/astro-space-travel/src/pages/design-system.astro"
-                    data-astro-source-loc="227:101"
-                >
-                    1</button
-                >
-                <button
-                    class="fs-fluid-600 ff-serif radius-round"
-                    aria-expanded="false"
-                    style="--_indicator-opacity: 100%"
-                    data-astro-cid-ddzzjigo=""
-                    data-astro-source-file="/Users/rol4nd/projects/personal/astro-space-travel/src/pages/design-system.astro"
-                    data-astro-source-loc="234:30"
-                >
-                    2</button
-                >
-                <button
-                    class="fs-fluid-600 ff-serif radius-round"
-                    aria-expanded="false"
-                    data-astro-cid-ddzzjigo=""
-                    data-astro-source-file="/Users/rol4nd/projects/personal/astro-space-travel/src/pages/design-system.astro"
-                    data-astro-source-loc="240:30"
-                >
-                    3</button
-                >
-            </div>
-
-            <div class="panel">
-                <div class="info flow">
-                    <h2 class="fs-fluid-700 ff-serif uppercase grid">
-                        <span class="fs-fluid-300 ff-sans-cond letter-spacing-3 text-accent"
-                            >The terminology...</span
-                        >
-                        Launch vehicle
-                    </h2>
-
-                    <p>
-                        A launch vehicle or carrier rocket is a rocket-propelled vehicle used to
-                        carry a payload from Earth's surface to space, usually to Earth orbit or
-                        beyond. Our WEB-X carrier rocket is the most powerful in operation. Standing
-                        150 metres tall, it's quite an awe-inspiring sight on the launch pad!
-                    </p>
-                </div>
-
-                <div class="image">
-                    <img src="/technology/image-launch-vehicle-portrait.jpg" alt="" />
-                </div>
-            </div>
-        </div> -->
-
+        
         <NumberedTabs items={technologies}/>
     </Main>
 </Layout>
@@ -79,7 +19,6 @@ const technologies = await getCollection('technology')
 <style>
     .number-tabs {
         grid-column: main / fullbleed;
-        /* background-color: hotpink; */
         display: grid;
         grid-template-columns: max-content 1fr minmax(10rem, 1fr);
         max-inline-size: 100%;
