@@ -58,6 +58,8 @@
 
       body:is(.home) & {
         grid-template-rows: 1fr;
+        align-items: end;
+        padding-block-end: max(8rem, 15vh);
 
         > :first-child {
           grid-column: 2;

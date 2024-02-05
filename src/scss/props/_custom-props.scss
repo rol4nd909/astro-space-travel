@@ -64,6 +64,7 @@
     --animation-slide-out-right: slide-out-right 0.5s var(--ease);
     --animation-slide-out-left: slide-out-left 0.5s var(--ease);
     --animation-pulse: pulse 2s var(--ease-out) infinite;
+    --animation-spin: spin 2s linear infinite;
   }
 
   @keyframes fade-in {
@@ -104,6 +105,12 @@
   @keyframes pulse {
     50% {
       transform: scale(1.25);
+    }
+  }
+
+  @keyframes spin {
+    to {
+      transform: rotate(1turn);
     }
   }
 }
