@@ -2,32 +2,37 @@
 import { getImage } from 'astro:assets'
 
 type Props = {
-  alt: string
-  className?: string
-  breakpoint?: number
-  desktopImageUrl: string | ImageMetadata
-  mobileImageUrl: string | ImageMetadata
+    alt: string
+    className?: string
+    breakpoint?: number
+    desktopImageUrl: string | ImageMetadata
+    mobileImageUrl: string | ImageMetadata
 }
 
-const {alt, className, breakpoint = 900, desktopImageUrl, mobileImageUrl} = Astro.props
+const { alt, className, breakpoint = 900, desktopImageUrl, mobileImageUrl } = Astro.props
 
 const mobileImage = await getImage({
     src: mobileImageUrl,
     format: 'avif',
     width: 800,
-    height: 333
+    height: 333,
 })
 
 const desktopImage = await getImage({
     src: desktopImageUrl,
     format: 'avif',
     width: 800,
-    height: 800
+    height: 800,
 })
 ---
 
 <picture class={className}>
     <source media={`(width < ${breakpoint / 16}em)`} srcset={mobileImage?.src || null} />
     <source media={`(width >= ${breakpoint / 16}em)`} srcset={desktopImage?.src || null} />
-    <img src={desktopImage?.src || null} alt={alt} />
+    <img
+        src={desktopImage?.src || null}
+        width={desktopImage.options.width}
+        height={desktopImage.options.height}
+        {alt}
+    />
 </picture>
