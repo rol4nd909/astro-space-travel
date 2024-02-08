@@ -3,7 +3,7 @@ const pathname = new URL(Astro.request.url).pathname
 const currentPath = pathname.slice(1)
 ---
 
-<nav role="navigation" aria-label="Site Navigation" data-menu>
+<nav aria-label="Site Navigation" data-menu>
     <button
         aria-expanded="false"
         aria-controls="main-nav"
@@ -17,7 +17,7 @@ const currentPath = pathname.slice(1)
         </svg>
     </button>
 
-    <div data-menu-list hidden>
+    <div id="main-nav" data-menu-list hidden>
         <ul class="nav-list flex fs-300">
             <li>
                 <a
