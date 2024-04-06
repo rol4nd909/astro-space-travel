@@ -1,11 +1,6 @@
 ---
 import '@styles/global.scss'
-import '@fontsource/barlow/latin-400.css'
-import '@fontsource/barlow-condensed/latin-400.css'
-import '@fontsource/barlow-condensed/latin-700.css'
-import '@fontsource/bellefair/latin.css'
-
-// import { ViewTransitions } from 'astro:transitions'
+import { AstroFont } from 'astro-font'
 
 interface Props {
     title?: string
@@ -29,7 +24,38 @@ const {
         <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
         <meta name="generator" content={Astro.generator} />
         <title>{title}</title>
-        <!-- <ViewTransitions /> -->
+        <AstroFont
+            config={[
+                {
+                    src: [],
+                    name: 'Barlow',
+                    preload: false,
+                    display: 'swap',
+                    fallback: 'sans-serif',
+                    cssVariable: 'ff-sans-normal',
+                    googleFontsURL: 'https://fonts.googleapis.com/css?family=Barlow:wght@400',
+                },
+                {
+                    src: [],
+                    preload: true,
+                    display: 'swap',
+                    name: 'Bellefair',
+                    fallback: 'serif',
+                    cssVariable: 'ff-serif',
+                    googleFontsURL: 'https://fonts.googleapis.com/css?family=Bellefair',
+                },
+                {
+                    src: [],
+                    preload: false,
+                    display: 'swap',
+                    fallback: 'sans-serif',
+                    name: 'Barlow Condensed',
+                    cssVariable: 'ff-sans-cond',
+                    googleFontsURL:
+                        'https://fonts.googleapis.com/css?family=Barlow+Condensed:wght@400,700',
+                },
+            ]}
+        />
     </head>
     <body class=`${className}`>
         <slot />
