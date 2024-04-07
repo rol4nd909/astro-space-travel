@@ -34,6 +34,9 @@
     // letter-spacing
     --ls-900: #{fluid(2.7px, 4.75px, 600px)};
     --ls-400: #{fluid(1.25px, 2px, 600px)};
+    --ls-3: 2.35px;
+    --ls-2: 2.7px;
+    --ls-1: 4.75px;
 
     // outline
     --outline: 0 0 0 3px hsl(var(--clr-outline));
