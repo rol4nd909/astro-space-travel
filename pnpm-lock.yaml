@@ -8,15 +8,6 @@ dependencies:
   '@astrojs/react':
     specifier: ^3.0.10
     version: 3.0.10(@types/react-dom@18.2.18)(@types/react@18.2.48)(react-dom@18.2.0)(react@18.2.0)(vite@5.2.8)
-  '@fontsource/barlow':
-    specifier: ^5.0.8
-    version: 5.0.8
-  '@fontsource/barlow-condensed':
-    specifier: ^5.0.8
-    version: 5.0.8
-  '@fontsource/bellefair':
-    specifier: ^5.0.8
-    version: 5.0.8
   '@types/react':
     specifier: ^18.2.48
     version: 18.2.48
@@ -26,6 +17,9 @@ dependencies:
   astro:
     specifier: ^4.4.0
     version: 4.4.0(sass@1.70.0)
+  astro-font:
+    specifier: ^0.0.80
+    version: 0.0.80
   astro-icon:
     specifier: ^1.0.2
     version: 1.0.4
@@ -1237,18 +1231,6 @@ packages:
     dev: false
     optional: true
 
-  /@fontsource/barlow-condensed@5.0.8:
-    resolution: {integrity: sha512-o5NI0PLXhVmrAQVVbrJTaDodTEc9Aq5vITEwR2zIGpVPWzu7c4JPzG7PvkbHBAIsVyhRE7JNoMUGubl8PgpeZA==}
-    dev: false
-
-  /@fontsource/barlow@5.0.8:
-    resolution: {integrity: sha512-RMUw8YyoNG3o1rwMnfyyWqYuR7k6H48yYZwpCsgY0x7jeaRdp/FdyG6lPLD5P403kDyqauewldk+VDPhQ65+4w==}
-    dev: false
-
-  /@fontsource/bellefair@5.0.8:
-    resolution: {integrity: sha512-Yreu4V1ISpr1I1usrHFcYqj3SezoWZdUey5VHi3F9mn75ci0CyPA4iio5oH54mWWkZV9VASQZWgB+n9+R0Zaxg==}
-    dev: false
-
   /@iconify/tools@3.0.7:
     resolution: {integrity: sha512-DxfhFLMnooS34dHelpGUnnYrxLZHs0czC1CgrBhAbuL8ddVzBb2VEQm8kh9qGh7A34qeXAB5iSHH3A72rAaFrg==}
     dependencies:
@@ -1882,6 +1864,10 @@ packages:
     resolution: {integrity: sha512-Z7tMw1ytTXt5jqMcOP+OQteU1VuNK9Y02uuJtKQ1Sv69jXQKKg5cibLwGJow8yzZP+eAc18EmLGPal0bp36rvQ==}
     engines: {node: '>=8'}
     dev: true
+
+  /astro-font@0.0.80:
+    resolution: {integrity: sha512-RjUANXSNdt0Yp2Tpyn7woBg67hCX2Gy1OiiA7B0NX501LcrzvFHoX98CoBgJC5af3tj3fznfLqqBmMr7wu6+fQ==}
+    dev: false
 
   /astro-icon@1.0.4:
     resolution: {integrity: sha512-z/9lqZjMldbT4cSmgVQLAiUFq+8yJuxVfHmTMfHOZ1EYq54AMaot9cDxfczLOVo65kz3VwymAD6r2EC5Zp6XrA==}
