@@ -254,7 +254,7 @@ export class Carousel {
   }
 
   #createPagination() {
-    let nav = document.createElement('nav')
+    let nav = document.createElement('div')
 
     nav.className = 'carousel--pagination flex'
     nav.setAttribute('role', 'tablist')
