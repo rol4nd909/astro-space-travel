@@ -11,31 +11,36 @@
   },
   "dependencies": {
     "@astrojs/react": "^3.6.2",
-    "@fontsource/barlow": "^5.0.8",
-    "@fontsource/barlow-condensed": "^5.0.8",
-    "@fontsource/bellefair": "^5.0.8",
-    "@types/react": "^18.2.48",
-    "@types/react-dom": "^18.2.18",
+    "@fontsource/barlow": "^5.0.13",
+    "@fontsource/barlow-condensed": "^5.0.13",
+    "@fontsource/bellefair": "^5.0.13",
+    "@types/react": "^18.3.3",
+    "@types/react-dom": "^18.3.0",
     "astro": "^4.13.3",
-    "astro-icon": "^1.0.4",
-    "react": "^18.2.0",
-    "react-dom": "^18.2.0"
+    "astro-icon": "^1.1.0",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1"
   },
   "devDependencies": {
-    "@csstools/postcss-global-data": "^2.1.1",
-    "autoprefixer": "^10.4.17",
-    "postcss": "^8.4.38",
-    "postcss-custom-media": "^10.0.2",
-    "postcss-preset-env": "^9.3.0",
-    "prettier": "^3.2.4",
-    "prettier-plugin-astro": "^0.12.3",
-    "sass": "^1.70.0",
-    "sharp": "^0.33.2",
-    "stylelint": "^15.11.0",
+    "@csstools/postcss-global-data": "^3.0.0",
+    "autoprefixer": "^10.4.20",
+    "postcss": "^8.4.41",
+    "postcss-custom-media": "^11.0.0",
+    "postcss-preset-env": "^10.0.0",
+    "prettier": "^3.3.3",
+    "prettier-plugin-astro": "^0.14.1",
+    "sass": "^1.77.8",
+    "sharp": "^0.33.4",
+    "stylelint": "^16.8.1",
     "stylelint-config-idiomatic-css": "^1.1.0",
     "stylelint-config-prettier": "^9.0.5",
-    "stylelint-config-recommended-scss": "^13.1.0",
-    "stylelint-config-standard": "^34.0.0",
-    "stylelint-plugin-logical-css": "^0.13.2"
+    "stylelint-config-recommended-scss": "^14.1.0",
+    "stylelint-config-standard": "^36.0.1",
+    "stylelint-plugin-logical-css": "^1.2.1"
+  },
+  "pnpm": {
+    "overrides": {
+      "@iconify/tools": "^4.0.5"
+    }
   }
 }
