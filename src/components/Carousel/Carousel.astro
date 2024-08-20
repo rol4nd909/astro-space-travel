@@ -91,7 +91,7 @@
         grid-area: nav;
         align-self: center;
 
-        > :global(*) {
+        :global(> button) {
             --_indicator-opacity: 25%;
 
             padding: 0.5em;
@@ -100,14 +100,14 @@
             cursor: pointer;
             border-radius: 50%;
             transition: background-color 0.25s ease-in-out;
+        }
 
-            &:is(:hover, :focus-visible) {
-                --_indicator-opacity: 50%;
-            }
+        :global(> button:is(:hover, :focus-visible)) {
+            --_indicator-opacity: 50%;
+        }
 
-            &:is(.is-active, [aria-expanded='true'], [aria-selected='true']) {
-                --_indicator-opacity: 100%;
-            }
+        :global(> button:is(.is-active, [aria-expanded='true'], [aria-selected='true'])) {
+            --_indicator-opacity: 100%;
         }
 
         @media (--for-phone-only) {
@@ -128,9 +128,9 @@
 <script>
     import { Carousel } from './Carousel.js'
 
-    // document.addEventListener('astro:page-load', () => {
-    document.querySelectorAll('.carousel').forEach((element) => {
-        new Carousel(element)
+    document.addEventListener('astro:page-load', () => {
+        document.querySelectorAll('.carousel').forEach((element) => {
+            new Carousel(element)
+        })
     })
-    // })
 </script>
