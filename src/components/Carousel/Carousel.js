@@ -148,12 +148,12 @@ export class Carousel {
         .filter(x => x.removedNodes.length > 0)
         .forEach(mutation => {
           [...mutation.removedNodes]
-            .filter(x => x.querySelector('.carousel') === this.elements.root)
-            .forEach(removedEl => {
-              this.#unlisten()
-            })
+          .filter(x => Element.prototype.isPrototypeOf(x) && x.querySelector('.carousel') === this.elements.root)
+          .forEach(removedEl => {
+            this.#unlisten()
+          })
         })
-    })
+      })
   }
 
   #initializeState() {

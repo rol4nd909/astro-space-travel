@@ -46,8 +46,10 @@ const { items } = Astro.props
 </style>
 
 <script>
-    import { TabbedContent } from "@/scripts/TabbedContent";
+    import { TabbedContent } from '@/scripts/TabbedContent'
 
-    const tabbed = document.querySelectorAll<HTMLElement>('.numbered-tabs')
-    tabbed.forEach(TabbedContent)
+    document.addEventListener('astro:page-load', () => {
+        const tabbed = document.querySelectorAll<HTMLElement>('.numbered-tabs')
+        tabbed.forEach(TabbedContent)
+    })
 </script>
