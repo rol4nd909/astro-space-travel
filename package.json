@@ -16,7 +16,7 @@
     "@fontsource/bellefair": "^5.0.14",
     "@types/react": "^18.3.4",
     "@types/react-dom": "^18.3.0",
-    "astro": "^4.16.1",
+    "astro": "^4.16.17",
     "astro-icon": "^1.1.1",
     "react": "^18.3.1",
     "react-dom": "^18.3.1"
@@ -24,7 +24,7 @@
   "devDependencies": {
     "@csstools/postcss-global-data": "^3.0.0",
     "autoprefixer": "^10.4.20",
-    "postcss": "^8.4.48",
+    "postcss": "^8.4.49",
     "postcss-custom-media": "^11.0.1",
     "postcss-preset-env": "^10.0.2",
     "prettier": "^3.3.3",
