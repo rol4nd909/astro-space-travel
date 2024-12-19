@@ -16,7 +16,7 @@
     "@fontsource/bellefair": "^5.0.14",
     "@types/react": "^18.3.4",
     "@types/react-dom": "^18.3.0",
-    "astro": "^4.16.17",
+    "astro": "^4.16.18",
     "astro-icon": "^1.1.1",
     "react": "^18.3.1",
     "react-dom": "^18.3.1"
