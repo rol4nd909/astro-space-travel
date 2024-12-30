@@ -2,9 +2,7 @@
 
 // New way to define view transitions the default behavior is a fade transition
 // between views
-/* stylelint-disable-next-line scss/at-rule-no-unknown */
 @view-transition {
-  /* stylelint-disable-next-line property-no-unknown */
   navigation: auto;
 }
 

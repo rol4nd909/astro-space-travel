@@ -10,13 +10,13 @@
     "astro": "astro"
   },
   "dependencies": {
-    "@astrojs/react": "^3.6.2",
+    "@astrojs/react": "^4.1.2",
     "@fontsource/barlow": "^5.0.14",
     "@fontsource/barlow-condensed": "^5.0.14",
     "@fontsource/bellefair": "^5.0.14",
     "@types/react": "^18.3.4",
     "@types/react-dom": "^18.3.0",
-    "astro": "^4.16.18",
+    "astro": "^5.1.1",
     "astro-icon": "^1.1.1",
     "react": "^18.3.1",
     "react-dom": "^18.3.1"
@@ -31,12 +31,12 @@
     "prettier-plugin-astro": "^0.14.1",
     "sass": "^1.77.8",
     "sharp": "^0.33.5",
-    "stylelint": "^16.9.0",
+    "stylelint": "^16.10.0",
     "stylelint-config-idiomatic-css": "^1.1.0",
     "stylelint-config-prettier": "^9.0.5",
     "stylelint-config-recommended-scss": "^14.1.0",
     "stylelint-config-standard": "^36.0.1",
     "stylelint-plugin-logical-css": "^1.2.1"
   },
-  "packageManager": "pnpm@8.10.5+sha1.4370a069f21873a0ad83c785b8048ed8caf6e6e9"
+  "packageManager": "pnpm@9.12.1"
 }
