@@ -1,5 +1,5 @@
 ---
-import { Icon } from 'astro-icon/components'
+import Logo from '@/icons/logo.svg'
 
 interface Props {
     title?: string
@@ -11,7 +11,7 @@ const { title } = Astro.props
 <header class="lane">
     <div class="flex">
         <a href="/" class="logo">
-            <Icon name="logo" size={48} />
+            <Logo width={48} height={48} aria-hidden />
             <span class="sr-only">Back to homepage</span>
         </a>
         <h1 class="fs-450 uppercase letter-spacing-1">{title}</h1>
@@ -44,5 +44,9 @@ const { title } = Astro.props
 
     .fs-450 {
         font-size: 1.5rem;
+    }
+
+    .logo {
+        display: grid;
     }
 </style>

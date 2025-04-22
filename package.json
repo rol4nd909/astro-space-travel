@@ -10,16 +10,10 @@
     "astro": "astro"
   },
   "dependencies": {
-    "@astrojs/react": "^4.2.3",
     "@fontsource/barlow": "^5.2.5",
     "@fontsource/barlow-condensed": "^5.2.5",
     "@fontsource/bellefair": "^5.2.5",
-    "@types/react": "^19.1.0",
-    "@types/react-dom": "^19.1.1",
-    "astro": "^5.6.1",
-    "astro-icon": "^1.1.5",
-    "react": "^19.1.0",
-    "react-dom": "^19.1.0"
+    "astro": "^5.7.4"
   },
   "devDependencies": {
     "@csstools/postcss-global-data": "^3.0.0",
