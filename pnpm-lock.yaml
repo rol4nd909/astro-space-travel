@@ -1673,6 +1673,7 @@ packages:
     peerDependenciesMeta:
       picomatch:
         optional: true
+
   file-entry-cache@10.1.1:
     resolution: {integrity: sha512-zcmsHjg2B2zjuBgjdnB+9q0+cWcgWfykIcsDkWDB4GTPtl1eXUA+gTI6sO0u01AqK3cliHryTU55/b2Ow1hfZg==}
 
@@ -2834,10 +2835,6 @@ packages:
     resolution: {integrity: sha512-tX5e7OM1HnYr2+a2C/4V0htOcSQcoSTH9KgJnVvNm5zm/cyEWKJ7j7YutsH9CxMdtOkkLFy2AHrMci9IM8IPZQ==}
     engines: {node: '>=12.0.0'}
 
-  tinyglobby@0.2.13:
-    resolution: {integrity: sha512-mEwzpUgrLySlveBwEVDMKk5B57bhLPYovRfPAXD5gA/98Opn0rCDj3GtLwFvCvH5RK9uPCExUROW5NjDwvqkxw==}
-    engines: {node: '>=12.0.0'}
-
   to-regex-range@5.0.1:
     resolution: {integrity: sha512-65P7iz6X5yEr1cwcgvQxbbIw7Uk3gOy5dIdtZ4rDveLqhrdJP+Li/Hx6tyK0NEb+2GCyneCMJiGqrADCSNk8sQ==}
     engines: {node: '>=8.0'}
@@ -3007,7 +3004,6 @@ packages:
 
   vite@6.3.5:
     resolution: {integrity: sha512-cZn6NDFE7wdTpINgs++ZJ4N49W2vRp8LCKrn3Ob1kYNtOo21vfDoaV5GzBfLU4MovSAB8uNRm4jgzVQZ+mBzPQ==}
-
     engines: {node: ^18.0.0 || ^20.0.0 || >=22.0.0}
     hasBin: true
     peerDependencies:
@@ -3133,8 +3129,8 @@ packages:
       typescript: ^4.9.4 || ^5.0.2
       zod: ^3
 
-  zod@3.25.61:
-    resolution: {integrity: sha512-fzfJgUw78LTNnHujj9re1Ov/JJQkRZZGDMcYqSx7Hp4rPOkKywaFHq0S6GoHeXs0wGNE/sIOutkXgnwzrVOGCQ==}
+  zod@3.25.62:
+    resolution: {integrity: sha512-YCxsr4DmhPcrKPC9R1oBHQNlQzlJEyPAId//qTau/vBee9uO8K6prmRq4eMkOyxvBfH4wDPIPdLx9HVMWIY3xA==}
 
   zwitch@2.0.4:
     resolution: {integrity: sha512-bXE4cR/kVZhKZX/RjPEflHaKVhUVl85noU3v6b8apfQEc1x4A+zBxjZ4lN8LqGd6WZ3dl98pY4o717VFmoPp+A==}
@@ -4278,9 +4274,9 @@ snapshots:
       xxhash-wasm: 1.1.0
       yargs-parser: 21.1.1
       yocto-spinner: 0.2.3
-      zod: 3.25.61
-      zod-to-json-schema: 3.24.5(zod@3.25.61)
-      zod-to-ts: 1.2.0(typescript@5.5.4)(zod@3.25.61)
+      zod: 3.25.62
+      zod-to-json-schema: 3.24.5(zod@3.25.62)
+      zod-to-ts: 1.2.0(typescript@5.5.4)(zod@3.25.62)
     optionalDependencies:
       sharp: 0.33.5
     transitivePeerDependencies:
@@ -4746,6 +4742,7 @@ snapshots:
   fdir@6.4.6(picomatch@4.0.2):
     optionalDependencies:
       picomatch: 4.0.2
+
   file-entry-cache@10.1.1:
     dependencies:
       flat-cache: 6.1.10
@@ -6315,11 +6312,6 @@ snapshots:
       fdir: 6.4.6(picomatch@4.0.2)
       picomatch: 4.0.2
 
-  tinyglobby@0.2.13:
-    dependencies:
-      fdir: 6.4.4(picomatch@4.0.2)
-      picomatch: 4.0.2
-
   to-regex-range@5.0.1:
     dependencies:
       is-number: 7.0.0
@@ -6468,7 +6460,6 @@ snapshots:
     optionalDependencies:
       vite: 6.3.5(@types/node@24.0.0)(sass@1.89.2)
 
-
   web-namespaces@2.0.1: {}
 
   webidl-conversions@3.0.1: {}
@@ -6528,15 +6519,15 @@ snapshots:
 
   yoctocolors@2.1.1: {}
 
-  zod-to-json-schema@3.24.5(zod@3.25.61):
+  zod-to-json-schema@3.24.5(zod@3.25.62):
     dependencies:
-      zod: 3.25.61
+      zod: 3.25.62
 
-  zod-to-ts@1.2.0(typescript@5.5.4)(zod@3.25.61):
+  zod-to-ts@1.2.0(typescript@5.5.4)(zod@3.25.62):
     dependencies:
       typescript: 5.5.4
-      zod: 3.25.61
+      zod: 3.25.62
 
-  zod@3.25.61: {}
+  zod@3.25.62: {}
 
   zwitch@2.0.4: {}
