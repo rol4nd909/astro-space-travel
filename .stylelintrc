@@ -3,11 +3,9 @@
   "extends": [
     "stylelint-config-standard",
     "stylelint-config-recommended-scss",
-    "stylelint-config-idiomatic-css",
     "stylelint-config-prettier"
   ],
   "rules": {
-    "indentation": 2,
     "at-rule-no-unknown": null,
     "scss/at-extend-no-missing-placeholder": null,
     "no-descending-specificity": null,
