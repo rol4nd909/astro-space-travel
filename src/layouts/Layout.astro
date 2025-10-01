@@ -4,9 +4,6 @@ import '@fontsource/barlow/latin-400.css'
 import '@fontsource/barlow-condensed/latin-400.css'
 import '@fontsource/barlow-condensed/latin-700.css'
 import '@fontsource/bellefair/latin.css'
-
-import { ViewTransitions } from 'astro:transitions'
-
 interface Props {
     title?: string
     description?: string
@@ -29,7 +26,6 @@ const {
         <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
         <meta name="generator" content={Astro.generator} />
         <title>{title}</title>
-        <ViewTransitions />
     </head>
     <body class=`${className}`>
         <slot />
