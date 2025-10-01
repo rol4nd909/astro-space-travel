@@ -10,13 +10,13 @@
     "astro": "astro"
   },
   "dependencies": {
-    "@astrojs/react": "^4.3.1",
-    "@fontsource/barlow": "^5.2.6",
-    "@fontsource/barlow-condensed": "^5.2.6",
-    "@fontsource/bellefair": "^5.2.6",
-    "@types/react": "^19.1.12",
+    "@astrojs/react": "^4.4.0",
+    "@fontsource/barlow": "^5.2.8",
+    "@fontsource/barlow-condensed": "^5.2.8",
+    "@fontsource/bellefair": "^5.2.8",
+    "@types/react": "^19.1.16",
     "@types/react-dom": "^19.1.9",
-    "astro": "^5.13.7",
+    "astro": "^5.14.1",
     "react": "^19.1.1",
     "react-dom": "^19.1.1"
   },
@@ -25,14 +25,14 @@
     "autoprefixer": "^10.4.21",
     "postcss": "^8.5.6",
     "postcss-custom-media": "^11.0.6",
-    "postcss-preset-env": "^10.3.1",
+    "postcss-preset-env": "^10.4.0",
     "prettier": "^3.6.2",
     "prettier-plugin-astro": "^0.14.1",
-    "sass": "^1.92.1",
-    "sharp": "^0.34.3",
+    "sass": "^1.93.2",
+    "sharp": "^0.34.4",
     "stylelint": "^16.24.0",
     "stylelint-config-prettier": "^9.0.5",
-    "stylelint-config-recommended-scss": "^16.0.0",
+    "stylelint-config-recommended-scss": "^16.0.2",
     "stylelint-config-standard": "^39.0.0",
     "stylelint-plugin-logical-css": "^1.2.3"
   }
