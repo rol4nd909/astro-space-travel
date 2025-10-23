@@ -14,11 +14,11 @@
     "@fontsource/barlow": "^5.2.8",
     "@fontsource/barlow-condensed": "^5.2.8",
     "@fontsource/bellefair": "^5.2.8",
-    "@types/react": "^19.1.16",
-    "@types/react-dom": "^19.1.9",
-    "astro": "^5.14.1",
-    "react": "^19.1.1",
-    "react-dom": "^19.1.1"
+    "@types/react": "^19.2.2",
+    "@types/react-dom": "^19.2.2",
+    "astro": "^5.15.1",
+    "react": "^19.2.0",
+    "react-dom": "^19.2.0"
   },
   "devDependencies": {
     "@csstools/postcss-global-data": "^3.1.0",
@@ -30,10 +30,10 @@
     "prettier-plugin-astro": "^0.14.1",
     "sass": "^1.93.2",
     "sharp": "^0.34.4",
-    "stylelint": "^16.24.0",
+    "stylelint": "^16.25.0",
     "stylelint-config-prettier": "^9.0.5",
     "stylelint-config-recommended-scss": "^16.0.2",
-    "stylelint-config-standard": "^39.0.0",
+    "stylelint-config-standard": "^39.0.1",
     "stylelint-plugin-logical-css": "^1.2.3"
   }
 }
