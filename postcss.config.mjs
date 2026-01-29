@@ -1,16 +1,16 @@
-const postcssPresetEnv  = require('postcss-preset-env')
-const postcssCustomMedia = require('postcss-custom-media');
-const postcssGlobalData = require('@csstools/postcss-global-data');
+import postcssPresetEnv from 'postcss-preset-env'
+import postcssCustomMedia from 'postcss-custom-media'
+import postcssGlobalData from '@csstools/postcss-global-data'
+import autoprefixer from 'autoprefixer'
 
-
-module.exports = {
+export default {
   plugins: [
     postcssPresetEnv({
       autoprefixer: false,
       stage: 2,
       features: {
-        'logical-properties-and-values': false, 
-        'prefers-color-scheme-query': false, 
+        'logical-properties-and-values': false,
+        'prefers-color-scheme-query': false,
         'gap-properties': false,
         'custom-properties': false,
         'is-pseudo-class': false,
@@ -22,15 +22,15 @@ module.exports = {
         'has-pseudo-class': false,
         'place-properties': false,
         'media-query-ranges': false,
-        'custom-media-queries': true
-      }
+        'custom-media-queries': true,
+      },
     }),
+
     postcssGlobalData({
-      files: [
-        'src/scss/props/_custom-media.scss'
-      ]
+      files: ['src/scss/props/_custom-media.scss'],
     }),
+
     postcssCustomMedia(),
-    require('autoprefixer'),
-  ]
-};
+    autoprefixer(),
+  ],
+}

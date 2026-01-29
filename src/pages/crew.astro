@@ -16,11 +16,13 @@ const crew = await getCollection('crew')
         <NumberedTitle tag="h1" number="02">Meet your crew</NumberedTitle>
 
         <Carousel>
-            {crew.map((member, id) => (
-                <CarouselSnap>
-                    <CrewDetails props={member} id={id} />
-                </CarouselSnap>
-            ))}
+            {
+                crew.map((member, id) => (
+                    <CarouselSnap>
+                        <CrewDetails props={member} id={id} />
+                    </CarouselSnap>
+                ))
+            }
         </Carousel>
     </Main>
 </Layout>
